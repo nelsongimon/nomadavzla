@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 interface LogoProps {
   siteLogoUrl: string | null;
 }
@@ -5,8 +7,10 @@ interface LogoProps {
 export default function Logo({
   siteLogoUrl
 }: LogoProps) {
-  const image = siteLogoUrl || "Nomada logo";
+  const image = siteLogoUrl || "Nomada Logo";
   return (
-    <div>{image}</div>
+    <Link href="/">
+      {image}
+    </Link>
   );
 }
