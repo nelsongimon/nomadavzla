@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { api } from "@/lib/woocommerce";
 
 interface IParams {
-  productId: string;
+  productId: number;
 }
 
 export async function GET(

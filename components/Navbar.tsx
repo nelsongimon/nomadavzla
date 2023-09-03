@@ -1,5 +1,6 @@
 import Container from "./ui/Container";
 import NavMenu from "./NavMenu";
+import Search from "./Search";
 import Logo from "./Logo";
 import Cart from "./Cart";
 
@@ -15,10 +16,15 @@ export default function Navbar({
     headerMenuItems
   } = header;
   return (
-    <Container>
-      <Logo siteLogoUrl={siteLogoUrl} />
-      <NavMenu menuItems={headerMenuItems} />
-      <Cart />
-    </Container>
+    <div className="border-b-2 border-gray-100">
+      <Container>
+        <nav className="flex items-center justify-between gap-8 h-[70px]">
+          <Logo siteLogoUrl={siteLogoUrl} />
+          <NavMenu menuItems={headerMenuItems} />
+          <Search />
+          <Cart />
+        </nav>
+      </Container>
+    </div>
   );
 }
