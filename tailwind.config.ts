@@ -13,8 +13,8 @@ const config: Config = {
           "secondary-color": "#FFCE00",
           "gray-color": "#F6F6F6",
           "gray-strong-color": "#797979",
-          "light-color": "#F6EBDC",
-          "strong-color": "#B47D2E"
+          "light-color": "#FEF6D8",
+          "strong-color": "#C99400"
         }
     },
   },
