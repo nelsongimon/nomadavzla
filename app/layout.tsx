@@ -2,6 +2,8 @@ import { Outfit } from "next/font/google";
 import type { Metadata } from "next";
 
 import { getHeaderFooter } from "@/actions/getHeaderFooter";
+import ToastProvider from "@/providers/ToastProvider";
+import ModalProvider from "@/providers/ModalProvider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import "./globals.css";
@@ -22,6 +24,8 @@ export default async function RootLayout({
   return (
     <html lang="es">
       <body className={font.className}>
+        <ToastProvider />
+        <ModalProvider />
         <Navbar header={header} />
         {children}
         <Footer />

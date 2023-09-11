@@ -1,6 +1,9 @@
+import Container from "./ui/Container";
 
 export default function Footer() {
   return (
-    <div>Footer</div>
+    <Container>
+
+    </Container>
   );
 }
