@@ -1,5 +1,6 @@
 "use client";
 
+import { HeaderMenuItems } from "@/types";
 import Link from "next/link";
 
 interface NavMenuProps {
