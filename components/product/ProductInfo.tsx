@@ -38,15 +38,9 @@ export default function ProductInfo({
           {product.name}
         </h1>
         <div className="flex gap-x-2">
-          {product.categories.map((category) => (
-            <Link
-              key={category?.id}
-              href={category?.slug}
-              className="text-gray-strong-color hover:text-secondary-color text-base underline-offset-4 hover:underline duration-300"
-            >
-              {category?.name}
-            </Link>
-          ))}
+          <span className="text-primary-color text-lg font-light">
+            {product.attributes?.[5]?.options?.[0] || "Género"}
+          </span>
         </div>
         <div className="mt-2">
           <span className="font-medium text-4xl text-primary-color">${product.price}</span>
@@ -55,17 +49,14 @@ export default function ProductInfo({
       <hr className="w-full border border-gray-200" />
       <div className="flex flex-col gap-y-5">
         <div className="flex items-center gap-x-1">
-          <Check className="stroke-[1.5] text-xs text-gray-strong-color" />
-          <span className="text-gray-strong-color text-md font-normal rounded-full">
+          <Check className="stroke-[2] text-xs text-green-500" />
+          <span className="text-green-500 text-lg font-medium rounded-full">
             Disponible
           </span>
         </div>
         <div>
-          <span className="text-base font-normal bg-gray-200 px-2 py-1">
-            {product.attributes?.[0]?.name}:
-          </span>
-          <span className="text-base font-light bg-gray-200 px-2 py-1">
-            {product.attributes?.[0]?.options?.[0]}
+          <span className="text-base font-light bg-gray-200 px-2 py-1 rounded-md">
+            {product.attributes?.[0]?.name}: {product.attributes?.[0]?.options?.[0]}
           </span>
         </div>
         <div className="flex gap-x-5 items-center mt-2">

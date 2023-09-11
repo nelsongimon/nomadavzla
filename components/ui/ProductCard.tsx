@@ -16,6 +16,9 @@ interface ProductCardProps {
 export default function ProductCard({
   product
 }: ProductCardProps) {
+
+  console.log(product);
+
   const previewModal = usePreviewModal();
 
   const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
@@ -78,7 +81,7 @@ export default function ProductCard({
           </div>
           <div>
             <span className="text-gray-strong-color text-sm font-light">
-              {product.categories[0].name}
+              {product.attributes?.[5]?.options?.[0] || "Género"}
             </span>
           </div>
           <div className="mt-2">
