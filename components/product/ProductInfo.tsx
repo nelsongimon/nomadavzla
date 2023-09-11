@@ -2,7 +2,6 @@
 
 import { Check, ShoppingCart } from "lucide-react";
 import { useState } from "react";
-import { escape } from "lodash";
 import Link from "next/link";
 
 import Quatity from "@/components/ui/Quatity";
