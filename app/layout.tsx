@@ -7,7 +7,6 @@ import ModalProvider from "@/providers/ModalProvider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import "./globals.css";
-
 const font = Outfit({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

@@ -2,7 +2,8 @@
 const nextConfig = {
   images: {
     domains: [
-      "www.nomadavzla.com"
+      "www.nomadavzla.com",
+      "placehold.co"
     ]
   }
 }

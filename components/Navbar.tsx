@@ -25,7 +25,7 @@ export default function Navbar({
   } = header;
 
   return (
-    <div className="border-b-2 border-gray-100">
+    <div className="border-b-2 border-gray-100 sticky top-0 bg-white z-20">
       <Container>
         <nav className="flex items-center justify-between gap-8 h-[70px]">
           <Logo siteLogoUrl={siteLogoUrl} />

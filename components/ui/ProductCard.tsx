@@ -16,9 +16,6 @@ interface ProductCardProps {
 export default function ProductCard({
   product
 }: ProductCardProps) {
-
-  console.log(product);
-
   const previewModal = usePreviewModal();
 
   const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {

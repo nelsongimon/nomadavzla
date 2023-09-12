@@ -1,12 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-
-import useCurrentPage from "@/hooks/useCurrentPage";
-import Pagination from "./Pagination";
 import ProductCard from "../ui/ProductCard";
 import { Product } from "@/types";
-import { usePathname, useSearchParams } from "next/navigation";
 
 interface ProductListFeaturedProps {
   products: Product[];

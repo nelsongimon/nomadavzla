@@ -1,7 +1,7 @@
 "use client";
 
 import { HeaderMenuItems } from "@/types";
-import Link from "next/link";
+import ItemMenu from "./ItemMenu";
 
 interface NavMenuProps {
   menuItems: HeaderMenuItems[];
@@ -12,26 +12,9 @@ export default function NavMenu({
 }: NavMenuProps) {
 
   return (
-    <ul className="flex gap-x-6 h-full">
+    <ul className="flex h-full">
       {menuItems.map((item) => (
-        <Link key={item.ID} href={item.url}>
-          <li className="
-            font-normal
-            text-base
-            text-gray-strong-color
-            hover:text-primary-color
-            relative
-            h-full
-            group
-            flex
-            items-center
-          ">
-            <span className="group-hover:bg-primary-color absolute inset-x-0 -bottom-[2px] h-1 transition duration-300"></span>
-            <span>
-              {item.title}
-            </span>
-          </li>
-        </Link>
+        <ItemMenu key={item.ID} item={item} />
       ))}
     </ul>
   );
