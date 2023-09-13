@@ -39,14 +39,14 @@ export default function ItemMenu({
       </div>
       <Transition
         show={isVisible}
-        enter="transition-opacity duration-75"
+        enter="transition-opacity duration-300"
         enterFrom="opacity-0"
         enterTo="opacity-100"
         leave="transition-opacity duration-300"
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
-        <div className="fixed top-[72px] bottom-0 left-0 right-0 z-10 bg-black bg-opacity-50">
+        <div className="fixed top-[72px] bottom-0 left-0 right-0 z-40 bg-black bg-opacity-50">
           <div className="flex justify-center">
             <div onMouseLeave={() => handleHover(false)} onMouseEnter={() => handleHover(true)} className="w-[80%] bg-white px-8 py-8">
               <div className="grid grid-cols-12">

@@ -54,9 +54,9 @@ export default function FilterItem({
             <span className="absolute block h-4 w-4 border-[1px] border-gray-300 p-2 rounded-sm z-10" />
             {selectedValue === item.slug && (
               <>
-                <span className="absolute block h-4 w-4 border-[1px] border-secondary-color p-2 rounded-sm z-20 bg-secondary-color" />
-                <span className="absolute left-[10px] bottom-[1px] block h-[14px] w-[3px] z-30 bg-white rotate-45" />
-                <span className="absolute left-[3px] bottom-[1px] block h-[9px] w-[3px] z-30 bg-white -rotate-45" />
+                <span className="absolute block h-4 w-4 border-[1px] border-secondary-color p-2 rounded-sm z-10 bg-secondary-color" />
+                <span className="absolute left-[10px] bottom-[1px] block h-[14px] w-[3px] z-10 bg-white rotate-45" />
+                <span className="absolute left-[3px] bottom-[1px] block h-[9px] w-[3px] z-10 bg-white -rotate-45" />
               </>
             )}
           </div>

@@ -66,3 +66,9 @@ export interface Image {
   name: string;
   alt: string;
 }
+
+export interface Tag {
+  id: number;
+  name: string;
+  slug: string;
+}
