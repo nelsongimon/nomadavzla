@@ -6,6 +6,7 @@ export async function getFeaturedProducts() {
     const { data } = await api.get("products",
       {
         per_page: 4,
+        featured: true,
       }
     );
 

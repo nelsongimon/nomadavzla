@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { HeaderMenuItems } from "@/types";
 import { Transition } from "@headlessui/react";
+import useShowResults from "@/hooks/useShowResults";
 
 interface ItemMenuProps {
   item: HeaderMenuItems;
@@ -15,6 +16,8 @@ export default function ItemMenu({
 }: ItemMenuProps) {
 
   const [isVisible, setIsVisible] = useState(false);
+  const { showResults } = useShowResults();
+
   const handleHover = (value: boolean) => {
     setIsVisible(value);
   }
@@ -32,13 +35,15 @@ export default function ItemMenu({
     group 
   ">
       <div onMouseLeave={() => handleHover(false)} onMouseEnter={() => handleHover(true)} className="h-full cursor-pointer flex items-center">
-        <span className="group-hover:bg-primary-color absolute inset-x-0 -bottom-[2px] h-1 transition duration-300 z-50"></span>
+        {!showResults && (
+          <span className="group-hover:bg-primary-color absolute inset-x-0 -bottom-[2px] h-1 transition duration-300 z-50"></span>
+        )}
         <span>
           {item.title}
         </span>
       </div>
       <Transition
-        show={isVisible}
+        show={isVisible && !showResults}
         enter="transition-opacity duration-300"
         enterFrom="opacity-0"
         enterTo="opacity-100"

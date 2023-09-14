@@ -74,7 +74,7 @@ export default function FilterItem({
             text-base font-normal`,
             selectedValue === item.slug ? "text-primary-color" : "text-gray-strong-color"
           )}>
-            {item.name} <span className="text-sm">({item.count})</span>
+            {item.name}
           </div>
         </li>
       ))}

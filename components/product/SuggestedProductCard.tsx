@@ -20,7 +20,7 @@ export default function SuggestedProductCard({
     <div className="space-y-2">
       {/* Image and actions */}
       <div className="
-        aspect-video
+        aspect-square
         bg-gray-color
         relative
         group

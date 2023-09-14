@@ -1,34 +1,30 @@
 "use client";
 
 import { Search as SearchIcon, XCircle } from "lucide-react";
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { debounce } from "lodash";
 
 
 import SearchResults from "./SearchResults";
-import useSearchProducts from "@/hooks/useSearchProducts";
 import axios from "axios";
 import { Product } from "@/types";
 import toast from "react-hot-toast";
+import useShowResults from "@/hooks/useShowResults";
 
 export default function Search() {
 
+  const { showResults, setShowResults } = useShowResults();
   const [inputSearch, setInputSearch] = useState<string>("");
   const [loadingSearch, setLoadingSearch] = useState(false);
   const [searhProducts, setSearhProducts] = useState<Product[]>([]);
-  const [showResults, setShowResults] = useState(false);
   const [isHover, setIsHover] = useState(false);
   const router = useRouter();
 
   const handleInputChange = debounce(() => {
-    // const query = event.target.value;
-    // setInputSearch(query);
-    // console.log("REQUEST:", inputSearch);
     setLoadingSearch(true);
     axios.get(`/api/products/search/${inputSearch}`)
       .then((res) => {
-        console.log(res.data);
         const products = res.data || [];
         setSearhProducts(products);
       }).
@@ -47,7 +43,6 @@ export default function Search() {
   }
 
   const handleClickSearchProduct = () => {
-    console.log("CLICK");
     setSearhProducts([]);
     setInputSearch("");
     setIsHover(false);
@@ -57,7 +52,7 @@ export default function Search() {
   const handleSuggestedQuery = (query: string) => {
     setIsHover(false);
     handleHidden(true);
-    router.push(`/busqueda/${query}`);
+    router.push(`/estilo/${query}`);
   }
 
   const handleShow = () => {
@@ -65,7 +60,6 @@ export default function Search() {
   }
 
   const handleHidden = (hasQuery: boolean) => {
-    setInputSearch("");
     if (hasQuery) {
       setShowResults(false);
       return;
@@ -73,6 +67,7 @@ export default function Search() {
     if (isHover) {
       return;
     }
+    setInputSearch("");
     setShowResults(false);
   }
 

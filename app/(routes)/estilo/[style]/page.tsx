@@ -1,32 +1,28 @@
 import { getCategories } from "@/actions/getCategories";
-import { getSearchProducts } from "@/actions/getSearchProducts";
+import { getStyleProducts } from "@/actions/getStyleProducts";
 import AppliedFilters from "@/components/AppliedFilters";
 import Filter from "@/components/Filter";
-import SearchInputPage from "@/components/SearchInputPage";
 import ProductList from "@/components/product/ProductList";
 import Container from "@/components/ui/Container";
-import { Play } from "lucide-react";
 
-export default async function SearchPage({
+export const revalidate = 0;
+
+export default async function StylePage({
   params,
   searchParams
 }: {
-  params: { query: string },
+  params: { style: string },
   searchParams: { [key: string]: string }
 }) {
-  const query = params.query;
-  const products = await getSearchProducts(query, searchParams);
+  const products = await getStyleProducts(params.style, searchParams);
   const categories = await getCategories();
 
   return (
     <Container>
       <div className="mt-9">
-        <div className="flex justify-center items-center gap-x-7">
-          <h3 className="font-semibold text-2xl text-primary-color">
-            Buscador:
-          </h3>
-          <SearchInputPage />
-        </div>
+        <h2 className="text-4xl text-primary-color font-bold">
+          Estilo {params.style}
+        </h2>
       </div>
       <div className="my-4">
         <AppliedFilters />

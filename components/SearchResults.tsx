@@ -50,7 +50,7 @@ export default function SearchResults({
             <div className="flex flex-col gap-y-4">
               <div className="flex gap-x-5 items-center border-b border-gray-200 pb-4">
                 <h5 className="text-gray-strong-color text-base ">
-                  Consultas sugeridas
+                  ¿Tienes algún estilo en mente?
                 </h5>
                 <div className="flex gap-x-3">
                   {tags.map((tag) => (
@@ -104,7 +104,7 @@ export default function SearchResults({
                       {searhProducts.length > 0 && inputSearch !== "" ? (
                         <>
                           {searhProducts.map((product, index) => {
-                            if (index > 8) {
+                            if (index > 7) {
                               return null;
                             }
                             return (<SuggestedProductCard
@@ -147,13 +147,13 @@ export default function SearchResults({
                     </div>
                   )}
                   {(searhProducts.length === 0 && inputSearch !== "") && (
-                    <div className="flex justify-center">
+                    <div className="flex justify-center my-7">
                       <span className="
                           text-primary-color
-                          text-base
+                          text-xl
                           font-light
                         ">
-                        No se han encontrado resultados para <span className="text-gray-strong-color">{inputSearch}</span>
+                        No se han encontrado resultados para: <span className="text-gray-strong-color">{inputSearch}</span>
                       </span>
                     </div>
                   )}
