@@ -41,11 +41,11 @@ export default function ProductList({
   };
 
   counterRef.current += 1;
-  // if (counterRef.current % 2 === 0) {
-  //   return (
-  //     <p>Loading...</p>
-  //   );
-  // }
+  if (counterRef.current % 2 === 0) {
+    return (
+      <p>Loading...</p>
+    );
+  }
 
   return (
     <div>
