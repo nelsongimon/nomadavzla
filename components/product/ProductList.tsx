@@ -41,14 +41,19 @@ export default function ProductList({
   };
 
   counterRef.current += 1;
-  if (counterRef.current % 2 === 0) {
-    return (
-      <p>Loading...</p>
-    );
-  }
+  // if (counterRef.current % 2 === 0) {
+  //   return (
+  //     <p>Loading...</p>
+  //   );
+  // }
 
   return (
     <div>
+      <div className="flex justify-end mb-8">
+        <span className="text-gray-strong-color font-light text-base bg-gray-100 rounded-full px-2 py-1">
+          {products.length} {products.length === 1 ? "resultado encontrado" : "resultados encontrados"}
+        </span>
+      </div>
       <div className={className}>
         {currentProducts.map((product) => (
           <ProductCard

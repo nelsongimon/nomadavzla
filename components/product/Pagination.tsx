@@ -17,11 +17,12 @@ export default function Pagination({
   totalPages,
   total,
   handlePrevPage,
-  handleNextPage
+  handleNextPage,
+  endIndex
 }: PaginationProps) {
 
   return (
-    <div className="my-10 flex items-center gap-x-3 border-t border-gray-100 pt-10">
+    <div className="my-10 flex items-center gap-x-3 pt-10">
       <div className="flex gap-x-3 flex-1">
         <Button
           onClick={handlePrevPage}
@@ -41,11 +42,8 @@ export default function Pagination({
         </Button>
       </div>
       <div className="flex gap-x-3 items-end">
-        <span className="text-primary-color text-base">
-          {total} {total === 1 ? "resultado total" : "resultados totales"}
-        </span>
-        <span className="font light text-xs text-gray-strong-color px-2 py-1 bg-gray-color rounded-full">
-          Página actual: {currentPage}
+        <span className="font-light text-md text-gray-strong-color px-2 py-1">
+          Página Actual: {currentPage} de {totalPages}
         </span>
       </div>
     </div>

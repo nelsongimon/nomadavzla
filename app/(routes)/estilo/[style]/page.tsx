@@ -4,6 +4,7 @@ import AppliedFilters from "@/components/AppliedFilters";
 import Filter from "@/components/Filter";
 import ProductList from "@/components/product/ProductList";
 import Container from "@/components/ui/Container";
+import { convertToCapitalize } from "@/lib/utils";
 
 export const revalidate = 0;
 
@@ -21,7 +22,7 @@ export default async function StylePage({
     <Container>
       <div className="mt-9">
         <h2 className="text-4xl text-primary-color font-bold">
-          Estilo {params.style}
+          Lentes con Estilo {convertToCapitalize(params.style)}
         </h2>
       </div>
       <div className="my-4">
