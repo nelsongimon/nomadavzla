@@ -6,9 +6,14 @@ export async function getSearchProducts(query: string, searchParams: Record<stri
   try { 
     const { data: products } = await api.get("products",
       {
-        search: query
+        search: query,
+        per_page: 100,
       }
     );
+
+    if (categorySlugs.length === 0) {
+      return products;
+    }
 
     const filteredProducts = products.filter((product: Product) => {
       const productCategories = product.categories.map((category) => category.slug);

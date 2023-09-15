@@ -53,7 +53,7 @@ export default function ItemMenu({
       >
         <div className="fixed top-[72px] bottom-0 left-0 right-0 z-40 bg-black bg-opacity-50">
           <div className="flex justify-center">
-            <div onMouseLeave={() => handleHover(false)} onMouseEnter={() => handleHover(true)} className="w-[80%] bg-white px-8 py-8">
+            <div onMouseLeave={() => handleHover(false)} onMouseEnter={() => handleHover(true)} className="max-w-[1100px] w-full bg-white px-8 py-8">
               <div className="grid grid-cols-12">
                 {/* Column */}
                 <div className="col-span-3">

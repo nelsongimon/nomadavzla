@@ -5,13 +5,17 @@ export async function getProducts(query: Record<string, any>) {
   const categorySlugs = Object.values(query);
 
   try { 
-    const { data } = await api.get("products",
+    const { data: products } = await api.get("products",
       {
         per_page: 100,
       }
     );
 
-    const filteredProducts = data.filter((product: Product) => {
+    if (categorySlugs.length === 0) {
+      return products;
+    }
+
+    const filteredProducts = products.filter((product: Product) => {
       const productCategories = product.categories.map((category) => category.slug);
       return categorySlugs.every((slug) => productCategories.includes(String(slug)));
     });

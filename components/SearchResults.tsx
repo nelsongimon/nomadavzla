@@ -46,7 +46,7 @@ export default function SearchResults({
     >
       <div onClick={checkOnClickOutside} className="fixed top-[72px] bottom-0 left-0 right-0 z-40 bg-black bg-opacity-50">
         <div className="flex justify-center">
-          <div onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)} className="min-w-[800px] bg-white px-8 py-8">
+          <div onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)} className="max-w-[800px] w-full bg-white px-8 py-8">
             <div className="flex flex-col gap-y-4">
               <div className="flex gap-x-5 items-center border-b border-gray-200 pb-4">
                 <h5 className="text-gray-strong-color text-base ">
