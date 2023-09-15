@@ -43,7 +43,7 @@ export default function Slides() {
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
-    }, 3000);
+    }, 5000);
 
     return () => {
       clearInterval(interval);
@@ -77,13 +77,23 @@ export default function Slides() {
                 {slide.description}
               </p>
               <div className="w-full flex justify-center mt-5">
-                <Button
-                  size="large"
-                  variant="default"
+                <motion.button
                   onClick={() => router.push(slide.action)}
+                  className={clsx(`
+                    rounded-md
+                    py-2 px-7 
+                    text-lg 
+                    font-light 
+                    bg-primary-color 
+                    hover:bg-primary-color/80
+                    duration-300
+                    text-white`,
+                  )}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   {slide.label}
-                </Button>
+                </motion.button>
               </div>
             </div>
           </div>
@@ -93,17 +103,18 @@ export default function Slides() {
             alt="Image slider"
             className="object-cover object-center"
           />
+
         </motion.div>
       ))}
       {/* Left Arrow */}
-      <div className="absolute left-8 top-[50%] translate-y-[-50%]">
+      <div className="absolute z-10 left-8 top-[50%] translate-y-[-50%]">
         <IconButton
           icon={<ChevronLeft size={30} className="text-primary-color stroke-[1.5]" />}
           onClick={prevSlide}
         />
       </div>
       {/* Right Arrow */}
-      <div className="absolute right-8 top-[50%] translate-y-[-50%]">
+      <div className="absolute z-10 right-8 top-[50%] translate-y-[-50%]">
         <IconButton
           icon={<ChevronRight size={30} className="text-primary-color stroke-[1.5]" />}
           onClick={nextSlide}

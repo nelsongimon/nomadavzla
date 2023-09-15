@@ -2,6 +2,7 @@ import ProductListFeatured from "@/components/product/ProductListFeatured";
 import { getFeaturedProducts } from "@/actions/getFeaturedProducts";
 import Container from "@/components/ui/Container";
 import Slides from "@/components/Slides";
+import ServiceFeatures from "@/components/ui/ServiceFeatures";
 
 export default async function HomePage() {
   const products = await getFeaturedProducts();
@@ -9,6 +10,7 @@ export default async function HomePage() {
   return (
     <>
       <Slides />
+      <ServiceFeatures />
       <Container>
         <ProductListFeatured
           products={products}

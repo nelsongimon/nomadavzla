@@ -31,7 +31,7 @@ export default function Button({
         size === "small" ? "py-2 px-2 text-xs font-light" : "",
         size === "large" ? "py-2 px-7 text-lg font-light" : "",
         size === "none" ? "font-light" : "",
-        variant === "default" ? "bg-primary-color hover:bg-primary-color/80 text-white " : "",
+        variant === "default" ? "bg-primary-color hover:bg-primary-color/80 text-white" : "",
         variant === "secondary" ? "bg-light-color hover:bg-light-color/80 text-strong-color font-medium" : "",
         variant === "outline" ? "ring-1 ring-primary-color ring-inset hover:ring-secondary-color text-primary-color hover:text-secondary-color disabled:cursor-not-allowed disabled:opacity-30 disabled:ring-primary-color disabled:text-primary-color" : "",
         variant === "ghost" ? "hover:bg-gray-color text-primary-color" : "",

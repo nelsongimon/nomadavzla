@@ -14,10 +14,10 @@ export default function ProductListFeatured({
 }: ProductListFeaturedProps) {
 
   return (
-    <div>
-      <div>
-        <h3>
-          Productos destacados
+    <div className="py-20">
+      <div className="mb-8">
+        <h3 className="text-strong-color font-bold text-4xl text-center">
+          Every Vision of You
         </h3>
       </div>
       <div className={className}>
