@@ -77,13 +77,15 @@ export default function ProductCard({
             </Link>
           </div>
           <div>
-            <span className="text-gray-strong-color text-sm font-light">
-              {product.attributes?.[5]?.options?.[0] || "Género"}
-            </span>
+            <span
+              className="text-gray-strong-color text-sm font-light"
+              dangerouslySetInnerHTML={{ __html: product.description }}
+            />
+
           </div>
           <div className="mt-2">
             <span className="border border-gray-300 text-sm px-2 py-1">
-              {product.attributes?.[0]?.options?.[0] || "Size"}
+              {product.attributes?.[5]?.options?.[0] || "Género"}
             </span>
           </div>
           {/* Colors */}

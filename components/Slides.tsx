@@ -1,32 +1,14 @@
 "use client";
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import Image from "next/image";
-import IconButton from "./ui/IconButton";
 import { useEffect, useState } from "react";
-import clsx from "clsx";
-import { motion } from "framer-motion";
-import Button from "./ui/Button";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import clsx from "clsx";
 
-const slides = [
-  {
-    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Sliders3.jpg",
-    title: "70% de descuento en todos nuestros lentes",
-    description: "Descubre lo mejor en lentes 5 en 1 para damas y cabellaros",
-    label: "Comprar Ahora",
-    action: "/productos",
-    position: "right"
-  },
-  {
-    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Sliders2.jpg",
-    title: "70% de descuento en todos nuestros lentes",
-    description: "Descubre lo mejor en lentes 5 en 1 para damas y cabellaros",
-    label: "Comprar Ahora",
-    action: "/productos",
-    position: "left"
-  },
-]
+import IconButton from "./ui/IconButton";
+import { slides } from "@/data";
 
 export default function Slides() {
   const router = useRouter();
@@ -89,8 +71,9 @@ export default function Slides() {
                     duration-300
                     text-white`,
                   )}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ scale: [null, 1.5, 1.1] }}
+                  transition={{ duration: 0.3 }}
+                // whileTap={{ scale: 0.95 }}
                 >
                   {slide.label}
                 </motion.button>

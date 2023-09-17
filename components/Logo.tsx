@@ -1,13 +1,8 @@
 import Link from "next/link";
+import { logo } from "@/data"
 
-interface LogoProps {
-  siteLogoUrl: string | null;
-}
-
-export default function Logo({
-  siteLogoUrl
-}: LogoProps) {
-  const image = siteLogoUrl || "Nomada Logo";
+export default function Logo() {
+  const image = logo || "Nomada Logo";
   return (
     <Link href="/">
       {image}

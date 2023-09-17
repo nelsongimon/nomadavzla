@@ -16,9 +16,18 @@ export default function ProductDetails({
       <div className="grid grid-cols-12 gap-x-4 py-14">
         <div className="col-span-4">
           <div className="flex flex-col">
-            <h3 className="font-semibold text-2xl text-primary-color">
-              {product.name}
-            </h3>
+            <div className="flex gap-x-4">
+              <h3
+                className="font-semibold text-2xl text-primary-color"
+                dangerouslySetInnerHTML={{ __html: product.description }}
+              />
+              <span className="font-semibold text-2xl text-primary-color">
+                |
+              </span>
+              <h3 className="font-semibold text-2xl text-primary-color">
+                {product.name}
+              </h3>
+            </div>
             <ul className="mt-5 flex flex-col gap-y-1">
               {product.attributes.map((item) => (
                 <li key={item.id} className="flex gap-x-3 bg-gray-color py-2 px-3">

@@ -33,30 +33,35 @@ export default function ProductInfo({
   }
   return (
     <div className="flex flex-col gap-y-5">
-      <div className="flex flex-col gap-y-3">
-        <h1 className="font-semibold text-2xl">
-          {product.name}
-        </h1>
-        <div className="flex gap-x-2">
-          <span className="text-primary-color text-lg font-light">
+      <div className="flex flex-col gap-y-4">
+        <div>
+          <h2
+            className="text-lg font-light text-gray-strong-color"
+            dangerouslySetInnerHTML={{ __html: product.description }}
+          />
+          <h1 className="font-semibold text-3xl">
+            {product.name}
+          </h1>
+        </div>
+        <div className="flex gap-x-4">
+          <span className="text-primary-color text-lg font-light border border-gray-200 py-1 px-2">
             {product.attributes?.[5]?.options?.[0] || "Género"}
+          </span>
+          <span className="text-primary-color text-lg font-light border border-gray-200 py-1 px-2">
+            {/* {product.attributes?.[0]?.name}:  */}
+            {product.attributes?.[0]?.options?.[0]}
           </span>
         </div>
         <div className="mt-2">
-          <span className="font-medium text-4xl text-primary-color">${product.price}</span>
+          <span className="font-bold text-5xl text-secondary-color">${product.price}</span>
         </div>
       </div>
       <hr className="w-full border border-gray-200" />
       <div className="flex flex-col gap-y-5">
         <div className="flex items-center gap-x-1">
-          <Check className="stroke-[2] text-xs text-green-500" />
-          <span className="text-green-500 text-lg font-medium rounded-full">
+          <Check className="stroke-[2] text-xs text-primary-color" />
+          <span className="text-primary-color text-lg font-medium">
             Disponible
-          </span>
-        </div>
-        <div>
-          <span className="text-base font-light bg-gray-200 px-2 py-1 rounded-md">
-            {product.attributes?.[0]?.name}: {product.attributes?.[0]?.options?.[0]}
           </span>
         </div>
         <div className="flex gap-x-5 items-center mt-2">

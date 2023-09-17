@@ -3,6 +3,7 @@ import { getFeaturedProducts } from "@/actions/getFeaturedProducts";
 import Container from "@/components/ui/Container";
 import Slides from "@/components/Slides";
 import ServiceFeatures from "@/components/ui/ServiceFeatures";
+import Styles from "@/components/Styles";
 
 export default async function HomePage() {
   const products = await getFeaturedProducts();
@@ -16,6 +17,7 @@ export default async function HomePage() {
           products={products}
           className="grid gap-x-10 gap-y-20 grid-cols-4"
         />
+        <Styles />
       </Container>
     </>
   )

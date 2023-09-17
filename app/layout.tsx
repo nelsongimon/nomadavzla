@@ -19,13 +19,13 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const { header } = await getHeaderFooter();
+
   return (
     <html lang="es">
       <body className={font.className}>
         <ToastProvider />
         <ModalProvider />
-        <Navbar header={header} />
+        <Navbar />
         {children}
         <Footer />
       </body>
