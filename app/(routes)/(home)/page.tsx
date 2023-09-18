@@ -1,8 +1,8 @@
 import ProductListFeatured from "@/components/product/ProductListFeatured";
 import { getFeaturedProducts } from "@/actions/getFeaturedProducts";
+import ServiceFeatures from "@/components/ui/ServiceFeatures";
 import Container from "@/components/ui/Container";
 import Slides from "@/components/Slides";
-import ServiceFeatures from "@/components/ui/ServiceFeatures";
 import Styles from "@/components/Styles";
 
 export default async function HomePage() {

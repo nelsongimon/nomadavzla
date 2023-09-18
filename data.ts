@@ -137,34 +137,61 @@ export const menuItems = [
   }
 ]
 
+// export const styles = [
+//   {
+//     title: "Clasico",
+//     image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Styles-1.jpg"
+//   },
+//   {
+//     title: "Vintage",
+//     image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Styles-2.jpg"
+//   },
+//   {
+//     title: "Higienico",
+//     image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Styles-3.jpg"
+//   },
+//   {
+//     title: "Juvenil",
+//     image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Styles-5.jpg"
+//   },
+//   {
+//     title: "Moderno",
+//     image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Styles-4.jpg"
+//   },
+//   {
+//     title: "Retro",
+//     image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Styles-2.jpg"
+//   },
+//   {
+//     title: "Deportivo",
+//     image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Styles-5.jpg"
+//   },
+// ]
+
 export const styles = [
   {
     title: "Clasico",
-    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Styles-1.jpg"
+    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Styles-2.png"
   },
   {
     title: "Vintage",
-    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Styles-2.jpg"
+    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Styles-2.png"
   },
   {
     title: "Higienico",
-    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Styles-3.jpg"
+    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Styles-1.png"
   },
   {
     title: "Juvenil",
-    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Styles-5.jpg"
+    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Styles-2.png"
   },
   {
     title: "Moderno",
-    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Styles-4.jpg"
+    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Styles-1.png"
   },
   {
     title: "Retro",
-    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Styles-2.jpg"
-  },
-  {
-    title: "Deportivo",
-    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Styles-5.jpg"
+    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Styles-2.png"
   },
 ]
 
