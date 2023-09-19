@@ -141,37 +141,6 @@ export const menuItems = [
   }
 ]
 
-// export const styles = [
-//   {
-//     title: "Clasico",
-//     image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Styles-1.jpg"
-//   },
-//   {
-//     title: "Vintage",
-//     image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Styles-2.jpg"
-//   },
-//   {
-//     title: "Higienico",
-//     image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Styles-3.jpg"
-//   },
-//   {
-//     title: "Juvenil",
-//     image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Styles-5.jpg"
-//   },
-//   {
-//     title: "Moderno",
-//     image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Styles-4.jpg"
-//   },
-//   {
-//     title: "Retro",
-//     image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Styles-2.jpg"
-//   },
-//   {
-//     title: "Deportivo",
-//     image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Styles-5.jpg"
-//   },
-// ]
-
 export const styles = [
   {
     title: "Clásico",
@@ -212,4 +181,51 @@ export const genreBillboard = {
     label: "Ver Modelos",
     action: "/productos?genero=caballeros",
   }
+}
+
+export const footerInfo = {
+  genreLink: {
+    title: "Encuentra según tu género",
+    links: [
+      {
+        label: "Lentes para Caballeros",
+        href: "/productos?genero=caballeros"
+      },
+      {
+        label: "Lentes para Damas",
+        href: "/productos?genero=damas"
+      },
+      {
+        label: "Lentes para Unisex",
+        href: "/productos?genero=unisex"
+      },
+    ]
+  },
+  stylesLink: {
+    title: "Encuentra según tu estilo",
+    links: [
+      {
+        label: "Estilo Clásico",
+        href: "/estilo/clasico"
+      },
+      {
+        label: "Estilo Moderno",
+        href: "/estilo/moderno"
+      },
+      {
+        label: "Estilo Retro",
+        href: "/estilo/retro"
+      },
+      {
+        label: "Estilo Deportivo",
+        href: "/estilo/deportivo"
+      },
+      {
+        label: "Estilo Juvenil",
+        href: "/estilo/juvenil"
+      },
+    ]
+  },
+  paymentMethodsImage: "https://www.nomadavzla.com/wp-content/uploads/2023/09/PaymentMethods.png"
+
 }

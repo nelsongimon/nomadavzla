@@ -5,6 +5,7 @@ import Container from "@/components/ui/Container";
 import Slides from "@/components/Slides";
 import Styles from "@/components/Styles";
 import GenreBillboards from "@/components/GenreBillboards";
+import Newsletter from "@/components/ui/Newsletter";
 
 export default async function HomePage() {
   const products = await getFeaturedProducts();
@@ -21,6 +22,7 @@ export default async function HomePage() {
         />
         <Styles />
       </Container>
+      <Newsletter />
     </>
   )
 }

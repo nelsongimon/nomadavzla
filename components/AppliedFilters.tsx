@@ -37,9 +37,7 @@ export default function AppliedFilters() {
       {filters.map((filter, index) => (
         <motion.button
           key={index}
-          whileTap={{ scale: 0.5 }}
           whileHover={{ scale: 1.05 }}
-          transition={{}}
           onClick={() => onRemoveItemFilter(filter[0])}
           className="
             flex 
