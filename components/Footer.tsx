@@ -87,7 +87,7 @@ export default function Footer() {
           {/* Styles */}
           <div className="flex flex-col gap-y-4 text-gray-300">
             <h2 className="font-semibold text-lg">
-              {footerInfo.genreLink.title}
+              {footerInfo.stylesLink.title}
             </h2>
             <ul className="flex flex-col gap-y-2">
               {footerInfo.stylesLink.links.map((item, index) => (

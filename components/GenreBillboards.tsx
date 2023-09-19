@@ -16,7 +16,7 @@ export default function GenreBillboards() {
   }
   return (
     <div className="mt-14 grid grid-cols-2 gap-x-10">
-      <div className="bg-gray-color rounded-xl grid grid-cols-2 px-3">
+      <div className="bg-gray-color rounded-xl grid grid-cols-2 px-3 overflow-hidden group">
         <div className="relative aspect-squar w-full h-[300px]">
           <Image
             fill
@@ -25,6 +25,8 @@ export default function GenreBillboards() {
             className="
               object-contain
               object-bottom
+              group-hover:scale-110
+              duration-300
             "
           />
         </div>
@@ -48,7 +50,7 @@ export default function GenreBillboards() {
           </div>
         </div>
       </div>
-      <div className="bg-gray-color rounded-xl grid grid-cols-2 px-3">
+      <div className="bg-gray-color rounded-xl grid grid-cols-2 px-3 overflow-hidden group">
         <div className="relative aspect-squar w-full h-[300px]">
           <Image
             fill
@@ -57,6 +59,8 @@ export default function GenreBillboards() {
             className="
               object-contain
               object-bottom
+              group-hover:scale-110
+              duration-300
             "
           />
         </div>

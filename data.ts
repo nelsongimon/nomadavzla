@@ -226,6 +226,6 @@ export const footerInfo = {
       },
     ]
   },
-  paymentMethodsImage: "https://www.nomadavzla.com/wp-content/uploads/2023/09/PaymentMethods.png"
+  paymentMethodsImage: "https://www.nomadavzla.com/wp-content/uploads/2023/09/PaymentMethods-1.png"
 
 }
