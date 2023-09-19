@@ -20,12 +20,17 @@ export default async function StylePage({
 
   return (
     <Container>
-      <div className="mt-9">
-        <h2 className="text-4xl text-primary-color font-bold">
-          Lentes con Estilo {convertToCapitalize(params.style)}
-        </h2>
+      <div className="mt-3">
+        <div className="relative flex justify-center w-full items-center">
+          <h2 className="text-8xl text-gray-color font-extrabold uppercase tracking-tight">
+            Estilo
+          </h2>
+          <h3 className="absolute text-4xl font-normal text-primary-color uppercase tracking-widest">
+            {params.style}
+          </h3>
+        </div>
       </div>
-      <div className="my-4">
+      <div className="mb-4 mt-0">
         <AppliedFilters />
       </div>
       <div className="grid grid-cols-12">

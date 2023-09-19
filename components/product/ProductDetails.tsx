@@ -13,24 +13,18 @@ export default function ProductDetails({
 }: ProductDetailsProps) {
   return (
     <Container>
-      <div className="grid grid-cols-12 gap-x-4 py-14">
+      <div className="relative flex justify-center w-full items-center mt-12">
+        <h3 className="text-8xl text-gray-color font-extrabold uppercase tracking-tight" dangerouslySetInnerHTML={{ __html: product.description }} />
+        <h3 className="absolute text-4xl font-semibold text-primary-color">
+          {product.name}
+        </h3>
+      </div>
+      <div className="grid grid-cols-12 gap-x-4 mt-6">
         <div className="col-span-4">
           <div className="flex flex-col">
-            <div className="flex gap-x-4">
-              <h3
-                className="font-semibold text-2xl text-primary-color"
-                dangerouslySetInnerHTML={{ __html: product.description }}
-              />
-              <span className="font-semibold text-2xl text-primary-color">
-                |
-              </span>
-              <h3 className="font-semibold text-2xl text-primary-color">
-                {product.name}
-              </h3>
-            </div>
             <ul className="mt-5 flex flex-col gap-y-1">
               {product.attributes.map((item) => (
-                <li key={item.id} className="flex gap-x-3 bg-gray-color py-2 px-3">
+                <li key={item.id} className="flex gap-x-3 bg-gray-50 py-2 px-3">
                   <span className="text-lg font-semibold">{item.name}: </span>
                   <span className="text-lg font-light">{item.options?.[0]}</span>
                 </li>

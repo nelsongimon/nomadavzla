@@ -4,9 +4,11 @@ import clsx from "clsx";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import qs from "query-string";
+import { motion } from "framer-motion";
 
 import { Category } from "@/types";
 import useCurrentPage from "@/hooks/useCurrentPage";
+import { delay } from "lodash";
 
 interface FilterItemProps {
   valueKey: string;
@@ -23,6 +25,11 @@ export default function FilterItem({
   const selectedValue = searchParams.get(valueKey);
 
   const onAddItemFilter = async (slug: string) => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+
     const current = qs.parse(searchParams.toString());
     const query = {
       ...current,
@@ -54,9 +61,24 @@ export default function FilterItem({
             <span className="absolute block h-4 w-4 border-[1px] border-gray-300 p-2 rounded-sm z-10" />
             {selectedValue === item.slug && (
               <>
-                <span className="absolute block h-4 w-4 border-[1px] border-secondary-color p-2 rounded-sm z-10 bg-secondary-color" />
-                <span className="absolute left-[10px] bottom-[1px] block h-[14px] w-[3px] z-10 bg-white rotate-45" />
-                <span className="absolute left-[3px] bottom-[1px] block h-[9px] w-[3px] z-10 bg-white -rotate-45" />
+                <motion.span
+                  initial={{ scale: 0 }}
+                  animate={{ scale: [1, 1.3, 1] }}
+                  transition={{ duration: 0.3 }}
+                  className="absolute block h-4 w-4 border-[1px] border-secondary-color p-2 rounded-sm z-10 bg-secondary-color"
+                />
+                <motion.span
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 14 }}
+                  transition={{ duration: 0.2, delay: 0.5 }}
+                  className="absolute left-[10px] bottom-[1px] block h-[14px] w-[3px] z-10 bg-white rotate-45"
+                />
+                <motion.span
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 9 }}
+                  transition={{ duration: 0.2, delay: 0.3 }}
+                  className="absolute left-[3px] bottom-[1px] block h-[9px] w-[3px] z-10 bg-white -rotate-45"
+                />
               </>
             )}
           </div>

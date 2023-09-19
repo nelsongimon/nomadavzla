@@ -44,10 +44,10 @@ export default function ProductInfo({
           </h1>
         </div>
         <div className="flex gap-x-4">
-          <span className="text-primary-color text-lg font-light border border-gray-200 py-1 px-2">
+          <span className="text-primary-color text-base font-light border border-gray-200 py-1 px-2">
             {product.attributes?.[5]?.options?.[0] || "Género"}
           </span>
-          <span className="text-primary-color text-lg font-light border border-gray-200 py-1 px-2">
+          <span className="text-primary-color text-base font-light border border-gray-200 py-1 px-2">
             {/* {product.attributes?.[0]?.name}:  */}
             {product.attributes?.[0]?.options?.[0]}
           </span>

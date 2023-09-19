@@ -1,6 +1,7 @@
 "use client";
 
 import { X } from "lucide-react";
+import { motion } from "framer-motion";
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { convertToCapitalize } from "@/lib/utils";
@@ -34,8 +35,11 @@ export default function AppliedFilters() {
         Filtros Aplicados ({filters.length}):
       </span>
       {filters.map((filter, index) => (
-        <button
+        <motion.button
           key={index}
+          whileTap={{ scale: 0.5 }}
+          whileHover={{ scale: 1.05 }}
+          transition={{}}
           onClick={() => onRemoveItemFilter(filter[0])}
           className="
             flex 
@@ -58,7 +62,7 @@ export default function AppliedFilters() {
           <span>
             {convertToCapitalize(filter[1] as string)}
           </span>
-        </button>
+        </motion.button>
       ))}
     </div>
   );

@@ -3,7 +3,8 @@
 import ProductCard from "../ui/ProductCard";
 import { Product } from "@/types";
 import { useInView } from "framer-motion"
-import { useEffect, useRef } from "react";
+
+import { motion } from "framer-motion";
 
 interface ProductListFeaturedProps {
   products: Product[];
@@ -14,16 +15,6 @@ export default function ProductListFeatured({
   products,
   className
 }: ProductListFeaturedProps) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, {
-    once: true,
-    margin: "0px 100px -50px 0px"
-  });
-
-  useEffect(() => {
-    console.log("VISIBLE", isInView);
-  }, [isInView]);
-
 
   return (
     <div className="py-20">

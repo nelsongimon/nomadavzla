@@ -4,6 +4,7 @@ import ServiceFeatures from "@/components/ui/ServiceFeatures";
 import Container from "@/components/ui/Container";
 import Slides from "@/components/Slides";
 import Styles from "@/components/Styles";
+import GenreBillboards from "@/components/GenreBillboards";
 
 export default async function HomePage() {
   const products = await getFeaturedProducts();
@@ -13,6 +14,7 @@ export default async function HomePage() {
       <Slides />
       <ServiceFeatures />
       <Container>
+        <GenreBillboards />
         <ProductListFeatured
           products={products}
           className="grid gap-x-10 gap-y-20 grid-cols-4"

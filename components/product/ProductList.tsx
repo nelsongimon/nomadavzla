@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 
+import ProductCard from "@/components/ui/ProductCard";
 import useCurrentPage from "@/hooks/useCurrentPage";
+import NoResults from "@/components/ui/NoResults";
 import Pagination from "./Pagination";
-import ProductCard from "../ui/ProductCard";
 import { Product } from "@/types";
-import { usePathname, useSearchParams } from "next/navigation";
+import { PuffLoader } from "react-spinners";
 
 interface ProductListProps {
   products: Product[];
@@ -18,7 +19,7 @@ export default function ProductList({
   className
 }: ProductListProps) {
   const counterRef = useRef(0);
-  const itemsPerPage = 3;
+  const itemsPerPage = 6;
   const currentPage = useCurrentPage();
   const totalPages = Math.ceil(products.length / itemsPerPage);
 
@@ -27,6 +28,11 @@ export default function ProductList({
   const currentProducts = products.slice(startIndex, endIndex);
 
   const handleNextPage = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "instant",
+    });
+
     if (currentPage.page < totalPages) {
       counterRef.current += 1;
       currentPage.updatePage(currentPage.page + 1);
@@ -34,6 +40,11 @@ export default function ProductList({
   };
 
   const handlePrevPage = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "instant",
+    });
+
     if (currentPage.page > 1) {
       counterRef.current += 1;
       currentPage.updatePage(currentPage.page - 1);
@@ -43,12 +54,17 @@ export default function ProductList({
   counterRef.current += 1;
   if (counterRef.current % 2 === 0) {
     return (
-      <p>Loading...</p>
+      <div className="flex h-60 items-center justify-center">
+        <PuffLoader
+          size={150}
+          color="#797979"
+        />
+      </div>
     );
   }
 
   return (
-    <div>
+    <div className="">
       <div className="flex justify-end mb-8">
         <span className="text-gray-strong-color font-light text-base bg-gray-100 rounded-full px-2 py-1">
           {products.length} {products.length === 1 ? "resultado encontrado" : "resultados encontrados"}
@@ -62,18 +78,17 @@ export default function ProductList({
           />
         ))}
       </div>
-      {products.length > 0 && (
+      {products.length > 0 ? (
         <div>
           <Pagination
             currentPage={currentPage.page}
             totalPages={totalPages}
-            startIndex={startIndex + 1}
-            endIndex={endIndex - 1}
-            total={products.length}
             handlePrevPage={handlePrevPage}
             handleNextPage={handleNextPage}
           />
         </div>
+      ) : (
+        <NoResults />
       )}
     </div>
   );

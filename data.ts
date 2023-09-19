@@ -81,20 +81,24 @@ export const menuItems = [
         title: "Encuentra según tu estilo",
         links: [
           {
-            label: "Forma Agatada",
-            href: "/productos?forma=agatada"
+            label: "Estilo Clásico",
+            href: "/estilo/clasico"
           },
           {
-            label: "Forma Ovalada",
-            href: "/productos?forma=ovalada"
+            label: "Estilo Moderno",
+            href: "/estilo/moderno"
           },
           {
-            label: "Forma Rectangular",
-            href: "/productos?forma=rectangular"
+            label: "Estilo Retro",
+            href: "/estilo/retro"
           },
           {
-            label: "Forma Redonda",
-            href: "/productos?forma=redonda"
+            label: "Estilo Deportivo",
+            href: "/estilo/deportivo"
+          },
+          {
+            label: "Estilo Juvenil",
+            href: "/estilo/juvenil"
           },
         ]
       },
@@ -170,29 +174,42 @@ export const menuItems = [
 
 export const styles = [
   {
-    title: "Clasico",
-    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Styles-2.png"
-  },
-  {
-    title: "Vintage",
-    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Styles-2.png"
-  },
-  {
-    title: "Higienico",
-    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Styles-1.png"
+    title: "Clásico",
+    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Style.png"
   },
   {
     title: "Juvenil",
-    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Styles-2.png"
+    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Style.png"
   },
   {
     title: "Moderno",
-    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Styles-1.png"
+    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Style.png"
   },
   {
     title: "Retro",
-    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Styles-2.png"
+    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Style.png"
+  },
+  {
+    title: "Deportivo",
+    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Style.png"
   },
 ]
 
 export const logo = "";
+
+export const genreBillboard = {
+  ladies: {
+    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/lady.png",
+    titleGray: "Lentes",
+    titleBlack: "Damas",
+    label: "Ver Modelos",
+    action: "/productos?genero=damas",
+  }, 
+  gentlemen: {
+    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/gentleman.png",
+    titleGray: "Lentes",
+    titleBlack: "Caballeros",
+    label: "Ver Modelos",
+    action: "/productos?genero=caballeros",
+  }
+}

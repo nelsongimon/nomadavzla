@@ -5,9 +5,6 @@ import Button from "../ui/Button";
 interface PaginationProps {
   currentPage: number;
   totalPages: number;
-  startIndex: number;
-  endIndex: number;
-  total: number;
   handlePrevPage: () => void;
   handleNextPage: () => void;
 }
@@ -15,10 +12,8 @@ interface PaginationProps {
 export default function Pagination({
   currentPage,
   totalPages,
-  total,
   handlePrevPage,
   handleNextPage,
-  endIndex
 }: PaginationProps) {
 
   return (
@@ -43,7 +38,7 @@ export default function Pagination({
       </div>
       <div className="flex gap-x-3 items-end">
         <span className="font-light text-md text-gray-strong-color px-2 py-1">
-          Página Actual: {currentPage} de {totalPages}
+          Página: {currentPage} de {totalPages}
         </span>
       </div>
     </div>

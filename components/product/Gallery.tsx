@@ -23,7 +23,7 @@ export default function Gallery({
         w-full
         lg:max-w-none
       ">
-        <Tab.List className="grid grid-cols-4 gap-4 content-center">
+        <Tab.List className="grid grid-cols-8 gap-4 content-center">
           {images.map((image) => (
             <GalleryTab key={image.id} image={image} />
           ))}

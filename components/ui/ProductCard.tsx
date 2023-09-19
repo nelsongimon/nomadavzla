@@ -32,6 +32,7 @@ export default function ProductCard({
         relative
         group
         cursor-pointer
+        overflow-hidden
       ">
         <Link href={`/productos/${product?.slug}`}>
           <Image
@@ -40,6 +41,8 @@ export default function ProductCard({
             alt={product.images[0].alt}
             className="
               object-contain
+              group-hover:scale-105
+              duration-300
             "
           />
         </Link>

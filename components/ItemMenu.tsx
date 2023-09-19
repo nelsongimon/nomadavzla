@@ -7,6 +7,7 @@ import { useState } from "react";
 import Button from "./ui/Button";
 import Image from "next/image";
 import Link from "next/link";
+import useCurrentPage from "@/hooks/useCurrentPage";
 
 interface ItemMenuProps {
   item: any;
@@ -19,13 +20,19 @@ export default function ItemMenu({
   const [isVisible, setIsVisible] = useState(false);
   const { showResults } = useShowResults();
   const router = useRouter();
+  const currentPage = useCurrentPage();
 
   const handleHover = (value: boolean) => {
     setIsVisible(value);
   }
 
-  return (
+  const handleClickLink = (href: string) => {
+    setIsVisible(false);
+    currentPage.updatePage(1);
+    router.push(href);
+  }
 
+  return (
     <li className="
     font-normal
     text-base
@@ -33,10 +40,9 @@ export default function ItemMenu({
     hover:text-primary-color
     relative
     h-full
-    px-4
     group 
   ">
-      <div onMouseLeave={() => handleHover(false)} onMouseEnter={() => handleHover(true)} className="h-full cursor-pointer flex items-center">
+      <div onMouseLeave={() => handleHover(false)} onMouseEnter={() => handleHover(true)} className="h-full cursor-pointer flex items-center px-4">
         {!showResults && (
           <span className="group-hover:bg-primary-color absolute inset-x-0 -bottom-[2px] h-1 transition duration-300 z-50"></span>
         )}
@@ -70,11 +76,16 @@ export default function ItemMenu({
                       <h3 className="text-gray-strong-color text-lg">
                         {item.MenaMenu.sectionLinks.title}
                       </h3>
-                      <div className="flex flex-col gap-y-3">
+                      <div className="flex flex-col gap-y-5">
                         {item.MenaMenu.sectionLinks.links.map((item: Record<string, any>, index: number) => (
-                          <Link key={index} href={item.href} className="text-primary-color font-light underline underline-offset-4 duration-300 hover:text-secondary-color text-base">
+                          <Button
+                            key={index}
+                            onClick={() => handleClickLink(item.href)}
+                            size="none"
+                            variant="link"
+                          >
                             {item.label}
-                          </Link>
+                          </Button>
                         ))}
                       </div>
                     </div>
