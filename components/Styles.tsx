@@ -14,9 +14,9 @@ import Button from "./ui/Button";
 
 export default function Styles() {
   return (
-    <div className="mt-5">
-      <div className="mb-8">
-        <h3 className="text-strong-color font-bold text-4xl text-center">
+    <div className="mt-1 h-[500px] overflow-hidden">
+      <div className="relative flex justify-center">
+        <h3 className="text-strong-color font-bold text-4xl text-center absolute top-[15px]">
           Pick a style, any style
         </h3>
       </div>
@@ -25,12 +25,12 @@ export default function Styles() {
         grabCursor={true}
         centeredSlides={true}
         loop={true}
-        slidesPerView={2}
+        slidesPerView={3}
         coverflowEffect={{
           rotate: 0,
           stretch: 0,
-          depth: 300,
-          modifier: 1,
+          depth: 150,
+          modifier: 1.5,
           slideShadows: false,
 
         }}
@@ -41,11 +41,11 @@ export default function Styles() {
 
         }}
         modules={[EffectCoverflow, Pagination, Navigation]}
-        className="relative max-w-4xl h-[450px]"
+        className="relative max-w-5xl h-[800px]"
       >
         {styles.map((item, index) => (
           <SwiperSlide key={index}>
-            <div className="relative h-[300px]">
+            <div className="relative h-[320px]">
               <Image
                 fill
                 src={item.image}
@@ -55,7 +55,7 @@ export default function Styles() {
                   rounded-2xl
                 "
               />
-              <div className="absolute w-full h-full flex flex-col items-center justify-end gap-y-2 mt-10">
+              <div className="absolute w-full h-full flex flex-col items-center justify-end gap-y-2">
                 <h3 className="text-xl font-bold uppercase text-primary-color">
                   {item.title}
                 </h3>
@@ -70,7 +70,7 @@ export default function Styles() {
             </div>
           </SwiperSlide>
         ))}
-        <div className="absolute flex gap-x-3 z-10 left-[50%] translate-x-[-50%] top-[85%]">
+        <div className="absolute flex gap-x-3 z-10 left-[50%] translate-x-[-50%] top-[375px]">
           <span className="  
             prev      
             rounded-full

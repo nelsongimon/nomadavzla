@@ -144,23 +144,27 @@ export const menuItems = [
 export const styles = [
   {
     title: "Clásico",
-    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Style.png"
-  },
-  {
-    title: "Juvenil",
-    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Style.png"
+    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Clasico.png"
   },
   {
     title: "Moderno",
-    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Style.png"
-  },
-  {
-    title: "Retro",
-    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Style.png"
+    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Moderno.png"
   },
   {
     title: "Deportivo",
-    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Glasses-Style.png"
+    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Deportivo-.png"
+  },
+  {
+    title: "Wayfarer",
+    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Wayfarer-5.png"
+  },
+  {
+    title: "Aviador",
+    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Aviador.png"
+  },
+  {
+    title: "Retro",
+    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Retro.png"
   },
 ]
 
