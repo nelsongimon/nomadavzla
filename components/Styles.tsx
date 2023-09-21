@@ -28,7 +28,7 @@ export default function Styles() {
         slidesPerView={3}
         coverflowEffect={{
           rotate: 0,
-          stretch: 0,
+          stretch: -30,
           depth: 150,
           modifier: 1.5,
           slideShadows: false,

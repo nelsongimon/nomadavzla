@@ -19,7 +19,7 @@ export default function ProductList({
   className
 }: ProductListProps) {
   const counterRef = useRef(0);
-  const itemsPerPage = 6;
+  const itemsPerPage = 9;
   const currentPage = useCurrentPage();
   const totalPages = Math.ceil(products.length / itemsPerPage);
 
@@ -54,7 +54,7 @@ export default function ProductList({
   counterRef.current += 1;
   if (counterRef.current % 2 === 0) {
     return (
-      <div className="flex h-60 items-center justify-center">
+      <div className="flex h-screen items-top justify-center pt-28">
         <PuffLoader
           size={150}
           color="#797979"
