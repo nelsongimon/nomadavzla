@@ -30,6 +30,7 @@ export interface Product {
   categories: Category[];
   images: Image[];
   attributes: Attribute[];
+  related_ids: Number[];
 }
 
 export interface Category {

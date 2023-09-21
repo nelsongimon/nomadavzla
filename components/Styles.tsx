@@ -16,7 +16,7 @@ export default function Styles() {
   return (
     <div className="mt-1 h-[500px] overflow-hidden">
       <div className="relative flex justify-center">
-        <h3 className="text-strong-color font-bold text-4xl text-center absolute top-[15px]">
+        <h3 className="text-strong-color font-bold text-4xl text-center absolute top-[15px] z-10">
           Pick a style, any style
         </h3>
       </div>

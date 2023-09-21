@@ -151,12 +151,12 @@ export const styles = [
     image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Moderno.png"
   },
   {
-    title: "Deportivo",
-    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Deportivo-.png"
-  },
-  {
     title: "Wayfarer",
     image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Wayfarer-5.png"
+  },
+  {
+    title: "Deportivo",
+    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Deportivo-.png"
   },
   {
     title: "Aviador",

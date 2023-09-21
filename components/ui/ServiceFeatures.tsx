@@ -1,8 +1,18 @@
+import clsx from "clsx";
 import { History } from "lucide-react"
 
-export default function ServiceFeatures() {
+interface ServiceFeaturesProps {
+  withBorder?: boolean;
+}
+
+export default function ServiceFeatures({
+  withBorder = false
+}: ServiceFeaturesProps) {
   return (
-    <div className="w-full bg-gray-color py-7">
+    <div className={clsx(
+      `w-full bg-gray-color py-7`,
+      withBorder && "rounded-lg"
+    )}>
       <div className="grid grid-cols-3 max-w-3xl w-full mx-auto">
         <div className="flex gap-x-2 justify-center items-center border-r border-r-strong-color">
           <History size={25} className="stroke-[1.5] text-strong-color" />

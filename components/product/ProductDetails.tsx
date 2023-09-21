@@ -13,7 +13,7 @@ export default function ProductDetails({
 }: ProductDetailsProps) {
   return (
     <Container>
-      <div className="relative flex justify-center w-full items-center mt-12">
+      <div className="relative flex justify-center w-full items-center">
         <h3 className="text-8xl text-gray-color font-extrabold uppercase tracking-tight" dangerouslySetInnerHTML={{ __html: product.description }} />
         <h3 className="absolute text-4xl font-semibold text-primary-color">
           {product.name}
@@ -32,7 +32,7 @@ export default function ProductDetails({
             </ul>
           </div>
         </div>
-        <div className="col-span-8 p-5">
+        {/* <div className="col-span-8 p-5">
           <div className="aspect-video relative">
             <Image
               fill
@@ -43,7 +43,7 @@ export default function ProductDetails({
               "
             />
           </div>
-        </div>
+        </div> */}
       </div>
     </Container>
   );

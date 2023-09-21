@@ -1,12 +1,12 @@
 import { api } from "@/lib/woocommerce";
 
-export async function getFeaturedProducts() {
+export async function getRelatedProducts(relatedProducts: number[]) {
 
   try { 
     const { data } = await api.get("products",
       {
+        include: relatedProducts,
         per_page: 8,
-        featured: true,
       }
     );
 

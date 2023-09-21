@@ -33,7 +33,7 @@ export default function FilterItem({
     const current = qs.parse(searchParams.toString());
     const query = {
       ...current,
-      [valueKey]: slug
+      [valueKey]: slug,
     }
 
     if (current[valueKey] === slug) {
