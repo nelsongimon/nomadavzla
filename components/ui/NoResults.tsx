@@ -6,9 +6,9 @@ import useCurrentPage from "@/hooks/useCurrentPage";
 
 export default function NoResults() {
   const router = useRouter();
-  const currentPage = useCurrentPage();
+  const updatePage = useCurrentPage(state => state.updatePage);
   const handleClick = () => {
-    currentPage.updatePage(1);
+    updatePage(1);
     router.push("/productos");
   }
 

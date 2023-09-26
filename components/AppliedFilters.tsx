@@ -11,7 +11,7 @@ import useCurrentPage from "@/hooks/useCurrentPage";
 export default function AppliedFilters() {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const currentPage = useCurrentPage();
+  const updatePage = useCurrentPage(state => state.updatePage);
   const filters = Object.entries(qs.parse(searchParams.toString()));
 
   const onRemoveItemFilter = (category: string) => {
@@ -26,7 +26,7 @@ export default function AppliedFilters() {
       query,
     }, { skipNull: true });
     router.push(url);
-    currentPage.updatePage(1);
+    updatePage(1);
   }
 
   return (

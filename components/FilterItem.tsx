@@ -21,7 +21,7 @@ export default function FilterItem({
 }: FilterItemProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const currentPage = useCurrentPage();
+  const updatePage = useCurrentPage(state => state.updatePage);
   const selectedValue = searchParams.get(valueKey);
 
   const onAddItemFilter = async (slug: string) => {
@@ -46,7 +46,7 @@ export default function FilterItem({
     }, { skipNull: true });
 
     router.push(url, { scroll: false });
-    currentPage.updatePage(1);
+    updatePage(1);
   }
 
   return (

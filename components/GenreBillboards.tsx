@@ -7,11 +7,11 @@ import useCurrentPage from "@/hooks/useCurrentPage";
 import { useRouter } from "next/navigation";
 
 export default function GenreBillboards() {
-  const currentPage = useCurrentPage();
+  const updatePage = useCurrentPage(state => state.updatePage);
   const router = useRouter();
 
   const handleClickLink = (href: string) => {
-    currentPage.updatePage(1);
+    updatePage(1);
     router.push(href);
   }
   return (

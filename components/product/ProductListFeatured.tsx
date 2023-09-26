@@ -16,10 +16,10 @@ export default function ProductListFeatured({
   className
 }: ProductListFeaturedProps) {
   const router = useRouter();
-  const currentPage = useCurrentPage();
+  const updatePage = useCurrentPage(state => state.updatePage);
 
   const handleClickLink = (href: string) => {
-    currentPage.updatePage(1);
+    updatePage(1);
     router.push(href);
   }
 

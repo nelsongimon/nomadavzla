@@ -14,17 +14,20 @@ interface ProductListProps {
   className: string;
 }
 
+const ITEM_PER_PAGE = 9;
+
 export default function ProductList({
   products,
   className
 }: ProductListProps) {
   const counterRef = useRef(0);
-  const itemsPerPage = 9;
   const currentPage = useCurrentPage();
-  const totalPages = Math.ceil(products.length / itemsPerPage);
+  const page = useCurrentPage(state => state.page);
+  const updatePage = useCurrentPage(state => state.updatePage);
+  const totalPages = Math.ceil(products.length / ITEM_PER_PAGE);
 
-  const startIndex = (currentPage.page - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
+  const startIndex = (page - 1) * ITEM_PER_PAGE;
+  const endIndex = startIndex + ITEM_PER_PAGE;
   const currentProducts = products.slice(startIndex, endIndex);
 
   const handleNextPage = () => {
@@ -33,9 +36,9 @@ export default function ProductList({
       behavior: "instant",
     });
 
-    if (currentPage.page < totalPages) {
+    if (page < totalPages) {
       counterRef.current += 1;
-      currentPage.updatePage(currentPage.page + 1);
+      updatePage(page + 1);
     }
   };
 
@@ -45,9 +48,9 @@ export default function ProductList({
       behavior: "instant",
     });
 
-    if (currentPage.page > 1) {
+    if (page > 1) {
       counterRef.current += 1;
-      currentPage.updatePage(currentPage.page - 1);
+      updatePage(page - 1);
     }
   };
 

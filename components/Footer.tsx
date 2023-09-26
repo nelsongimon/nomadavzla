@@ -11,10 +11,10 @@ import Image from "next/image";
 
 export default function Footer() {
   const router = useRouter();
-  const currentPage = useCurrentPage();
+  const updatePage = useCurrentPage(state => state.updatePage);
 
   const handleClickLink = (href: string) => {
-    currentPage.updatePage(1);
+    updatePage(1);
     router.push(href);
   }
   return (

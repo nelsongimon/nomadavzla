@@ -38,6 +38,7 @@
     "zustand": "^4.4.1"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.198"
+    "@types/lodash": "^4.14.198",
+    "tailwind-scrollbar": "^3.0.5"
   }
 }

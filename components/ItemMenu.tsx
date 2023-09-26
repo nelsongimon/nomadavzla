@@ -20,7 +20,7 @@ export default function ItemMenu({
   const [isVisible, setIsVisible] = useState(false);
   const { showResults } = useShowResults();
   const router = useRouter();
-  const currentPage = useCurrentPage();
+  const updatePage = useCurrentPage(state => state.updatePage);
 
   const handleHover = (value: boolean) => {
     setIsVisible(value);
@@ -28,7 +28,7 @@ export default function ItemMenu({
 
   const handleClickLink = (href: string) => {
     setIsVisible(false);
-    currentPage.updatePage(1);
+    updatePage(1);
     router.push(href);
   }
 
