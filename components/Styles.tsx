@@ -2,7 +2,12 @@
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { styles } from "@/data";
-import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
+import {
+  EffectCoverflow,
+  Pagination,
+  Navigation,
+  Autoplay
+} from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/effect-coverflow";
@@ -25,6 +30,12 @@ export default function Styles() {
         grabCursor={true}
         centeredSlides={true}
         loop={true}
+        autoplay={{
+          delay: 1500,
+          disableOnInteraction: false,
+          reverseDirection: true,
+
+        }}
         slidesPerView={3}
         coverflowEffect={{
           rotate: 0,
@@ -40,7 +51,7 @@ export default function Styles() {
           prevEl: '.prev',
 
         }}
-        modules={[EffectCoverflow, Pagination, Navigation]}
+        modules={[EffectCoverflow, Navigation, Autoplay]}
         className="relative max-w-5xl h-[800px]"
       >
         {styles.map((item, index) => (
