@@ -1,11 +1,11 @@
 import AppliedFilters from "@/components/AppliedFilters";
-import { getCategories } from "@/actions/getCategories";
 import ProductList from "@/components/product/ProductList";
 import { getProducts } from "@/actions/getProducts";
 import Container from "@/components/ui/Container";
 import Filter from "@/components/Filter";
 import Accordion from "@/components/ui/Accordion";
 import Newsletter from "@/components/ui/Newsletter";
+import { getFilter } from "@/actions/getFilter";
 
 export const revalidate = 0;
 
@@ -14,10 +14,10 @@ export default async function ProductsPage({
   searchParams
 }: {
   params: { slug: string },
-  searchParams: { [key: string]: string | string[] | undefined }
+  searchParams: { [key: string]: string }
 }) {
   const products = await getProducts(searchParams);
-  const categories = await getCategories();
+  const attributes = await getFilter(searchParams);
 
   return (
     <>
@@ -33,7 +33,7 @@ export default async function ProductsPage({
         <div className="grid grid-cols-12">
           <div className="col-span-3 pr-7">
             <Filter
-              categories={categories}
+              attributes={attributes}
             />
           </div>
           <div className="col-span-9">

@@ -1,11 +1,11 @@
 import { api } from "@/lib/api";
 
-export async function getProducts(query: Record<string, string>) {
+export async function getFilter(query: Record<string, string>) {
   const filter = Object.values(query).join("_");
-  const url = filter ? `/products?filter=${filter}` : "/products";
+  const url = filter ? `/filter?values=${filter}` : "/filter";
   try {
     const res = await api.get(url);
-    return res.data.products;
+    return res.data.attributes;
   } catch (error) {
     console.log(error);
     return [];

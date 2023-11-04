@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Product } from "@/types";
+import { addAbsolutePathImage } from "@/lib/utils";
 
 interface SuggestedProductCardProps {
   product: Product;
@@ -29,8 +30,8 @@ export default function SuggestedProductCard({
         <Link href={`/productos/${product?.slug}`} onClick={handleClickSearchProduct}>
           <Image
             fill
-            src={product.images[0].src}
-            alt={product.images[0].alt}
+            src={addAbsolutePathImage(product.images[0].image)}
+            alt="Product Image"
             className="
               object-contain
             "
@@ -51,7 +52,7 @@ export default function SuggestedProductCard({
           </div>
           {/* Put here the price */}
           <div>
-            <span className="font-medium text-lg">${product.price}</span>
+            <span className="font-medium text-lg">${product.salePrice}</span>
           </div>
         </div>
       </div>

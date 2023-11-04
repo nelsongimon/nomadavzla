@@ -3,7 +3,8 @@ const nextConfig = {
   images: {
     domains: [
       "www.nomadavzla.com",
-      "placehold.co"
+      "placehold.co",
+      "nomada-admin.test"
     ]
   }
 }

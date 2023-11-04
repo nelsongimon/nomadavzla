@@ -1,75 +1,85 @@
-export interface Header {
-  siteLogoUrl: string | null;
-  siteTitle: string;
-  siteDescription: string;
-  favicon: string;
-  headerMenuItems: HeaderMenuItems[];
-}
-
-export interface HeaderMenuItems {
-  ID: number;
-  title: string;
-  url: string;
-  children: any[];
-  pageSlug: string;
-  pageID: number
-}
-
-export interface Product {
-  id: number;
+export type Product = {
+  id: string;
   name: string;
   slug: string;
-  price: string;
-  regular_price: string;
-  sale_price: string;
-  description: string;
+  description: string | null;
+  salePrice: string;
+  promotionalPrice: string | null;
+  quantity: number;
+  visibility: boolean;
   featured: boolean;
-  manage_stock: boolean;
-  stock_quantity: number;
-  sku: string;
-  categories: Category[];
+  isNew: boolean;
+  model: string | null;
+  created_at: string;
+  category: Category;
+  style: Style;
   images: Image[];
-  attributes: Attribute[];
-  related_ids: Number[];
+  tags: Tag[];
+  attributeValues: AttributeValue[];
+  specificationImage: string | null;
 }
 
-export interface Category {
+export type Category = {
   id: number;
   name: string;
   slug: string;
-  count: number;
-  image: Image;
+  description: string;
+  billboard: string | null;
+  order: number;
+  products_count: number;
 }
 
-export interface Attribute {
-  id: number;
-  name: string;
-  position: number;
-  options: string[];
-}
-
-export interface AttributeKey {
-  id: number;
-  name: string; 
-  slug: string;
-}
-
-export interface AttributeValue {
-  id: number;
-  name: string;
-  slug: string
-  menu_order: number;
-}
-
-export interface Image {
-  id: number;
-  src: string;
-  name: string;
-  alt: string;
-}
-
-export interface Tag {
+export type Style = {
   id: number;
   name: string;
   slug: string;
+  description: string;
+  image: string;
+  billboard: string | null;
+  order: number;
+  products_count: number;
+  products: Product[];
 }
+
+export type Attribute = {
+  id: number;
+  name: string;
+  order: number;
+  attribute_values: AttributeValue[];
+}
+
+export type AttributeValue = {
+  id: number;
+  name: string;
+  slug: string;
+  order: number;
+  image: string | null;
+  value: string | null;
+  products_count: number;
+  attribute: {
+    name: string;
+  }
+}
+
+export type Tag = {
+  id: number;
+  name: string;
+}
+
+export type Image = {
+  id: number;
+  image: string;
+}
+
+export type Slide = {
+  id: number;
+  desktopImage: string;
+  mobileImage: string;
+  title: string;
+  order: number;
+  description: string;
+  label: string;
+  action: string;
+  position: string;
+}
+

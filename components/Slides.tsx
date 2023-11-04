@@ -8,9 +8,17 @@ import Image from "next/image";
 import clsx from "clsx";
 
 import IconButton from "./ui/IconButton";
-import { slides } from "@/data";
+// import { slides } from "@/data";
+import { Slide } from "@/types";
+import { addAbsolutePathImage } from "@/lib/utils";
 
-export default function Slides() {
+interface SlidesProps {
+  slides: Slide[];
+}
+
+export default function Slides({
+  slides
+}: SlidesProps) {
   const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -32,6 +40,9 @@ export default function Slides() {
     };
   }, []);
 
+  if (slides.length === 0) {
+    return null;
+  }
 
   return (
     <div className="w-full h-[450px] mx-auto relative overflow-hidden">
@@ -82,8 +93,8 @@ export default function Slides() {
           </div>
           <Image
             fill
-            src={slide.image}
-            alt="Image slider"
+            src={addAbsolutePathImage(slide.desktopImage)}
+            alt={slide.title}
             className="object-cover object-center"
           />
 

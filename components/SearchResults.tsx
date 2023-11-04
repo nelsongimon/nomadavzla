@@ -1,11 +1,11 @@
 "use client";
 
 import { Transition } from "@headlessui/react";
-import useGetTags from "@/hooks/useGetTags";
 import useSuggestedProducts from "@/hooks/useSuggestedProducts";
 import SuggestedProductCard from "./product/SuggestedProductCard";
-import { Product } from "@/types";
+import { Product, Style } from "@/types";
 import { PuffLoader } from "react-spinners";
+import useGetStyles from "@/hooks/useGetStyles";
 
 interface SearchResults {
   loadingSearch: boolean;
@@ -31,7 +31,7 @@ export default function SearchResults({
   handleClickSeeAllResults
 }: SearchResults) {
 
-  const { data: tags } = useGetTags();
+  const { data: styles } = useGetStyles();
   const { data: suggestedProducts } = useSuggestedProducts();
 
   return (
@@ -53,10 +53,10 @@ export default function SearchResults({
                   ¿Tienes algún estilo en mente?
                 </h5>
                 <div className="flex gap-x-3">
-                  {tags.map((tag) => (
+                  {styles.map((style: Style) => (
                     <button
-                      key={tag.id}
-                      onClick={() => handleSuggestedQuery(tag.slug)}
+                      key={style.id}
+                      onClick={() => handleSuggestedQuery(style.slug)}
                       className="
                         bg-gray-100
                         py-1
@@ -71,7 +71,7 @@ export default function SearchResults({
                         hover:text-gray-strong-color
                       "
                     >
-                      {tag.name}
+                      {style.name}
                     </button>
                   ))}
                 </div>
@@ -107,11 +107,13 @@ export default function SearchResults({
                             if (index > 7) {
                               return null;
                             }
-                            return (<SuggestedProductCard
-                              key={product.id}
-                              product={product}
-                              handleClickSearchProduct={handleClickSearchProduct}
-                            />)
+                            return (
+                              <SuggestedProductCard
+                                key={product.id}
+                                product={product}
+                                handleClickSearchProduct={handleClickSearchProduct}
+                              />
+                            )
                           }
                           )}
                         </>

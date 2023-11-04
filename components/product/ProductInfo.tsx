@@ -19,7 +19,7 @@ export default function ProductInfo({
   const [currentQuantity, setcurrentQuantity] = useState(1);
 
   const onPlusQuantity = () => {
-    if (currentQuantity === product.stock_quantity) {
+    if (currentQuantity === product.quantity) {
       return;
     }
     setcurrentQuantity((current) => current + 1);
@@ -35,25 +35,24 @@ export default function ProductInfo({
     <div className="flex flex-col gap-y-5">
       <div className="flex flex-col gap-y-4">
         <div>
-          <h2
-            className="text-lg font-light text-gray-strong-color"
-            dangerouslySetInnerHTML={{ __html: product.description }}
-          />
+          <h2 className="text-lg font-light text-gray-strong-color">
+            {product.category.name}
+          </h2>
           <h1 className="font-semibold text-3xl">
             {product.name}
           </h1>
         </div>
         <div className="flex gap-x-4">
-          <span className="text-primary-color text-base font-light border border-gray-200 py-1 px-2">
-            {product.attributes?.[5]?.options?.[0] || "Género"}
-          </span>
-          <span className="text-primary-color text-base font-light border border-gray-200 py-1 px-2">
-            {/* {product.attributes?.[0]?.name}:  */}
-            {product.attributes?.[0]?.options?.[0]}
-          </span>
+          {product.tags.map((tag) => (
+            <span
+              key={tag.id}
+              className="text-primary-color text-base font-light border border-gray-200 py-1 px-2">
+              {tag.name}
+            </span>
+          ))}
         </div>
         <div className="mt-2">
-          <span className="font-bold text-5xl text-secondary-color">${product.price}</span>
+          <span className="font-bold text-5xl text-secondary-color">${product.salePrice}</span>
         </div>
       </div>
       <hr className="w-full border border-gray-200" />
@@ -67,7 +66,7 @@ export default function ProductInfo({
         <div className="flex gap-x-5 items-center mt-2">
           <Quatity
             currentQuantity={currentQuantity}
-            maxQuantity={product.stock_quantity}
+            maxQuantity={product.quantity}
             onMinusQuantity={onMinusQuantity}
             onPlusQuantity={onPlusQuantity}
           />

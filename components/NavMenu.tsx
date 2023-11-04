@@ -1,8 +1,6 @@
 "use client";
 
-import { HeaderMenuItems } from "@/types";
 import ItemMenu from "./ItemMenu";
-
 import { menuItems } from "@/data";
 
 // interface NavMenuProps {

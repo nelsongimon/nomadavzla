@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+"use client";
 
+import { useEffect, useState } from "react";
 import { Product } from "@/types";
+import { api } from "@/lib/api";
 
 export default function useSuggestedProducts() {
   const [data, setData] = useState<Product[]>([]);
@@ -9,14 +10,12 @@ export default function useSuggestedProducts() {
   useEffect(() => {
     const getSuggestedProducts = async () => {
       try {
-        const res = await axios.get("/api/products/search/suggested");
-        if (res.status !== 200) {
-          throw new Error("Error fetching suggested products");
-        }
-        setData(res.data);
+        const res = await api.get("/featured-products/4");
+        setData(res.data.products);
 
       } catch (error) {
         console.log(error);
+        setData([]);
       }
     }
     getSuggestedProducts();

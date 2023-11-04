@@ -1,7 +1,7 @@
 "use client";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { styles } from "@/data";
+// import { styles } from "@/data";
 import {
   EffectCoverflow,
   Pagination,
@@ -16,8 +16,16 @@ import "swiper/css/navigation";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Button from "./ui/Button";
+import { Style } from "@/types";
+import { addAbsolutePathImage } from "@/lib/utils";
 
-export default function Styles() {
+interface StylesProps {
+  styles: Style[];
+}
+
+export default function Styles({
+  styles
+}: StylesProps) {
   return (
     <div className="mt-1 h-[500px] overflow-hidden">
       <div className="relative flex justify-center">
@@ -59,7 +67,7 @@ export default function Styles() {
             <div className="relative h-[320px]">
               <Image
                 fill
-                src={item.image}
+                src={addAbsolutePathImage(item.image)}
                 alt="styles"
                 className="
                   object-contain
@@ -68,7 +76,7 @@ export default function Styles() {
               />
               <div className="absolute w-full h-full flex flex-col items-center justify-end gap-y-2">
                 <h3 className="text-xl font-bold uppercase text-primary-color">
-                  {item.title}
+                  {item.name}
                 </h3>
                 <Button
                   onClick={() => { }}

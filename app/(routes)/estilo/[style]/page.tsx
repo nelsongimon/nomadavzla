@@ -1,12 +1,12 @@
-import { getCategories } from "@/actions/getCategories";
-import { getStyleProducts } from "@/actions/getStyleProducts";
+import { getFilterWithStyle } from "@/actions/getFilterWithStyle";
+import { getStyleWithProducts } from "@/actions/getStyleWithProducts";
 import AppliedFilters from "@/components/AppliedFilters";
 import Filter from "@/components/Filter";
 import ProductList from "@/components/product/ProductList";
 import Accordion from "@/components/ui/Accordion";
 import Container from "@/components/ui/Container";
 import Newsletter from "@/components/ui/Newsletter";
-import { convertToCapitalize } from "@/lib/utils";
+import { Style } from "@/types";
 
 export const revalidate = 0;
 
@@ -17,34 +17,32 @@ export default async function StylePage({
   params: { style: string },
   searchParams: { [key: string]: string }
 }) {
-  const products = await getStyleProducts(params.style, searchParams);
-  const categories = await getCategories();
+  const style: Style = await getStyleWithProducts(params.style, searchParams);
+  const attributes = await getFilterWithStyle(params.style, searchParams);
 
   return (
     <>
       <Container>
-        <div className="mt-3">
-          <div className="relative flex justify-center w-full items-center">
-            <h2 className="text-8xl text-gray-color font-extrabold uppercase tracking-tight">
-              Estilo
-            </h2>
-            <h3 className="absolute text-4xl font-normal text-primary-color uppercase tracking-widest">
-              {params.style}
-            </h3>
-          </div>
+        <div className="mt-9 flex flex-col gap-y-1">
+          <h2 className="text-4xl text-primary-color font-bold">
+            Estilo {style.name}
+          </h2>
+          <p className="text-lg text-gray-strong-color font-light">
+            {style?.description}
+          </p>
         </div>
-        <div className="mb-4 mt-0">
+        <div className="my-4">
           <AppliedFilters />
         </div>
         <div className="grid grid-cols-12">
           <div className="col-span-3 pr-7">
             <Filter
-              categories={categories}
+              attributes={attributes}
             />
           </div>
           <div className="col-span-9">
             <ProductList
-              products={products}
+              products={style.products}
               className="grid gap-x-10 gap-y-20 grid-cols-3"
             />
             <Accordion />

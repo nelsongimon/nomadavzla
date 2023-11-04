@@ -1,5 +1,4 @@
 import { api } from "@/lib/woocommerce";
-import qs from "query-string";
 
 export async function getProducts(query: any) {
   const categories = Object.values(query).join();

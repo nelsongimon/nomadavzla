@@ -7,10 +7,10 @@ import { debounce } from "lodash";
 
 
 import SearchResults from "./SearchResults";
-import axios from "axios";
 import { Product } from "@/types";
 import toast from "react-hot-toast";
 import useShowResults from "@/hooks/useShowResults";
+import { api } from "@/lib/api";
 
 export default function Search() {
 
@@ -23,13 +23,14 @@ export default function Search() {
 
   const handleInputChange = debounce(() => {
     setLoadingSearch(true);
-    axios.get(`/api/products/search/${inputSearch}`)
+    api.get(`/search/${inputSearch}`)
       .then((res) => {
-        const products = res.data || [];
+        const products = res.data.products || [];
         setSearhProducts(products);
       }).
       catch((error) => {
-        toast.error("Algo salio mal");
+        // toast.error("Algo salio mal");
+        // console.log(error);
       })
       .finally(() => setLoadingSearch(false))
   }, 500);
@@ -78,6 +79,7 @@ export default function Search() {
   }
 
   useEffect(() => {
+    if (!inputSearch) return;
     handleInputChange();
   }, [inputSearch]);
 

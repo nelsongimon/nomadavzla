@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Image as ImageType } from "@/types";
 import { Tab } from "@headlessui/react";
 import GalleryTab from "./GalleryTab";
+import { addAbsolutePathImage } from "@/lib/utils";
 
 interface GalleryProps {
   images: ImageType[];
@@ -42,8 +43,8 @@ export default function Gallery({
             ">
               <Image
                 fill
-                alt={image.alt}
-                src={image.src}
+                alt={image.image}
+                src={addAbsolutePathImage(image.image)}
                 className="
                   object-contain
                   object-center

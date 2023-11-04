@@ -1,11 +1,10 @@
-import { getCategories } from "@/actions/getCategories";
+import { getFilterWithSearch } from "@/actions/getFilterWithSearch";
 import { getSearchProducts } from "@/actions/getSearchProducts";
 import AppliedFilters from "@/components/AppliedFilters";
 import Filter from "@/components/Filter";
 import SearchInputPage from "@/components/SearchInputPage";
 import ProductList from "@/components/product/ProductList";
 import Container from "@/components/ui/Container";
-import { Play } from "lucide-react";
 
 export default async function SearchPage({
   params,
@@ -16,7 +15,7 @@ export default async function SearchPage({
 }) {
   const query = params.query;
   const products = await getSearchProducts(query, searchParams);
-  const categories = await getCategories();
+  const attributes = await getFilterWithSearch(query, searchParams);
 
   return (
     <Container>
@@ -34,7 +33,7 @@ export default async function SearchPage({
       <div className="grid grid-cols-12">
         <div className="col-span-3 pr-7">
           <Filter
-            categories={categories}
+            attributes={attributes}
           />
         </div>
         <div className="col-span-9">

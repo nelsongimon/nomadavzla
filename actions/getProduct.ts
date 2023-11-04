@@ -1,9 +1,9 @@
-import { api } from "@/lib/woocommerce";
+import { api } from "@/lib/api";
 
-export async function getProduct(slugProduct: string) {
+export async function getProduct(slug: string) {
   try { 
-    const { data } = await api.get(`products`, { slug: slugProduct });
-    return data[0];
+    const res = await api.get(`/products/${slug}`);
+    return res.data;
 
   } catch (error) {
     return undefined;

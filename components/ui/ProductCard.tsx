@@ -8,6 +8,7 @@ import usePreviewModal from "@/hooks/usePreviewModal";
 import IconButton from "./IconButton";
 import { Product } from "@/types";
 import Link from "next/link";
+import { addAbsolutePathImage } from "@/lib/utils";
 
 interface ProductCardProps {
   product: Product;
@@ -37,8 +38,8 @@ export default function ProductCard({
         <Link href={`/productos/${product?.slug}`}>
           <Image
             fill
-            src={product.images[0].src}
-            alt={product.images[0].alt}
+            src={addAbsolutePathImage(product.images[0].image)}
+            alt="Product Image"
             className="
               object-contain
               group-hover:scale-105
@@ -80,31 +81,16 @@ export default function ProductCard({
             </Link>
           </div>
           <div>
-            <span
-              className="text-gray-strong-color text-sm font-light"
-              dangerouslySetInnerHTML={{ __html: product.description }}
-            />
+            <span className="text-gray-strong-color text-sm font-light">
+              {product.category.name ?? "Categoría"}
+            </span>
 
           </div>
           <div className="mt-2">
             <span className="border border-gray-300 text-sm px-2 py-1">
-              {product.attributes?.[5]?.options?.[0] || "Género"}
+              {product.tags[0].name ?? "Género"}
             </span>
           </div>
-          {/* Colors */}
-          {/* <div className="flex flex-col gap-y-1">
-            <p className="text-sm text-primary-color font-light">
-              Negro
-            </p>
-            <div className="flex gap-x-1">
-              <button className="w-6 h-6 p-[1px] rounded-full border-gray-500 border">
-                <div className="bg-black w-full h-full rounded-full"></div>
-              </button>
-              <button className="w-6 h-6 p-[1px] rounded-full border-gray-200 border">
-                <div className="bg-gray-600 w-full h-full rounded-full"></div>
-              </button>
-            </div>
-          </div> */}
         </div>
         <div className="flex flex-col justify-between items-end">
           <div>
@@ -113,7 +99,7 @@ export default function ProductCard({
             </button>
           </div>
           <div>
-            <span className="font-medium text-2xl">${product.price}</span>
+            <span className="font-medium text-2xl">${product.salePrice}</span>
           </div>
         </div>
       </div>

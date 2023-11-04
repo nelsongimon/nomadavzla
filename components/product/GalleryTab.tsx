@@ -5,6 +5,7 @@ import Image from "next/image";
 import { clsx } from "clsx";
 
 import { Image as ImageType } from "@/types";
+import { addAbsolutePathImage } from "@/lib/utils";
 
 interface GalleryTabProps {
   image: ImageType
@@ -37,8 +38,8 @@ export default function GalleryTab({
           ">
             <Image
               fill
-              src={image.src}
-              alt=""
+              src={addAbsolutePathImage(image.image)}
+              alt={image.image}
               className="object-contain object-center"
             />
           </span>

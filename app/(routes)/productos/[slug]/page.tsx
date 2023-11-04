@@ -14,13 +14,13 @@ interface IParams {
 }
 
 export default async function ProductPage({ params }: { params: IParams }) {
-  const product = await getProduct(params.slug);
+  const { product, relatedProducts } = await getProduct(params.slug);
 
   if (!product) {
     return <NoResults />
   }
 
-  const products = await getRelatedProducts(product.related_ids);
+  // const products = await getRelatedProducts(product.related_ids);
 
   return (
     <>
@@ -30,12 +30,10 @@ export default async function ProductPage({ params }: { params: IParams }) {
       </div>
       <Container>
         <div className="my-16">
-          <ServiceFeatures
-            withBorder
-          />
+          <ServiceFeatures withBorder />
         </div>
         <div className="my-16">
-          <RelatedProducts products={products} />
+          <RelatedProducts products={relatedProducts} />
         </div>
       </Container>
       <Newsletter />

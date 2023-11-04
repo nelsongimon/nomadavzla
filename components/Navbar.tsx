@@ -1,6 +1,5 @@
 import Container from "./ui/Container";
 import Wishlist from "./Wishlist";
-import { Header } from "@/types";
 import NavMenu from "./NavMenu";
 import Search from "./Search";
 import Logo from "./Logo";
