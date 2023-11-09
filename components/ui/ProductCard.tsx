@@ -8,7 +8,7 @@ import usePreviewModal from "@/hooks/usePreviewModal";
 import IconButton from "./IconButton";
 import { Product } from "@/types";
 import Link from "next/link";
-import { addAbsolutePathImage } from "@/lib/utils";
+import { addAbsolutePathImage, formatPrice } from "@/lib/utils";
 
 interface ProductCardProps {
   product: Product;
@@ -25,7 +25,7 @@ export default function ProductCard({
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3 lg:space-y-4">
       {/* Image and actions */}
       <div className="
         aspect-square
@@ -48,6 +48,8 @@ export default function ProductCard({
           />
         </Link>
         <div className="
+          hidden
+          md:block
           absolute
           bottom-5
           w-full
@@ -87,7 +89,7 @@ export default function ProductCard({
 
           </div>
           <div className="mt-2">
-            <span className="border border-gray-300 text-sm px-2 py-1">
+            <span className="border border-gray-300 px-2 py-1 text-xs lg:text-sm">
               {product.tags[0].name ?? "Género"}
             </span>
           </div>
@@ -98,8 +100,9 @@ export default function ProductCard({
               <Heart size={25} className="text-primary-color stroke-[1.5]" />
             </button>
           </div>
-          <div>
-            <span className="font-medium text-2xl">${product.salePrice}</span>
+          <div className="flex gap-x-1 items-start">
+            <span className="font-medium text-xl lg:text-2xl">${formatPrice(product.salePrice)[0]}</span>
+            <span className="font-medium text-sm lg:text-base">{formatPrice(product.salePrice)[1]}</span>
           </div>
         </div>
       </div>

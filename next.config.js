@@ -4,7 +4,8 @@ const nextConfig = {
     domains: [
       "www.nomadavzla.com",
       "placehold.co",
-      "nomada-admin.test"
+      "nomada-admin.test",
+      "nomadavzla.store",
     ]
   }
 }

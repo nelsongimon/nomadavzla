@@ -2,18 +2,20 @@
 
 import { Check, ShoppingCart } from "lucide-react";
 import { useState } from "react";
-import Link from "next/link";
 
 import Quatity from "@/components/ui/Quatity";
 import Button from "@/components/ui/Button";
 import { Product } from "@/types";
+import { formatPrice } from "@/lib/utils";
 
 interface ProductInfoProps {
   product: Product;
+  previewModal?: boolean;
 }
 
 export default function ProductInfo({
-  product
+  product,
+  previewModal = false,
 }: ProductInfoProps) {
 
   const [currentQuantity, setcurrentQuantity] = useState(1);
@@ -51,8 +53,9 @@ export default function ProductInfo({
             </span>
           ))}
         </div>
-        <div className="mt-2">
-          <span className="font-bold text-5xl text-secondary-color">${product.salePrice}</span>
+        <div className="mt-2 flex gap-x-1 items-start">
+          <span className="font-bold text-4xl text-secondary-color">${formatPrice(product.salePrice)[0]}</span>
+          <span className="font-bold text-xl text-secondary-color">{formatPrice(product.salePrice)[1]}</span>
         </div>
       </div>
       <hr className="w-full border border-gray-200" />
@@ -63,7 +66,7 @@ export default function ProductInfo({
             Disponible
           </span>
         </div>
-        <div className="flex gap-x-5 items-center mt-2">
+        <div className="flex gap-x-5 items-center mt-0 lg:mt-2">
           <Quatity
             currentQuantity={currentQuantity}
             maxQuantity={product.quantity}
@@ -73,7 +76,7 @@ export default function ProductInfo({
           <Button
             onClick={() => { }}
             variant="default"
-            size="large"
+            size={previewModal ? "default" : "large"}
           >
             Agregar al Carrito <ShoppingCart className="text-xs stroke-[1.5]" />
           </Button>

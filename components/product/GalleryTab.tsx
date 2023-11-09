@@ -8,14 +8,16 @@ import { Image as ImageType } from "@/types";
 import { addAbsolutePathImage } from "@/lib/utils";
 
 interface GalleryTabProps {
-  image: ImageType
+  image: ImageType;
+  previewModal?: boolean;
 }
 
 export default function GalleryTab({
-  image
+  image,
+  previewModal = false,
 }: GalleryTabProps) {
   return (
-    <Tab className="
+    <Tab className={clsx(`
       relative
       flex
       aspect-square
@@ -24,9 +26,12 @@ export default function GalleryTab({
       justify-center
       rounded-md
       bg-gray-color
-    ">
+      outline-none
+      ring-0`,
+      previewModal ? "h-10 w-10" : "h-14 w-14"
+    )}>
       {({ selected }) => (
-        <div>
+        <>
           <span className="
             absolute
             h-full
@@ -35,6 +40,7 @@ export default function GalleryTab({
             inset-0
             overflow-hidden
             rounded-md
+            outline-none
           ">
             <Image
               fill
@@ -47,14 +53,14 @@ export default function GalleryTab({
             absolute
             inset-0
             rounded-md
+            outline-none
             ring-2
             ring-offset-2
           `,
-            selected ? "ring-primary-color" : "ring-transparent"
+            selected ? "ring-strong-color" : "ring-transparent"
           )}>
-
           </span>
-        </div>
+        </>
       )}
     </Tab>
   );

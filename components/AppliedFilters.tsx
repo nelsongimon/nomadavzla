@@ -39,19 +39,27 @@ export default function AppliedFilters() {
   }
 
   return (
-    <div className="flex gap-x-2 items-center min-h-[50px]">
+    <div className="flex flex-col gap-y-3 lg:flex-row gap-x-2 items-center min-h-[50px]">
       <span className="font-semibold text-base text-primary-color">
         Filtros Aplicados:
       </span>
-      {attributes.map((attribute) => {
-        const values = attribute[1]?.toString().split(",");
-        return (
-          values?.map((value, index) => (
-            <motion.button
-              key={index}
-              whileHover={{ scale: 1.05 }}
-              onClick={() => onRemoveItemFilter(attribute, value)}
-              className="
+      {attributes.length === 0 && (
+        <div className="block lg:hidden text-center">
+          <span className="text-base text-gray-400 font-light">
+            No hay filtros aplicados
+          </span>
+        </div>
+      )}
+      <div className="flex flex-wrap gap-2 justify-center lg:justify-start">
+        {attributes.map((attribute) => {
+          const values = attribute[1]?.toString().split(",");
+          return (
+            values?.map((value, index) => (
+              <motion.button
+                key={index}
+                whileHover={{ scale: 1.05 }}
+                onClick={() => onRemoveItemFilter(attribute, value)}
+                className="
               flex 
               items-center
               px-2
@@ -64,17 +72,18 @@ export default function AppliedFilters() {
               duration-300
               hover:opacity-70
             "
-            >
-              <span className="text-xs">
-                <X size={15} className="stroke-[1]" />
-              </span>
-              <span>
-                {convertToCapitalize(value)}
-              </span>
-            </motion.button>
-          ))
-        )
-      })}
+              >
+                <span className="text-xs">
+                  <X size={15} className="stroke-[1]" />
+                </span>
+                <span>
+                  {convertToCapitalize(value)}
+                </span>
+              </motion.button>
+            ))
+          )
+        })}
+      </div>
     </div>
   );
 }

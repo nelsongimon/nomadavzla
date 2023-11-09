@@ -5,9 +5,8 @@ import ProductDetails from "@/components/product/ProductDetails";
 import ServiceFeatures from "@/components/ui/ServiceFeatures";
 import Container from "@/components/ui/Container";
 import Newsletter from "@/components/ui/Newsletter";
-import { getFeaturedProducts } from "@/actions/getFeaturedProducts";
 import RelatedProducts from "@/components/product/RelatedProducts";
-import { getRelatedProducts } from "@/actions/getRelatedProducts";
+import RelatedProductsMobile from "@/components/product/RelatedProductsMobile";
 
 interface IParams {
   slug: string;
@@ -20,8 +19,6 @@ export default async function ProductPage({ params }: { params: IParams }) {
     return <NoResults />
   }
 
-  // const products = await getRelatedProducts(product.related_ids);
-
   return (
     <>
       <ProductView product={product} />
@@ -29,11 +26,16 @@ export default async function ProductPage({ params }: { params: IParams }) {
         <ProductDetails product={product} />
       </div>
       <Container>
-        <div className="my-16">
+        <div className="my-4 lg:my-16">
           <ServiceFeatures withBorder />
         </div>
-        <div className="my-16">
-          <RelatedProducts products={relatedProducts} />
+        <div className="my-8 lg:my-16">
+          <div className="hidden lg:block">
+            <RelatedProducts products={relatedProducts} />
+          </div>
+          <div className="block lg:hidden">
+            <RelatedProductsMobile products={relatedProducts} />
+          </div>
         </div>
       </Container>
       <Newsletter />

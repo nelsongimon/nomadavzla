@@ -27,14 +27,14 @@ export default function SearchInputPage() {
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
         className="
-                bg-gray-100
-                rounded-full
-                w-96
-                py-3
-                px-7
-                focus:outline-none
-
-              "
+          bg-gray-100
+          rounded-full
+          w-full
+          lg:w-96
+          py-3
+          px-7
+          focus:outline-none
+        "
       />
       <button
         type="submit"

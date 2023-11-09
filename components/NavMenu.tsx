@@ -1,11 +1,7 @@
 "use client";
 
-import ItemMenu from "./ItemMenu";
 import { menuItems } from "@/data";
-
-// interface NavMenuProps {
-//   menuItems: HeaderMenuItems[];
-// }
+import ItemMenu from "./ItemMenu";
 
 export default function NavMenu() {
 

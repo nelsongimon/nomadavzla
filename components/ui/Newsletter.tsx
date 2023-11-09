@@ -15,20 +15,20 @@ export default function Newsletter() {
   }
 
   return (
-    <div className="w-full bg-secondary-color py-14">
+    <div className="w-full bg-secondary-color py-12 lg:py-14">
       <Container>
         <div className="flex flex-col gap-y-8">
           <div className="flex flex-col items-center gap-y-3">
-            <h2 className="text-4xl text-white font-bold">
-              Join The Exclusive Club
+            <h2 className="text-center text-3xl lg:text-4xl lg:text-left text-white font-bold">
+              Suscríbete a nuestra Newsletter
             </h2>
-            <p className="text-lg font-light text-white">
-              See our latest collections & exclusive offers before the crowd!
+            <p className="text-lg font-light text-white text-center lg:text-left">
+              Mantente al tanto de nuestros últimos modelos de lentes
             </p>
           </div>
-          <div className="max-w-xl w-full mx-auto">
+          <div className="lg:max-w-2xl w-full mx-auto">
             <form onSubmit={handleSubmit}>
-              <div className="flex gap-x-4">
+              <div className="flex flex-col lg:flex-row gap-x-4 gap-y-5">
                 <div className="relative w-full">
                   <span
                     className="absolute right-[7px] h-full flex items-center"
@@ -58,7 +58,8 @@ export default function Newsletter() {
                   />
                 </div>
                 <motion.button
-                  type="submit"
+                  whileHover={{ scale: 1.05 }}
+                  type="button"
                   className="
                   bg-primary-color
                   text-white
@@ -70,6 +71,7 @@ export default function Newsletter() {
                   focus:outline-none
                   text-lg
                   duration-300
+                  hover:bg-gray-900
                 "
                 >
                   Suscribirme

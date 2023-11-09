@@ -74,10 +74,10 @@ export default function ItemMenu({
                   <div className="col-span-3">
                     <div className="flex flex-col gap-y-4">
                       <h3 className="text-gray-strong-color text-lg">
-                        {item.MenaMenu.sectionLinks.title}
+                        {item.MegaMenu.sectionLinks.title}
                       </h3>
                       <div className="flex flex-col gap-y-5">
-                        {item.MenaMenu.sectionLinks.links.map((item: Record<string, any>, index: number) => (
+                        {item.MegaMenu.sectionLinks.links.map((item: Record<string, any>, index: number) => (
                           <Button
                             key={index}
                             onClick={() => handleClickLink(item.href)}
@@ -93,7 +93,7 @@ export default function ItemMenu({
                   {/* Images */}
                   <div className="col-span-9">
                     <div className="flex gap-x-3">
-                      {item.MenaMenu.sectionImages.map((item: Record<string, any>, index: number) => (
+                      {item.MegaMenu.sectionImages.map((item: Record<string, any>, index: number) => (
                         <div key={index} className="relative w-full h-full aspect-square overflow-hidden cursor-pointer group">
                           <Image
                             fill

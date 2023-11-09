@@ -15,14 +15,14 @@ export default function ProductDetails({
   return (
     <Container>
       <div className="relative flex justify-center w-full items-center">
-        <h3 className="text-8xl text-gray-color font-extrabold uppercase tracking-tight">
+        <h3 className="text-5xl lg:text-8xl text-gray-color font-extrabold uppercase tracking-tight">
           {product.category.name}
         </h3>
-        <h3 className="absolute text-4xl font-semibold text-primary-color">
+        <h3 className="absolute text-2xl lg:text-4xl font-semibold text-primary-color">
           {product.name}
         </h3>
       </div>
-      <div className="grid grid-cols-12 gap-x-4 mt-6">
+      <div className="flex flex-col gap-y-4 lg:grid lg:grid-cols-12 gap-x-4 mt-2 lg:mt-6">
         <div className="col-span-4">
           <div className="flex flex-col">
             <ul className="mt-5 flex flex-col gap-y-1">
@@ -37,7 +37,7 @@ export default function ProductDetails({
             </ul>
           </div>
         </div>
-        <div className="col-span-8 p-5">
+        <div className="col-span-8 p-0 lg:p-5">
           <div className="aspect-video relative">
             <Image
               fill

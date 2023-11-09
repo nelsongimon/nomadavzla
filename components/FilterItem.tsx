@@ -9,6 +9,7 @@ import qs from "query-string";
 import { AttributeValue } from "@/types";
 import useCurrentPage from "@/hooks/useCurrentPage";
 import { addAbsolutePathImage } from "@/lib/utils";
+import useFilterSidebar from "@/hooks/useFilterSidebar";
 
 
 interface FilterItemProps {
@@ -24,6 +25,7 @@ export default function FilterItem({
   const searchParams = useSearchParams();
   const updatePage = useCurrentPage(state => state.updatePage);
   const selectedValues = searchParams.get(attributeKey)?.split(",") || [];
+  const onCloseMobileSidebar = useFilterSidebar(state => state.onClose);
 
 
   const onAddItemFilter = async (value: string) => {
@@ -52,8 +54,8 @@ export default function FilterItem({
     }, { skipNull: true });
 
     router.push(url, { scroll: false });
+    onCloseMobileSidebar();
     updatePage(1);
-
   }
 
 

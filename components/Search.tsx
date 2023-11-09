@@ -11,8 +11,19 @@ import { Product } from "@/types";
 import toast from "react-hot-toast";
 import useShowResults from "@/hooks/useShowResults";
 import { api } from "@/lib/api";
+import clsx from "clsx";
 
-export default function Search() {
+interface SearchProps {
+  isSearchMobileOpen?: boolean;
+  setIsSearchMobileOpen?: (value: boolean) => void;
+  mobile?: boolean;
+}
+
+export default function Search({
+  isSearchMobileOpen,
+  setIsSearchMobileOpen,
+  mobile = false
+}: SearchProps) {
 
   const { showResults, setShowResults } = useShowResults();
   const [inputSearch, setInputSearch] = useState<string>("");
@@ -40,6 +51,7 @@ export default function Search() {
     setSearhProducts([]);
     setInputSearch("");
     setIsHover(false);
+    setIsSearchMobileOpen?.(false);
     handleHidden(true);
   }
 
@@ -47,12 +59,14 @@ export default function Search() {
     setSearhProducts([]);
     setInputSearch("");
     setIsHover(false);
+    setIsSearchMobileOpen?.(false);
     handleHidden(true);
   }
 
   const handleSuggestedQuery = (query: string) => {
     setIsHover(false);
     handleHidden(true);
+    setIsSearchMobileOpen?.(false);
     router.push(`/estilo/${query}`);
   }
 
@@ -84,7 +98,7 @@ export default function Search() {
   }, [inputSearch]);
 
   return (
-    <div>
+    <div className={clsx(mobile && "w-full mx-3")}>
       <div className="w-full relative">
         <span className="absolute left-[7px] h-full flex items-center">
           <SearchIcon className="text-gray-400 stroke-[2] w-4 h-4" />
@@ -92,6 +106,14 @@ export default function Search() {
         {showResults && (
           <span
             onClick={() => handleHidden(false)}
+            className="absolute right-[7px] h-full flex items-center cursor-pointer hover:opacity-70 duration-300"
+          >
+            <XCircle className="text-gray-400 stroke-[1.5] w-5 h-5" />
+          </span>
+        )}
+        {mobile && (
+          <span
+            onClick={() => setIsSearchMobileOpen?.(false)}
             className="absolute right-[7px] h-full flex items-center cursor-pointer hover:opacity-70 duration-300"
           >
             <XCircle className="text-gray-400 stroke-[1.5] w-5 h-5" />
@@ -106,7 +128,7 @@ export default function Search() {
           value={inputSearch}
           onFocus={handleShow}
           onBlur={() => handleHidden(false)}
-          className="
+          className={clsx(`
             px-3
             py-[3px]
             pl-7
@@ -116,11 +138,13 @@ export default function Search() {
             outline-none
             focus:outline-none
             duration-300
-            rounded-full
-          "
+            rounded-full`,
+            mobile && "w-full"
+          )}
         />
       </div>
       <SearchResults
+        mobile={mobile}
         loadingSearch={loadingSearch}
         inputSearch={inputSearch}
         searhProducts={searhProducts}

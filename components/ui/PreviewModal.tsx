@@ -26,12 +26,12 @@ export default function PreviewModal() {
       open={previewModal.isOpen}
       onClose={previewModal.onClose}
     >
-      <div className="grid w-full grid-cols-1 items-start gap-y-8 sm:grid-cols-12 lg:gap-x-8">
-        <div className="sm:col-span-4 lg:col-span-6">
-          <Gallery images={product.images} />
+      <div className="grid w-full grid-cols-1 items-center gap-y-8 sm:grid-cols-12 lg:gap-x-8">
+        <div className="sm:col-span-4 lg:col-span-7">
+          <Gallery previewModal images={product.images} />
         </div>
-        <div className="sm:col-span-8 lg:col-span-6">
-          <ProductInfo product={product} />
+        <div className="sm:col-span-8 lg:col-span-5">
+          <ProductInfo previewModal product={product} />
           <div className="mt-7 flex">
             <Button
               size="none"
@@ -42,7 +42,6 @@ export default function PreviewModal() {
             </Button>
           </div>
         </div>
-
       </div>
     </Modal>
   );

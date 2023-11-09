@@ -18,15 +18,15 @@ import Button from "./ui/Button";
 import { Style } from "@/types";
 import { addAbsolutePathImage } from "@/lib/utils";
 
-interface StylesProps {
+interface StylesMobileProps {
   styles: Style[];
 }
 
-export default function Styles({
+export default function StylesMobile({
   styles
-}: StylesProps) {
+}: StylesMobileProps) {
   return (
-    <div className="mt-[-50px] lg:mt-1 h-[500px] overflow-hidden">
+    <div className="mt-[-50px] lg:mt-1 h-[460px] overflow-hidden">
       <div className="relative flex justify-center">
         <h3 className="text-strong-color font-bold text-3xl lg:text-4xl text-center absolute top-[50px]  lg:top-[15px] z-10">
           Pick a style, any style
@@ -73,7 +73,7 @@ export default function Styles({
                   rounded-2xl
                 "
               />
-              <div className="absolute w-full h-full flex flex-col items-center justify-end gap-y-4">
+              <div className="absolute bottom-10 w-full flex flex-col items-center gap-y-4">
                 <h3 className="text-base lg:text-xl font-bold uppercase text-primary-color">
                   {item.name}
                 </h3>
@@ -89,7 +89,7 @@ export default function Styles({
             </div>
           </SwiperSlide>
         ))}
-        <div className="absolute flex gap-x-3 z-10 left-[50%] translate-x-[-50%] top-[375px]">
+        <div className="absolute flex gap-x-3 z-10 left-[50%] translate-x-[-50%] top-[330px]">
           <span className="  
             prev      
             rounded-full
@@ -123,3 +123,4 @@ export default function Styles({
     </div>
   );
 }
+

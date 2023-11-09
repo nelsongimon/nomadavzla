@@ -11,13 +11,12 @@ import { addAbsolutePathImage } from "@/lib/utils";
 import IconButton from "./ui/IconButton";
 import { Slide } from "@/types";
 
-interface SlidesProps {
+interface SlidesMobileProps {
   slides: Slide[];
 }
-
-export default function Slides({
+export default function SlidesMobile({
   slides
-}: SlidesProps) {
+}: SlidesMobileProps) {
   const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -42,9 +41,8 @@ export default function Slides({
   if (slides.length === 0) {
     return null;
   }
-
   return (
-    <div className="w-full h-[450px] mx-auto relative overflow-hidden">
+    <div className="w-full h-[500px] mx-auto relative overflow-hidden">
       {slides.map((slide, index) => (
         <motion.div
           key={index}
@@ -55,26 +53,21 @@ export default function Slides({
           }}
           transition={{ duration: 1 }}
         >
-          <div className={
-            clsx("absolute w-full h-full flex items-center text-center z-10",
-              slide.position === "left" && "justify-start",
-              slide.position === "right" && "justify-end",
-              slide.position === "center" && "justify-center",
-            )}>
-            <div className="flex flex-col gap-y-3 max-w-xl w-full mx-[150px]">
-              <h2 className="font-bold text-primary-color text-4xl uppercase">
+          <div className="absolute bottom-12 w-full flex text-center z-10 justify-center">
+            <div className="flex flex-col gap-y-2 w-full">
+              <h2 className="font-bold text-primary-color text-xl uppercase">
                 {slide.title}
               </h2>
-              <p className="font-normal text-primary-color text-xl">
+              <p className="font-normal text-primary-color text-base">
                 {slide.description}
               </p>
-              <div className="w-full flex justify-center mt-5">
+              <div className="w-full flex justify-center mt-2">
                 <motion.button
                   onClick={() => router.push(slide.action)}
                   className={clsx(`
                     rounded-md
-                    py-2 px-7 
-                    text-lg 
+                    py-2 px-5 
+                    text-base
                     font-light 
                     bg-primary-color 
                     hover:bg-primary-color/80
@@ -92,7 +85,7 @@ export default function Slides({
           </div>
           <Image
             fill
-            src={addAbsolutePathImage(slide.desktopImage)}
+            src={addAbsolutePathImage(slide.mobileImage)}
             alt={slide.title}
             className="object-cover object-center"
           />
@@ -100,14 +93,14 @@ export default function Slides({
         </motion.div>
       ))}
       {/* Left Arrow */}
-      <div className="absolute z-10 left-8 top-[50%] translate-y-[-50%]">
+      <div className="absolute z-10 left-1 top-[50%] translate-y-[-100%]">
         <IconButton
           icon={<ChevronLeft size={30} className="text-primary-color stroke-[1.5]" />}
           onClick={prevSlide}
         />
       </div>
       {/* Right Arrow */}
-      <div className="absolute z-10 right-8 top-[50%] translate-y-[-50%]">
+      <div className="absolute z-10 right-1 top-[50%] translate-y-[-100%]">
         <IconButton
           icon={<ChevronRight size={30} className="text-primary-color stroke-[1.5]" />}
           onClick={nextSlide}

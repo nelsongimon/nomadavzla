@@ -5,24 +5,20 @@ import Search from "./Search";
 import Logo from "./Logo";
 import Cart from "./Cart";
 import Login from "./Login";
+import NavbarDesktop from "./NavbarDesktop";
+import NavbarMobile from "./NavbarMobile";
 
 
 export default function Navbar() {
 
   return (
-    <div className="border-b-2 border-gray-100 sticky top-0 bg-white z-20">
-      <Container>
-        <nav className="flex items-center justify-between gap-8 h-[70px]">
-          <Logo />
-          <NavMenu />
-          <Search />
-          <div className="ml-auto flex gap-x-2 h-full">
-            <Login />
-            <Wishlist />
-            <Cart />
-          </div>
-        </nav>
-      </Container>
-    </div>
+    <>
+      <div className="hidden lg:block sticky top-0 z-20">
+        <NavbarDesktop />
+      </div>
+      <div className="block lg:hidden sticky top-0 z-20">
+        <NavbarMobile />
+      </div>
+    </>
   );
 }

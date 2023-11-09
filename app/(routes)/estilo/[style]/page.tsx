@@ -1,9 +1,10 @@
 import { getFilterWithStyle } from "@/actions/getFilterWithStyle";
 import { getStyleWithProducts } from "@/actions/getStyleWithProducts";
 import AppliedFilters from "@/components/AppliedFilters";
+import FAQAccordion from "@/components/FAQAccordion";
 import Filter from "@/components/Filter";
+import FilterMobileButton from "@/components/FilterMobileButton";
 import ProductList from "@/components/product/ProductList";
-import Accordion from "@/components/ui/Accordion";
 import Container from "@/components/ui/Container";
 import Newsletter from "@/components/ui/Newsletter";
 import { Style } from "@/types";
@@ -23,19 +24,22 @@ export default async function StylePage({
   return (
     <>
       <Container>
-        <div className="mt-9 flex flex-col gap-y-1">
-          <h2 className="text-4xl text-primary-color font-bold">
+        <div className="mt-7 lg:mt-9 flex flex-col gap-y-[2px] lg:gap-y-1">
+          <h2 className="text-2xl lg:text-4xl text-primary-color font-bold text-center lg:text-left">
             Estilo {style.name}
           </h2>
-          <p className="text-lg text-gray-strong-color font-light">
+          <p className="text-base lg:text-lg text-gray-strong-color font-light text-center lg:text-left">
             {style?.description}
           </p>
+        </div>
+        <div className="block lg:hidden">
+          <FilterMobileButton />
         </div>
         <div className="my-4">
           <AppliedFilters />
         </div>
-        <div className="grid grid-cols-12">
-          <div className="col-span-3 pr-7">
+        <div className="flex flex-col lg:grid lg:grid-cols-12">
+          <div className="hidden lg:block col-span-3 pr-7">
             <Filter
               attributes={attributes}
             />
@@ -43,14 +47,13 @@ export default async function StylePage({
           <div className="col-span-9">
             <ProductList
               products={style.products}
-              className="grid gap-x-10 gap-y-20 grid-cols-3"
+              className="grid gap-x-4 gap-y-8 lg:gap-x-10 lg:gap-y-20 grid-cols-2 lg:grid-cols-3"
             />
-            <Accordion />
+            <FAQAccordion />
           </div>
         </div>
       </Container>
       <Newsletter />
-
     </>
   );
 }

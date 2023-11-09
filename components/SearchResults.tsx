@@ -6,8 +6,10 @@ import SuggestedProductCard from "./product/SuggestedProductCard";
 import { Product, Style } from "@/types";
 import { PuffLoader } from "react-spinners";
 import useGetStyles from "@/hooks/useGetStyles";
+import clsx from "clsx";
 
 interface SearchResults {
+  mobile: boolean;
   loadingSearch: boolean;
   inputSearch: string;
   searhProducts: Product[];
@@ -20,6 +22,7 @@ interface SearchResults {
 }
 
 export default function SearchResults({
+  mobile,
   loadingSearch,
   inputSearch,
   searhProducts,
@@ -36,7 +39,7 @@ export default function SearchResults({
 
   return (
     <Transition
-      show={showResults}
+      show={showResults || mobile}
       enter="transition-opacity duration-300"
       enterFrom="opacity-0"
       enterTo="opacity-100"
@@ -44,15 +47,21 @@ export default function SearchResults({
       leaveFrom="opacity-100"
       leaveTo="opacity-0"
     >
-      <div onClick={checkOnClickOutside} className="fixed top-[72px] bottom-0 left-0 right-0 z-10 bg-black bg-opacity-50">
+      <div onClick={checkOnClickOutside} className={clsx(`
+        fixed bottom-0 left-0 right-0 z-10 bg-black bg-opacity-50`,
+        mobile ? "top-[67px]" : "top-[72px]"
+      )}>
         <div className="flex justify-center">
-          <div onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)} className="max-w-[800px] w-full bg-white px-8 py-8">
-            <div className="flex flex-col gap-y-4">
-              <div className="flex gap-x-5 items-center border-b border-gray-200 pb-4">
+          <div onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)} className={clsx(`
+          max-w-[800px] w-full bg-white`,
+            mobile ? "px-4 py-4 h-screen" : "px-8 py-8"
+          )}>
+            <div className="flex flex-col gap-y-3">
+              <div className="flex flex-col gap-y-5 lg:flex-row lg:gap-x-5 lg:gap-y-0 items-center border-b border-gray-200 pb-4">
                 <h5 className="text-gray-strong-color text-base ">
                   ¿Tienes algún estilo en mente?
                 </h5>
-                <div className="flex gap-x-3">
+                <div className="flex flex-wrap gap-2 justify-center">
                   {styles.map((style: Style) => (
                     <button
                       key={style.id}
@@ -100,13 +109,18 @@ export default function SearchResults({
                         </span>
                       )}
                     </h5>
-                    <div className="grid grid-cols-4 gap-x-3 gap-y-5">
+                    <div className="grid grid-cols-3 lg:grid-cols-4 gap-x-3 gap-y-5">
                       {searhProducts.length > 0 && inputSearch !== "" ? (
                         <>
                           {searhProducts.map((product, index) => {
                             if (index > 7) {
                               return null;
                             }
+
+                            if (mobile && index > 5) {
+                              return null;
+                            }
+
                             return (
                               <SuggestedProductCard
                                 key={product.id}
@@ -119,18 +133,23 @@ export default function SearchResults({
                         </>
                       ) : (
                         <>
-                          {suggestedProducts.map((product) => (
-                            <SuggestedProductCard
-                              key={product.id}
-                              product={product}
-                              handleClickSearchProduct={handleClickSearchProduct}
-                            />
-                          ))}
+                          {suggestedProducts.map((product, index) => {
+                            if (mobile && index > 2) {
+                              return null;
+                            }
+                            return (
+                              <SuggestedProductCard
+                                key={product.id}
+                                product={product}
+                                handleClickSearchProduct={handleClickSearchProduct}
+                              />
+                            )
+                          })}
                         </>
                       )}
                     </div>
                   </div>
-                  {searhProducts.length > 8 && (
+                  {searhProducts.length > (mobile ? 3 : 8) && (
                     <div className="flex justify-center">
                       <button
                         onClick={handleClickSeeAllResults}
@@ -152,7 +171,8 @@ export default function SearchResults({
                     <div className="flex justify-center my-7">
                       <span className="
                           text-primary-color
-                          text-xl
+                          text-base
+                          lg:text-xl
                           font-light
                         ">
                         No se han encontrado resultados para: <span className="text-gray-strong-color">{inputSearch}</span>

@@ -9,24 +9,25 @@ import { addAbsolutePathImage } from "@/lib/utils";
 
 interface GalleryProps {
   images: ImageType[];
+  previewModal?: boolean;
 }
 
 export default function Gallery({
-  images
+  images,
+  previewModal = false,
 }: GalleryProps) {
   return (
     <Tab.Group as="div" className="flex flex-col-reverse">
       <div className="
-        hidden
-        sm:block
         mx-auto
-        mt-6
+        mt-4
+        lg:mt-6
         w-full
         lg:max-w-none
       ">
-        <Tab.List className="grid grid-cols-8 gap-4 content-center">
+        <Tab.List className="flex flex-wrap gap-3 justify-center">
           {images.map((image) => (
-            <GalleryTab key={image.id} image={image} />
+            <GalleryTab key={image.id} image={image} previewModal={previewModal} />
           ))}
         </Tab.List>
       </div>

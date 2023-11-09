@@ -42,7 +42,7 @@ export default function Accordion() {
 
   return (
     <div className="mt-20 mb-20 mr-20">
-      <h3 className="font-bold text-4xl text-primary-color mb-5">
+      <h3 className="font-bold text-3xl text-primary-color mb-4">
         FAQ
       </h3>
       {items.map((item, index) => (
@@ -76,7 +76,7 @@ export default function Accordion() {
                 initial={{ height: 0 }}
                 animate={{ height: "auto" }}
                 exit={{ height: 0 }}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: 0.2, type: "tween" }}
               >
                 <p className="text-base font-normal text-primary-color mt-5">
                   {item.content}

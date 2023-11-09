@@ -15,22 +15,26 @@ export default function GenreBillboards() {
     router.push(href);
   }
   return (
-    <div className="mt-14 grid grid-cols-2 gap-x-10">
-      <div className="bg-gray-color rounded-xl grid grid-cols-2 px-3 overflow-hidden group">
+    <div className="mt-14 grid grid-cols-1 gap-y-10 lg:grid-cols-2 gap-x-10">
+      {/* this */}
+      <div className="flex flex-col-reverse gap-y-3 h-[420px] lg:h-full lg:grid lg:grid-cols-2 bg-gray-color rounded-xl px-3 overflow-hidden group">
         <div className="relative aspect-squar w-full h-[300px]">
           <Image
             fill
             src={genreBillboard.gentlemen.image}
             alt="Image genre"
             className="
-              object-contain
-              object-bottom
-              group-hover:scale-110
+              object-cover
+              lg:object-contain
+              object-top
+              lg:object-bottom
+              lg:group-hover:scale-110
               duration-300
             "
           />
         </div>
-        <div className="flex flex-col w-full justify-center items-center gap-y-5">
+        {/* this */}
+        <div className="flex flex-col w-full justify-center items-center gap-y-2 mt-7 lg:mt-0 lg:gap-y-5">
           <div className="relative flex w-full items-center justify-center">
             <h3 className="text-7xl font-extrabold text-white tracking-tight uppercase">
               {genreBillboard.gentlemen.titleGray}
@@ -50,21 +54,23 @@ export default function GenreBillboards() {
           </div>
         </div>
       </div>
-      <div className="bg-gray-color rounded-xl grid grid-cols-2 px-3 overflow-hidden group">
+      <div className="flex flex-col-reverse gap-y-3 h-[420px] lg:h-full lg:grid lg:grid-cols-2 bg-gray-color rounded-xl px-3 overflow-hidden group">
         <div className="relative aspect-squar w-full h-[300px]">
           <Image
             fill
             src={genreBillboard.ladies.image}
             alt="Image genre"
             className="
-              object-contain
-              object-bottom
-              group-hover:scale-110
+              object-cover
+              lg:object-contain
+              object-top
+              lg:object-bottom
+              lg:group-hover:scale-110
               duration-300
             "
           />
         </div>
-        <div className="flex flex-col w-full justify-center items-center gap-y-5">
+        <div className="flex flex-col w-full justify-center items-center gap-y-2 mt-7 lg:mt-0 lg:gap-y-5">
           <div className="relative flex w-full items-center justify-center">
             <h3 className="text-7xl font-extrabold text-white tracking-tight uppercase">
               {genreBillboard.ladies.titleGray}
@@ -84,7 +90,6 @@ export default function GenreBillboards() {
           </div>
         </div>
       </div>
-
     </div>
   );
 }

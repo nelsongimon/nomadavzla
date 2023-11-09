@@ -1,3 +1,4 @@
+//DELETE LATER
 import { useState, useEffect } from "react";
 
 import { Product } from "@/types";

@@ -1,11 +1,18 @@
+import logo from "@/public/logo.png"
+import Image from "next/image";
 import Link from "next/link";
-import { logo } from "@/data"
 
 export default function Logo() {
-  const image = logo || "Nomada Logo";
   return (
     <Link href="/">
-      {image}
+      <div className="relative">
+        <Image
+          src={logo}
+          width={155}
+          height={30}
+          alt="Logo"
+        />
+      </div>
     </Link>
   );
 }

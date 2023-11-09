@@ -13,9 +13,9 @@ export default function NoResults() {
   }
 
   return (
-    <div className="w-full h-[300px] flex justify-center items-center">
+    <div className="w-full h-[200px] lg:h-[300px] flex justify-center items-center">
       <div className="flex flex-col gap-y-6">
-        <h3 className="text-4xl text-gray-strong-color font-semibold">
+        <h3 className="text-2xl lg:text-4xl text-gray-strong-color font-semibold">
           No hay resultados
         </h3>
         <div className="flex justify-center">

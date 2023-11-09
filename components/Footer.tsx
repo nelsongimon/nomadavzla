@@ -20,14 +20,14 @@ export default function Footer() {
   return (
     <div className="bg-primary-color w-full">
       <Container>
-        <div className="grid grid-cols-3 gap-x-12 py-12">
+        <div className="grid text-center lg:text-left grid-cols-1 gap-y-10 lg:grid-cols-3 gap-x-12 py-12">
           {/* Social media links */}
           <div className="flex flex-col gap-y-8 text-gray-300">
             <div className="flex flex-col gap-y-3">
               <h2 className="font-semibold text-lg">
                 Síguenos
               </h2>
-              <div className="flex items-center gap-x-4">
+              <div className="flex items-center justify-center lg:justify-start gap-x-4">
                 <Link href="">
                   <FaInstagram className="text-3xl duration-300 hover:text-secondary-color" />
                 </Link>
@@ -46,14 +46,15 @@ export default function Footer() {
               <h2 className="font-semibold text-lg">
                 Métodos de Pago
               </h2>
-              <div className="relative w-full h-[30px]">
+              <div className="relative w-full h-[30px] text-center lg:text-left">
                 <Image
                   fill
                   src={footerInfo.paymentMethodsImage}
                   alt="Payment Methods"
                   className="
                     object-contain
-                    object-left
+                    object-center
+                    lg:object-left
                   "
                 />
               </div>

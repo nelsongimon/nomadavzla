@@ -1,3 +1,5 @@
+import { Abel } from "next/font/google";
+
 export const slides = [
   {
     image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Sliders3.jpg",
@@ -22,7 +24,7 @@ export const menuItems = [
     label: "Géneros",
     href: null,
     hasMegaMenu: true,
-    MenaMenu: {
+    MegaMenu: {
       sectionLinks: {
         title: "Encuentra según tu género",
         links: [
@@ -76,7 +78,7 @@ export const menuItems = [
     label: "Estilos",
     href: null,
     hasMegaMenu: true,
-    MenaMenu: {
+    MegaMenu: {
       sectionLinks: {
         title: "Encuentra según tu estilo",
         links: [
@@ -141,34 +143,87 @@ export const menuItems = [
   }
 ]
 
-export const styles = [
+export const menuMobileItems = [
   {
-    title: "Clásico",
-    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Clasico.png"
+    label: "Géneros",
+    href: null,
+    linksTitle: "Encuentra según tu género",
+    links: [
+      {
+        label: "Lentes para Caballeros",
+        href: "/productos?genero=caballeros"
+      },
+      {
+        label: "Lentes para Damas",
+        href: "/productos?genero=damas"
+      },
+      {
+        label: "Lentes para Unisex",
+        href: "/productos?genero=unisex"
+      },
+    ]
   },
   {
-    title: "Moderno",
-    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Moderno.png"
+    label: "Estilos",
+    href: null,
+    linksTitle: "Encuentra según tu estilo",
+    links: [
+      {
+        label: "Estilo Clásico",
+        href: "/estilo/clasico"
+      },
+      {
+        label: "Estilo Moderno",
+        href: "/estilo/moderno"
+      },
+      {
+        label: "Estilo Retro",
+        href: "/estilo/retro"
+      },
+      {
+        label: "Estilo Deportivo",
+        href: "/estilo/deportivo"
+      },
+      {
+        label: "Estilo Juvenil",
+        href: "/estilo/juvenil"
+      },
+    ]
   },
   {
-    title: "Wayfarer",
-    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Wayfarer-5.png"
-  },
-  {
-    title: "Deportivo",
-    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Deportivo-.png"
-  },
-  {
-    title: "Aviador",
-    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Aviador.png"
-  },
-  {
-    title: "Retro",
-    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Retro.png"
+    label: "Ver todos los modelos",
+    href: "/productos",
   },
 ]
 
-export const logo = "";
+// export const styles = [
+//   {
+//     title: "Clásico",
+//     image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Clasico.png"
+//   },
+//   {
+//     title: "Moderno",
+//     image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Moderno.png"
+//   },
+//   {
+//     title: "Wayfarer",
+//     image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Wayfarer-5.png"
+//   },
+//   {
+//     title: "Deportivo",
+//     image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Deportivo-.png"
+//   },
+//   {
+//     title: "Aviador",
+//     image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Aviador.png"
+//   },
+//   {
+//     title: "Retro",
+//     image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Retro.png"
+//   },
+// ]
+
+// export const logo = "";
 
 export const genreBillboard = {
   ladies: {
@@ -232,4 +287,12 @@ export const footerInfo = {
   },
   paymentMethodsImage: "https://www.nomadavzla.com/wp-content/uploads/2023/09/PaymentMethods-1.png"
 
+}
+
+export const glassesFiveInOneData = {
+  title: "5 en 1",
+  opacityTitle: "Lentes",
+  label: "Ver modelos",
+  action: "",
+  image: "http://nomada-admin.test/images/bannerGlassesFiveInOne.jpg"
 }

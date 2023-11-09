@@ -1,6 +1,12 @@
+"use client";
 
+import LogoSVG from "./LogoSVG";
 export default function LoadingLogo() {
   return (
-    <p>Loading...</p>
+    <div className="w-full h-screen flex justify-center items-center bg-white">
+      <div className="w-[150px] lg:w-[170px] mt-[-200px]">
+        <LogoSVG />
+      </div>
+    </div>
   );
 }

@@ -40,19 +40,17 @@ export default function SuggestedProductCard({
       </div>
       {/* Description */}
       <div className="flex justify-between">
-        <div className="flex flex-col gap-y-[1px]">
-          <div>
-            <Link
-              href={`/productos/${product?.slug}`}
-              onClick={handleClickSearchProduct}
-              className="text-primary-color hover:text-secondary-color underline-offset-4 hover:underline duration-300 text-sm"
-            >
-              {product.name}
-            </Link>
-          </div>
+        <div className="flex flex-col gap-y-0 lg:gap-y-[1px]">
+          <Link
+            href={`/productos/${product?.slug}`}
+            onClick={handleClickSearchProduct}
+            className="text-primary-color hover:text-secondary-color underline-offset-4 hover:underline duration-300 text-sm"
+          >
+            {product.name}
+          </Link>
           {/* Put here the price */}
           <div>
-            <span className="font-medium text-lg">${product.salePrice}</span>
+            <span className="font-medium text-base lg:text-lg">${product.salePrice}</span>
           </div>
         </div>
       </div>

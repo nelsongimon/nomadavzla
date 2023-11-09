@@ -8,6 +8,7 @@ import NoResults from "@/components/ui/NoResults";
 import Pagination from "./Pagination";
 import { Product } from "@/types";
 import { PuffLoader } from "react-spinners";
+import LogoSVG from "../ui/LogoSVG";
 
 interface ProductListProps {
   products: Product[];
@@ -58,17 +59,20 @@ export default function ProductList({
   if (counterRef.current % 2 === 0) {
     return (
       <div className="flex h-screen items-top justify-center pt-28">
-        <PuffLoader
+        {/* <PuffLoader
           size={150}
           color="#797979"
-        />
+        /> */}
+        <div className="pt-32 w-[150px] lg:w-[170px] mt-[-200px]">
+          <LogoSVG />
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="">
-      <div className="flex justify-end mb-8">
+    <div className="mt-4 lg:mt-0">
+      <div className="flex justify-center lg:justify-end mb-5 lg:mb-8">
         <span className="text-gray-strong-color font-light text-base bg-gray-100 rounded-full px-2 py-1">
           {products.length} {products.length === 1 ? "resultado encontrado" : "resultados encontrados"}
         </span>

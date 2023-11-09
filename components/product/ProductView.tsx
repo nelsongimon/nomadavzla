@@ -15,16 +15,16 @@ export default function ProductView({
   return (
     <div className="bg-gray-color">
       <Container>
-        <div className="px-4 py-10 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-12 gap-10">
-            <div className="col-span-7 grid grid-cols-12">
-              <div className="col-span-1" />
-              <div className="col-span-10">
+        <div className="px-2 pt-5 pb-12 lg:pt-10 lg:pb-10 lg:px-8">
+          <div className="flex flex-col gap-y-10 lg:grid lg:grid-cols-12 gap-10">
+            <div className="lg:col-span-7 lg:grid lg:grid-cols-12">
+              <div className="block lg:hidden col-span-1" />
+              <div className="lg:col-span-10">
                 <Gallery images={product.images} />
               </div>
-              <div className="col-span-1" />
+              <div className="block lg:hidden col-span-1" />
             </div>
-            <div className="col-span-5">
+            <div className="flex flex-col gap-y-4 lg:col-span-5">
               <ProductInfo product={product} />
             </div>
           </div>
