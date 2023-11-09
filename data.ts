@@ -1,23 +1,4 @@
-import { Abel } from "next/font/google";
-
-export const slides = [
-  {
-    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Sliders3.jpg",
-    title: "70% de descuento en todos nuestros lentes",
-    description: "Descubre lo mejor en lentes 5 en 1 para damas y cabellaros",
-    label: "Comprar Ahora",
-    action: "/productos",
-    position: "right"
-  },
-  {
-    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Sliders2.jpg",
-    title: "70% de descuento en todos nuestros lentes",
-    description: "Descubre lo mejor en lentes 5 en 1 para damas y cabellaros",
-    label: "Comprar Ahora",
-    action: "/productos",
-    position: "left"
-  },
-]
+const path = process.env.NEXT_PUBLIC_IMAGE_PATH;
 
 export const menuItems = [
   {
@@ -194,47 +175,18 @@ export const menuMobileItems = [
     label: "Ver todos los modelos",
     href: "/productos",
   },
-]
-
-// export const styles = [
-//   {
-//     title: "Clásico",
-//     image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Clasico.png"
-//   },
-//   {
-//     title: "Moderno",
-//     image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Moderno.png"
-//   },
-//   {
-//     title: "Wayfarer",
-//     image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Wayfarer-5.png"
-//   },
-//   {
-//     title: "Deportivo",
-//     image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Deportivo-.png"
-//   },
-//   {
-//     title: "Aviador",
-//     image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Aviador.png"
-//   },
-//   {
-//     title: "Retro",
-//     image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/Retro.png"
-//   },
-// ]
-
-// export const logo = "";
+];
 
 export const genreBillboard = {
   ladies: {
-    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/lady.png",
+    image: `${path}images/lady.png`,
     titleGray: "Lentes",
     titleBlack: "Damas",
     label: "Ver Modelos",
     action: "/productos?genero=damas",
   }, 
   gentlemen: {
-    image: "https://www.nomadavzla.com/wp-content/uploads/2023/09/gentleman.png",
+    image: `${path}images/gentleman.png`,
     titleGray: "Lentes",
     titleBlack: "Caballeros",
     label: "Ver Modelos",
@@ -285,7 +237,7 @@ export const footerInfo = {
       },
     ]
   },
-  paymentMethodsImage: "https://www.nomadavzla.com/wp-content/uploads/2023/09/PaymentMethods-1.png"
+  paymentMethodsImage: `${path}images/PaymentMethods.png`
 
 }
 
@@ -294,5 +246,5 @@ export const glassesFiveInOneData = {
   opacityTitle: "Lentes",
   label: "Ver modelos",
   action: "",
-  image: "http://nomada-admin.test/images/bannerGlassesFiveInOne.jpg"
+  image: `${path}images/bannerGlassesFiveInOne.jpg`
 }
