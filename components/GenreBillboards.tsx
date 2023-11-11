@@ -4,15 +4,13 @@ import { genreBillboard } from "@/data";
 import Image from "next/image";
 import Button from "./ui/Button";
 import useCurrentPage from "@/hooks/useCurrentPage";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function GenreBillboards() {
   const updatePage = useCurrentPage(state => state.updatePage);
-  const router = useRouter();
 
-  const handleClickLink = (href: string) => {
+  const handleClickLink = () => {
     updatePage(1);
-    router.push(href);
   }
   return (
     <div className="mt-14 grid grid-cols-1 gap-y-10 lg:grid-cols-2 gap-x-10">
@@ -44,13 +42,17 @@ export default function GenreBillboards() {
             </h2>
           </div>
           <div className="flex justify-center w-full">
-            <Button
-              onClick={() => handleClickLink(genreBillboard.gentlemen.action)}
-              size="default"
-              variant="default"
+            <Link
+              href={genreBillboard.gentlemen.action}
             >
-              {genreBillboard.gentlemen.label}
-            </Button>
+              <Button
+                onClick={() => handleClickLink()}
+                size="default"
+                variant="default"
+              >
+                {genreBillboard.gentlemen.label}
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
@@ -80,13 +82,17 @@ export default function GenreBillboards() {
             </h2>
           </div>
           <div className="flex justify-center w-full">
-            <Button
-              onClick={() => handleClickLink(genreBillboard.ladies.action)}
-              size="default"
-              variant="default"
+            <Link
+              href={genreBillboard.ladies.action}
             >
-              {genreBillboard.ladies.label}
-            </Button>
+              <Button
+                onClick={() => handleClickLink()}
+                size="default"
+                variant="default"
+              >
+                {genreBillboard.ladies.label}
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

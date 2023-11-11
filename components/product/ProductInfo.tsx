@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, ShoppingCart } from "lucide-react";
+import { AlertCircle, Check, CheckCircle2, ShoppingCart } from "lucide-react";
 import { useState } from "react";
 
 import Quatity from "@/components/ui/Quatity";
@@ -60,27 +60,44 @@ export default function ProductInfo({
       </div>
       <hr className="w-full border border-gray-200" />
       <div className="flex flex-col gap-y-5">
-        <div className="flex items-center gap-x-1">
-          <Check className="stroke-[2] text-xs text-primary-color" />
-          <span className="text-primary-color text-lg font-medium">
-            Disponible
-          </span>
-        </div>
-        <div className="flex gap-x-5 items-center mt-0 lg:mt-2">
-          <Quatity
-            currentQuantity={currentQuantity}
-            maxQuantity={product.quantity}
-            onMinusQuantity={onMinusQuantity}
-            onPlusQuantity={onPlusQuantity}
-          />
-          <Button
-            onClick={() => { }}
-            variant="default"
-            size={previewModal ? "default" : "large"}
-          >
-            Agregar al Carrito <ShoppingCart className="text-xs stroke-[1.5]" />
-          </Button>
-        </div>
+        {Number(product.quantity) > 0 ? (
+          <div className="flex items-center gap-x-1">
+            <CheckCircle2 className="stroke-[1.5] text-xs text-primary-color" />
+            <span className="text-primary-color text-lg font-medium">
+              Disponible
+            </span>
+          </div>
+        ) : (
+          <div className="flex items-center gap-x-1">
+            <AlertCircle className="stroke-[1.5] text-xs text-primary-color" />
+            <span className="text-primary-color text-lg font-medium">
+              Agotado
+            </span>
+          </div>
+        )}
+        {Number(product.quantity) > 0 ? (
+          <div className="flex gap-x-5 items-center mt-0 lg:mt-2">
+            <Quatity
+              currentQuantity={currentQuantity}
+              maxQuantity={product.quantity}
+              onMinusQuantity={onMinusQuantity}
+              onPlusQuantity={onPlusQuantity}
+            />
+            <Button
+              onClick={() => { }}
+              variant="default"
+              size={previewModal ? "default" : "large"}
+            >
+              Agregar al Carrito <ShoppingCart className="text-xs stroke-[1.5]" />
+            </Button>
+          </div>
+        ) : (
+          <div className="flex gap-x-5 items-center mt-0 lg:mt-0">
+            <p className="text-base font-light text-primary-color">
+              Mantente informado sobre la llegada de este modelo siguiéndonos en nuestras redes sociales y suscribiéndote a nuestro boletín informativo. ¡Gracias por tu paciencia y apoyo!
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

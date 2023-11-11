@@ -7,6 +7,7 @@ import FilterMobileButton from "@/components/FilterMobileButton";
 import ProductList from "@/components/product/ProductList";
 import Container from "@/components/ui/Container";
 import Newsletter from "@/components/ui/Newsletter";
+import NoResults from "@/components/ui/NoResults";
 import { Style } from "@/types";
 
 export const revalidate = 0;
@@ -20,6 +21,10 @@ export default async function StylePage({
 }) {
   const style: Style = await getStyleWithProducts(params.style, searchParams);
   const attributes = await getFilterWithStyle(params.style, searchParams);
+
+  if (!style) {
+    return <NoResults />
+  }
 
   return (
     <>

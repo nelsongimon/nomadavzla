@@ -1,10 +1,10 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import ProductCard from "../ui/ProductCard";
 import { Product } from "@/types";
 import useCurrentPage from "@/hooks/useCurrentPage";
 import Button from "../ui/Button";
+import Link from "next/link";
 
 interface ProductListFeaturedProps {
   products: Product[];
@@ -15,12 +15,10 @@ export default function ProductListFeatured({
   products,
   className
 }: ProductListFeaturedProps) {
-  const router = useRouter();
   const updatePage = useCurrentPage(state => state.updatePage);
 
-  const handleClickLink = (href: string) => {
+  const handleClickLink = () => {
     updatePage(1);
-    router.push(href);
   }
 
   return (
@@ -39,13 +37,15 @@ export default function ProductListFeatured({
         ))}
       </div>
       <div className="mt-12 flex justify-center">
-        <Button
-          onClick={() => handleClickLink("/productos")}
-          size="large"
-          variant="secondary"
-        >
-          Ir a la tienda
-        </Button>
+        <Link href="/productos">
+          <Button
+            onClick={() => handleClickLink()}
+            size="large"
+            variant="secondary"
+          >
+            Ver todos los productos
+          </Button>
+        </Link>
       </div>
     </div>
   );

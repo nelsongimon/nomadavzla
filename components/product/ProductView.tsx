@@ -12,6 +12,7 @@ interface ProductViewProps {
 export default function ProductView({
   product
 }: ProductViewProps) {
+  console.log(product);
   return (
     <div className="bg-gray-color">
       <Container>

@@ -17,10 +17,6 @@ export const menuItems = [
             label: "Lentes para Damas",
             href: "/productos?genero=damas"
           },
-          {
-            label: "Lentes para Unisex",
-            href: "/productos?genero=unisex"
-          },
         ]
       },
       sectionImages: [
@@ -64,6 +60,10 @@ export const menuItems = [
         title: "Encuentra según tu estilo",
         links: [
           {
+            label: "Estilo Aviador",
+            href: "/estilo/aviador"
+          },
+          {
             label: "Estilo Clásico",
             href: "/estilo/clasico"
           },
@@ -80,8 +80,8 @@ export const menuItems = [
             href: "/estilo/deportivo"
           },
           {
-            label: "Estilo Juvenil",
-            href: "/estilo/juvenil"
+            label: "Estilo Wayfarer",
+            href: "/estilo/wayfarer"
           },
         ]
       },
@@ -138,10 +138,6 @@ export const menuMobileItems = [
         label: "Lentes para Damas",
         href: "/productos?genero=damas"
       },
-      {
-        label: "Lentes para Unisex",
-        href: "/productos?genero=unisex"
-      },
     ]
   },
   {
@@ -150,6 +146,11 @@ export const menuMobileItems = [
     linksTitle: "Encuentra según tu estilo",
     links: [
       {
+        label: "Estilo Aviador",
+        href: "/estilo/aviador"
+      },
+      {
+        
         label: "Estilo Clásico",
         href: "/estilo/clasico"
       },
@@ -166,8 +167,8 @@ export const menuMobileItems = [
         href: "/estilo/deportivo"
       },
       {
-        label: "Estilo Juvenil",
-        href: "/estilo/juvenil"
+        label: "Estilo Wayfarer",
+        href: "/estilo/wayfarer"
       },
     ]
   },
@@ -206,15 +207,15 @@ export const footerInfo = {
         label: "Lentes para Damas",
         href: "/productos?genero=damas"
       },
-      {
-        label: "Lentes para Unisex",
-        href: "/productos?genero=unisex"
-      },
     ]
   },
   stylesLink: {
     title: "Encuentra según tu estilo",
     links: [
+      {
+        label: "Estilo Aviador",
+        href: "/estilo/aviador"
+      },
       {
         label: "Estilo Clásico",
         href: "/estilo/clasico"
@@ -232,8 +233,8 @@ export const footerInfo = {
         href: "/estilo/deportivo"
       },
       {
-        label: "Estilo Juvenil",
-        href: "/estilo/juvenil"
+        label: "Estilo Wayfarer",
+        href: "/estilo/wayfarer"
       },
     ]
   },

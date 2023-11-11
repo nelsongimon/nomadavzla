@@ -47,6 +47,16 @@ export default function ProductCard({
             "
           />
         </Link>
+        {Boolean(Number(product.isNew)) && (
+          <span className="absolute top-3 left-3 rounded-full bg-secondary-color text-light-color px-3 py-1 text-sm">
+            Nuevo
+          </span>
+        )}
+        {Number(product.quantity) === 0 && (
+          <span className="absolute top-3 right-3 rounded-full bg-primary-color text-gray-100 px-3 py-1 text-sm">
+            Agotado
+          </span>
+        )}
         <div className="
           hidden
           md:block

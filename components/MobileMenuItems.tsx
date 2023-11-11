@@ -6,9 +6,9 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import clsx from "clsx";
 import { ChevronDown } from "lucide-react";
-import Button from "./ui/Button";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import useCurrentPage from "@/hooks/useCurrentPage";
+import Link from "next/link";
 
 const variants = {
   open: { rotate: 180 },
@@ -24,14 +24,17 @@ export default function MobileMenuItems({
   isOpen,
   setIsOpen
 }: MobileMenuItemsProps) {
-  const router = useRouter();
   const updatePage = useCurrentPage(state => state.updatePage);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const pathname = usePathname();
+  const searhParams = useSearchParams();
 
   const handleClickLink = (href: string) => {
     setIsOpen(false);
+    const query = searhParams.toString();
+    const currentPath = pathname + (query ? `?${query}` : "");
+    if (href === currentPath) return false;
     updatePage(1);
-    router.push(href);
   }
 
   const toggleAccordion = (index: number) => {
@@ -61,7 +64,8 @@ export default function MobileMenuItems({
                   className="border-b border-gray-200 py-4 overflow-hidden"
                 >
                   {item.href ? (
-                    <button
+                    <Link
+                      href={item.href}
                       onClick={() => handleClickLink(item.href)}
                     >
                       <span
@@ -69,7 +73,7 @@ export default function MobileMenuItems({
                       >
                         {item.label}
                       </span>
-                    </button>
+                    </Link>
                   ) : (
                     <button
                       onClick={() => toggleAccordion(index)}
@@ -104,14 +108,14 @@ export default function MobileMenuItems({
                           transition={{ duration: 0.2, type: "tween" }}
                         >
                           {item.links?.map((link, index) => (
-                            <Button
+                            <Link
                               key={index}
+                              href={link.href}
                               onClick={() => handleClickLink(link.href)}
-                              size="none"
-                              variant="link"
+                              className="text-primary-color underline-offset-4 underline hover:text-secondary-color font-light text-base duration-300"
                             >
                               {link.label}
-                            </Button>
+                            </Link>
                           ))}
                         </motion.div>
                       )}

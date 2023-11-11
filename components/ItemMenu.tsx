@@ -2,7 +2,7 @@
 
 import useShowResults from "@/hooks/useShowResults";
 import { Transition } from "@headlessui/react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import Button from "./ui/Button";
 import Image from "next/image";
@@ -21,6 +21,8 @@ export default function ItemMenu({
   const { showResults } = useShowResults();
   const router = useRouter();
   const updatePage = useCurrentPage(state => state.updatePage);
+  const pathname = usePathname();
+  const searhParams = useSearchParams();
 
   const handleHover = (value: boolean) => {
     setIsVisible(value);
@@ -28,8 +30,10 @@ export default function ItemMenu({
 
   const handleClickLink = (href: string) => {
     setIsVisible(false);
+    const query = searhParams.toString();
+    const currentPath = pathname + (query ? `?${query}` : "");
+    if (href === currentPath) return false;
     updatePage(1);
-    router.push(href);
   }
 
   return (
@@ -47,7 +51,7 @@ export default function ItemMenu({
           <span className="group-hover:bg-primary-color absolute inset-x-0 -bottom-[2px] h-1 transition duration-300 z-50"></span>
         )}
         {item.href ? (
-          <Link href={item.href}>
+          <Link href={item.href} onClick={() => handleClickLink(item.href)}>
             {item.label}
           </Link>
         ) : (
@@ -76,16 +80,16 @@ export default function ItemMenu({
                       <h3 className="text-gray-strong-color text-lg">
                         {item.MegaMenu.sectionLinks.title}
                       </h3>
-                      <div className="flex flex-col gap-y-5">
+                      <div className="flex flex-col gap-y-4">
                         {item.MegaMenu.sectionLinks.links.map((item: Record<string, any>, index: number) => (
-                          <Button
+                          <Link
                             key={index}
+                            href={item.href}
                             onClick={() => handleClickLink(item.href)}
-                            size="none"
-                            variant="link"
+                            className="text-primary-color underline-offset-4 underline hover:text-secondary-color font-light text-base duration-300"
                           >
                             {item.label}
-                          </Button>
+                          </Link>
                         ))}
                       </div>
                     </div>
@@ -121,7 +125,6 @@ export default function ItemMenu({
                           </div>
                         </div>
                       ))}
-
                     </div>
                   </div>
                 </div>

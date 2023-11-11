@@ -17,6 +17,8 @@ import Image from "next/image";
 import Button from "./ui/Button";
 import { Style } from "@/types";
 import { addAbsolutePathImage } from "@/lib/utils";
+import useCurrentPage from "@/hooks/useCurrentPage";
+import Link from "next/link";
 
 interface StylesProps {
   styles: Style[];
@@ -25,6 +27,10 @@ interface StylesProps {
 export default function Styles({
   styles
 }: StylesProps) {
+  const updatePage = useCurrentPage(state => state.updatePage);
+  const handleClickLink = () => {
+    updatePage(1);
+  }
   return (
     <div className="mt-[-50px] lg:mt-1 h-[500px] overflow-hidden">
       <div className="relative flex justify-center">
@@ -40,7 +46,7 @@ export default function Styles({
         autoplay={{
           delay: 1500,
           disableOnInteraction: false,
-          reverseDirection: true,
+          reverseDirection: false,
 
         }}
         slidesPerView={3}
@@ -77,14 +83,16 @@ export default function Styles({
                 <h3 className="text-base lg:text-xl font-bold uppercase text-primary-color">
                   {item.name}
                 </h3>
-                <Button
-                  onClick={() => { }}
-                  variant="secondary"
-                  size="small"
-                  className="text-sm lg:text-base py-1"
-                >
-                  Ver Modelos
-                </Button>
+                <Link href={`/estilo/${item.slug}`}>
+                  <Button
+                    onClick={() => handleClickLink()}
+                    variant="secondary"
+                    size="small"
+                    className="text-sm lg:text-base py-1"
+                  >
+                    Ver Modelos
+                  </Button>
+                </Link>
               </div>
             </div>
           </SwiperSlide>

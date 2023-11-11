@@ -37,7 +37,7 @@ export default function Button({
         variant === "secondary" ? "text-white hover:opacity-80 bg-secondary-color font-normal" : "",
         variant === "outline" ? "ring-1 ring-primary-color ring-inset hover:ring-secondary-color text-primary-color hover:text-secondary-color disabled:cursor-not-allowed disabled:opacity-30 disabled:ring-primary-color disabled:text-primary-color" : "",
         variant === "ghost" ? "hover:bg-gray-color text-primary-color" : "",
-        variant === "gray" ? "bg-gray-color text-gray-strong-color hover:opacity-50" : "",
+        variant === "gray" ? "bg-gray-color text-gray-strong-color hover:opacity-80" : "",
         variant === "link" ? "text-primary-color underline-offset-4 underline hover:text-secondary-color" : "",
         variant === "white" ? "ring-2 ring-white ring-inset bg-white text-primary-color hover:bg-white/70" : "",
         className

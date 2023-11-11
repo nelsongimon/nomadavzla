@@ -4,14 +4,12 @@ import Image from "next/image";
 import { glassesFiveInOneData } from "../data";
 import Button from "./ui/Button";
 import useCurrentPage from "@/hooks/useCurrentPage";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function FiveInOneGlassesSection() {
   const updatePage = useCurrentPage(state => state.updatePage);
-  const router = useRouter();
-  const handleClickLink = (href: string) => {
+  const handleClickLink = () => {
     updatePage(1);
-    router.push(href);
   }
 
   return (
@@ -36,13 +34,15 @@ export default function FiveInOneGlassesSection() {
             </h2>
           </div>
           <div className="flex justify-center w-full">
-            <Button
-              onClick={() => handleClickLink(glassesFiveInOneData.action)}
-              size="default"
-              variant="default"
-            >
-              {glassesFiveInOneData.label}
-            </Button>
+            <Link href={glassesFiveInOneData.action}>
+              <Button
+                onClick={() => handleClickLink()}
+                size="default"
+                variant="default"
+              >
+                {glassesFiveInOneData.label}
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

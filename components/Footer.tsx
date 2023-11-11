@@ -3,19 +3,21 @@
 import useCurrentPage from "@/hooks/useCurrentPage";
 import Container from "./ui/Container";
 import { footerInfo } from "@/data";
-import { useRouter } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { Facebook, Instagram } from "lucide-react";
 import { FaInstagram, FaFacebook, FaTiktok, FaYoutube } from "react-icons/fa"
 import Image from "next/image";
 
 export default function Footer() {
-  const router = useRouter();
   const updatePage = useCurrentPage(state => state.updatePage);
+  const pathname = usePathname();
+  const searhParams = useSearchParams();
 
   const handleClickLink = (href: string) => {
+    const query = searhParams.toString();
+    const currentPath = pathname + (query ? `?${query}` : "");
+    if (href === currentPath) return false;
     updatePage(1);
-    router.push(href);
   }
   return (
     <div className="bg-primary-color w-full">
@@ -68,19 +70,21 @@ export default function Footer() {
             <ul className="flex flex-col gap-y-2">
               {footerInfo.genreLink.links.map((item, index) => (
                 <li key={index}>
-                  <button
-                    onClick={() => handleClickLink(item.href)}
-                    className="
-                    font-light
-                    text-base
-                    duration-300
-                    hover:text-secondary-color
-                    underline-offset-4
-                    underline
-                  "
-                  >
-                    {item.label}
-                  </button>
+                  <Link href={item.href}>
+                    <button
+                      onClick={() => handleClickLink(item.href)}
+                      className="
+                      font-light
+                      text-base
+                      duration-300
+                      hover:text-secondary-color
+                      underline-offset-4
+                      underline
+                    "
+                    >
+                      {item.label}
+                    </button>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -93,19 +97,21 @@ export default function Footer() {
             <ul className="flex flex-col gap-y-2">
               {footerInfo.stylesLink.links.map((item, index) => (
                 <li key={index}>
-                  <button
-                    onClick={() => handleClickLink(item.href)}
-                    className="
-                    font-light
-                    text-base
-                    duration-300
-                    hover:text-secondary-color
-                    underline-offset-4
-                    underline
-                  "
-                  >
-                    {item.label}
-                  </button>
+                  <Link href={item.href}>
+                    <button
+                      onClick={() => handleClickLink(item.href)}
+                      className="
+                      font-light
+                      text-base
+                      duration-300
+                      hover:text-secondary-color
+                      underline-offset-4
+                      underline
+                    "
+                    >
+                      {item.label}
+                    </button>
+                  </Link>
                 </li>
               ))}
             </ul>
