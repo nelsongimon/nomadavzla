@@ -6,6 +6,9 @@ export async function getProduct(slug: string) {
     return res.data;
 
   } catch (error) {
-    return undefined;
+    return {
+      product: null,
+      relatedProducts: []
+    };
   }
 }

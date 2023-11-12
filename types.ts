@@ -27,6 +27,7 @@ export type Category = {
   billboard: string | null;
   order: number;
   products_count: number;
+  products: Product[];
 }
 
 export type Style = {

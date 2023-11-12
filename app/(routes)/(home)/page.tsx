@@ -12,8 +12,9 @@ import FiveInOneGlassesSection from "@/components/FiveInOneGlassesSection";
 import LoadingLogo from "@/components/ui/LoadingLogo";
 import SlidesMobile from "@/components/SlidesMobile";
 import StylesMobile from "@/components/StylesMobile";
+import NewProducts from "@/components/NewProducts";
 
-
+export const revalidate = 0;
 export default async function HomePage() {
   const products = await getFeaturedProducts();
   const styles = await getStyles();
@@ -41,6 +42,7 @@ export default async function HomePage() {
         <div className="block lg:hidden">
           <StylesMobile styles={styles} />
         </div>
+        <NewProducts />
       </Container>
       <Newsletter />
     </>

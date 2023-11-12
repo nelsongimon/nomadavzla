@@ -14,7 +14,6 @@ export default function GenreBillboards() {
   }
   return (
     <div className="mt-14 grid grid-cols-1 gap-y-10 lg:grid-cols-2 gap-x-10">
-      {/* this */}
       <div className="flex flex-col-reverse gap-y-3 h-[420px] lg:h-full lg:grid lg:grid-cols-2 bg-gray-color rounded-xl px-3 overflow-hidden group">
         <div className="relative aspect-squar w-full h-[300px]">
           <Image
@@ -31,7 +30,6 @@ export default function GenreBillboards() {
             "
           />
         </div>
-        {/* this */}
         <div className="flex flex-col w-full justify-center items-center gap-y-2 mt-7 lg:mt-0 lg:gap-y-5">
           <div className="relative flex w-full items-center justify-center">
             <h3 className="text-7xl font-extrabold text-white tracking-tight uppercase">

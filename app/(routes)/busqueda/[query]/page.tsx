@@ -8,6 +8,8 @@ import SearchInputPage from "@/components/SearchInputPage";
 import ProductList from "@/components/product/ProductList";
 import Container from "@/components/ui/Container";
 
+export const revalidate = 0;
+
 export default async function SearchPage({
   params,
   searchParams

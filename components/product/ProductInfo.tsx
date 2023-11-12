@@ -88,7 +88,7 @@ export default function ProductInfo({
               variant="default"
               size={previewModal ? "default" : "large"}
             >
-              Agregar al Carrito <ShoppingCart className="text-xs stroke-[1.5]" />
+              Agregar al Carrito <ShoppingCart size={20} className="text-xs stroke-[1.5]" />
             </Button>
           </div>
         ) : (

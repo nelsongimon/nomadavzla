@@ -1,12 +1,14 @@
 import ProductView from "@/components/product/ProductView";
 import { getProduct } from "@/actions/getProduct";
-import NoResults from "@/components/ui/NoResults";
 import ProductDetails from "@/components/product/ProductDetails";
 import ServiceFeatures from "@/components/ui/ServiceFeatures";
 import Container from "@/components/ui/Container";
 import Newsletter from "@/components/ui/Newsletter";
 import RelatedProducts from "@/components/product/RelatedProducts";
 import RelatedProductsMobile from "@/components/product/RelatedProductsMobile";
+import NotFound from "@/components/ui/NotFound";
+
+export const revalidate = 0;
 
 interface IParams {
   slug: string;
@@ -16,7 +18,7 @@ export default async function ProductPage({ params }: { params: IParams }) {
   const { product, relatedProducts } = await getProduct(params.slug);
 
   if (!product) {
-    return <NoResults />
+    return <NotFound />
   }
 
   return (

@@ -1,5 +1,5 @@
-import { getFilterWithStyle } from "@/actions/getFilterWithStyle";
-import { getStyleWithProducts } from "@/actions/getStyleWithProducts";
+import { getCategoryWithProducts } from "@/actions/getCategoryWithProducts";
+import { getFilterWithCategory } from "@/actions/getFilterWithCategory";
 import AppliedFilters from "@/components/AppliedFilters";
 import FAQAccordion from "@/components/FAQAccordion";
 import Filter from "@/components/Filter";
@@ -8,7 +8,7 @@ import ProductList from "@/components/product/ProductList";
 import Container from "@/components/ui/Container";
 import Newsletter from "@/components/ui/Newsletter";
 import NotFound from "@/components/ui/NotFound";
-import { Style } from "@/types";
+import { Category } from "@/types";
 
 export const revalidate = 0;
 
@@ -16,13 +16,13 @@ export default async function StylePage({
   params,
   searchParams
 }: {
-  params: { style: string },
+  params: { category: string },
   searchParams: { [key: string]: string }
 }) {
-  const style: Style = await getStyleWithProducts(params.style, searchParams);
-  const attributes = await getFilterWithStyle(params.style, searchParams);
+  const category: Category = await getCategoryWithProducts(params.category, searchParams);
+  const attributes = await getFilterWithCategory(params.category, searchParams);
 
-  if (!style) {
+  if (!category) {
     return <NotFound />
   }
 
@@ -31,10 +31,10 @@ export default async function StylePage({
       <Container>
         <div className="mt-7 lg:mt-9 flex flex-col gap-y-[2px] lg:gap-y-1">
           <h2 className="text-2xl lg:text-4xl text-primary-color font-bold text-center lg:text-left">
-            Estilo {style.name}
+            {category.name}
           </h2>
           <p className="text-base lg:text-lg text-gray-strong-color font-light text-center lg:text-left">
-            {style?.description}
+            {category?.description}
           </p>
         </div>
         <div className="block lg:hidden">
@@ -51,7 +51,7 @@ export default async function StylePage({
           </div>
           <div className="col-span-9">
             <ProductList
-              products={style.products}
+              products={category.products}
               className="grid gap-x-4 gap-y-8 lg:gap-x-10 lg:gap-y-20 grid-cols-2 lg:grid-cols-3"
             />
             <FAQAccordion />

@@ -118,7 +118,7 @@ export const menuItems = [
     }
   },
   {
-    label: "Todos los Modelos",
+    label: "Productos",
     href: "/productos",
     hasMegaMenu: false,
   }
@@ -173,7 +173,7 @@ export const menuMobileItems = [
     ]
   },
   {
-    label: "Ver todos los modelos",
+    label: "Productos",
     href: "/productos",
   },
 ];
@@ -246,6 +246,6 @@ export const glassesFiveInOneData = {
   title: "5 en 1",
   opacityTitle: "Lentes",
   label: "Ver modelos",
-  action: "",
+  action: "/lentes-5-en-1",
   image: `${path}images/bannerGlassesFiveInOne.jpg`
 }

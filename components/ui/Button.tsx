@@ -31,7 +31,7 @@ export default function Button({
         "rounded-md flex gap-x-1 items-center duration-300",
         size === "default" ? "py-2 px-4" : "",
         size === "small" ? "py-1 px-2 text-xs font-light" : "",
-        size === "large" ? "px-4 py-2 lg:py-2 lg:px-7 text-base lg:text-lg font-light" : "",
+        size === "large" ? "px-3 py-2 lg:py-2 lg:px-7 text-base lg:text-lg font-light" : "",
         size === "none" ? "font-light" : "",
         variant === "default" ? "bg-primary-color hover:bg-primary-color/80 text-white" : "",
         variant === "secondary" ? "text-white hover:opacity-80 bg-secondary-color font-normal" : "",
