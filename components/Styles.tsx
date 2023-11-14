@@ -35,7 +35,7 @@ export default function Styles({
     <div className="mt-[-50px] lg:mt-1 h-[500px] overflow-hidden">
       <div className="relative flex justify-center">
         <h3 className="text-strong-color font-bold text-3xl lg:text-4xl text-center absolute top-[50px]  lg:top-[15px] z-10">
-          Pick a style, any style
+          Elige un estilo, cualquier estilo
         </h3>
       </div>
       <Swiper

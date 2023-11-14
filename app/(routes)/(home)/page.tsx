@@ -9,14 +9,13 @@ import Newsletter from "@/components/ui/Newsletter";
 import { getStyles } from "@/actions/getStyles";
 import { getSlides } from "@/actions/getSlides";
 import FiveInOneGlassesSection from "@/components/FiveInOneGlassesSection";
-import LoadingLogo from "@/components/ui/LoadingLogo";
 import SlidesMobile from "@/components/SlidesMobile";
 import StylesMobile from "@/components/StylesMobile";
-import NewProducts from "@/components/NewProducts";
+import NewArrivals from "@/components/NewArrivals";
 
 export const revalidate = 0;
 export default async function HomePage() {
-  const products = await getFeaturedProducts();
+  const featuredProducts = await getFeaturedProducts();
   const styles = await getStyles();
   const slides = await getSlides();
 
@@ -30,9 +29,10 @@ export default async function HomePage() {
       </div>
       <ServiceFeatures />
       <Container>
+        <NewArrivals />
         <GenreBillboards />
         <ProductListFeatured
-          products={products}
+          products={featuredProducts}
           className="grid grid-cols-2 gap-x-4 gap-y-8 lg:grid-cols-4 lg:gap-x-10 lg:gap-y-20"
         />
         <FiveInOneGlassesSection />
@@ -42,7 +42,6 @@ export default async function HomePage() {
         <div className="block lg:hidden">
           <StylesMobile styles={styles} />
         </div>
-        <NewProducts />
       </Container>
       <Newsletter />
     </>

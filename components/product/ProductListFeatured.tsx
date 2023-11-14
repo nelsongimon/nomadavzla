@@ -25,7 +25,7 @@ export default function ProductListFeatured({
     <div className="py-20">
       <div className="mb-8">
         <h3 className="text-strong-color font-bold text-3xl lg:text-4xl text-center">
-          Every Vision of You
+          Más Vendidos
         </h3>
       </div>
       <div className={className}>

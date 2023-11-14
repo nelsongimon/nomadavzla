@@ -44,7 +44,7 @@ export default function Slides({
   }
 
   return (
-    <div className="w-full h-[450px] mx-auto relative overflow-hidden">
+    <div className="w-full h-[475px] mx-auto relative overflow-hidden">
       {slides.map((slide, index) => (
         <motion.div
           key={index}
@@ -61,14 +61,36 @@ export default function Slides({
               slide.position === "right" && "justify-end",
               slide.position === "center" && "justify-center",
             )}>
-            <div className="flex flex-col gap-y-3 max-w-xl w-full mx-[150px]">
-              <h2 className="font-bold text-primary-color text-4xl uppercase">
+            {/* Content */}
+            <div className="flex flex-col gap-y-3 max-w-2xl w-full mx-[150px]">
+              <motion.h2 className="font-bold text-primary-color text-4xl uppercase"
+                initial={{ opacity: 0, y: 100 }}
+                animate={{
+                  opacity: index === currentIndex ? 1 : 0,
+                  y: index === currentIndex ? 0 : 100
+                }}
+                transition={{ duration: 1, delay: 1 }}
+              >
                 {slide.title}
-              </h2>
-              <p className="font-normal text-primary-color text-xl">
+              </motion.h2>
+              <motion.p className="font-normal text-primary-color text-xl"
+                initial={{ opacity: 0, y: 100 }}
+                animate={{
+                  opacity: index === currentIndex ? 1 : 0,
+                  y: index === currentIndex ? 0 : 100
+                }}
+                transition={{ duration: 1, delay: 1.4 }}
+              >
                 {slide.description}
-              </p>
-              <div className="w-full flex justify-center mt-5">
+              </motion.p>
+              <motion.div className="w-full flex justify-center mt-5"
+                initial={{ opacity: 0, y: 100 }}
+                animate={{
+                  opacity: index === currentIndex ? 1 : 0,
+                  y: index === currentIndex ? 0 : 100
+                }}
+                transition={{ duration: 1, delay: 1.6 }}
+              >
                 <motion.button
                   onClick={() => router.push(slide.action)}
                   className={clsx(`
@@ -81,13 +103,10 @@ export default function Slides({
                     duration-300
                     text-white`,
                   )}
-                  whileHover={{ scale: [null, 1.5, 1.1] }}
-                  transition={{ duration: 0.3 }}
-                // whileTap={{ scale: 0.95 }}
                 >
                   {slide.label}
                 </motion.button>
-              </div>
+              </motion.div>
             </div>
           </div>
           <Image

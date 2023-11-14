@@ -105,6 +105,14 @@ export default function FilterItem({
                 />
               </div>
             )}
+            {value.value && (
+              <div className="ml-1 w-5 h-5 rounded-full border-gray-300 border-[1px] p-[2px]">
+                <div
+                  className="w-full h-full rounded-full"
+                  style={{ backgroundColor: value.value }}
+                />
+              </div>
+            )}
             <div className={clsx(`
             flex gap-x-2 items-center text-base font-normal`,
               selectedValues.some((item) => (item === value.slug)) ? "text-primary-color" : "text-gray-strong-color"
