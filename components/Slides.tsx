@@ -62,7 +62,7 @@ export default function Slides({
               slide.position === "center" && "justify-center",
             )}>
             {/* Content */}
-            <div className="flex flex-col gap-y-3 max-w-2xl w-full mx-[150px]">
+            <div className="flex flex-col gap-y-4 max-w-lg w-full mx-[150px]">
               <motion.h2 className="font-bold text-primary-color text-3xl uppercase"
                 initial={{ opacity: 0, y: 100 }}
                 animate={{
