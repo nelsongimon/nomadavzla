@@ -63,7 +63,7 @@ export default function Slides({
             )}>
             {/* Content */}
             <div className="flex flex-col gap-y-3 max-w-2xl w-full mx-[150px]">
-              <motion.h2 className="font-bold text-primary-color text-4xl uppercase"
+              <motion.h2 className="font-bold text-primary-color text-3xl uppercase"
                 initial={{ opacity: 0, y: 100 }}
                 animate={{
                   opacity: index === currentIndex ? 1 : 0,
