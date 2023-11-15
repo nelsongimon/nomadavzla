@@ -48,12 +48,12 @@ export default function ProductCard({
           />
         </Link>
         {Boolean(Number(product.isNew)) && (
-          <span className="absolute top-3 left-3 rounded-full bg-secondary-color text-light-color px-2 py-0.5 text-base font-light">
+          <span className="absolute top-2 left-2 lg:top-3 lg:left-3 rounded-full bg-secondary-color text-light-color px-1 lg:px-2 py-0.5 text-xs lg:text-base font-light">
             Nuevo
           </span>
         )}
         {Number(product.quantity) === 0 && (
-          <span className="absolute top-3 right-3 rounded-full bg-primary-color text-gray-100 px-2 py-0.5 text-base font-light">
+          <span className="absolute top-2 right-2 lg:top-3 lg:right-3 rounded-full bg-primary-color text-light-color px-1 lg:px-2 py-0.5 text-xs lg:text-base font-light">
             Agotado
           </span>
         )}
@@ -86,17 +86,16 @@ export default function ProductCard({
       </div>
       {/* Description */}
       <div className="flex justify-between">
-        <div className="flex flex-col gap-y-[2px]">
+        <div className="flex flex-col gap-y-0 lg:gap-y-[2px]">
           <div>
-            <Link href={`/productos/${product?.slug}`} className="text-primary-color hover:text-secondary-color text-base underline-offset-4 hover:underline duration-300">
+            <Link href={`/productos/${product?.slug}`} className="text-primary-color hover:text-secondary-color text-sm lg:text-base underline-offset-4 hover:underline duration-300">
               {product.name}
             </Link>
           </div>
           <div>
-            <span className="text-gray-strong-color text-sm font-light">
+            <span className="text-gray-strong-color text-xs lg:text-sm font-light">
               {product.category.name ?? "Categoría"}
             </span>
-
           </div>
           <div className="mt-2">
             <span className="border border-gray-300 px-2 py-1 text-xs lg:text-sm">

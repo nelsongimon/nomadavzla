@@ -53,33 +53,30 @@ export default function SlidesMobile({
           }}
           transition={{ duration: 1 }}
         >
-          <div className="absolute bottom-12 w-full flex text-center z-10 justify-center">
+          <div className="absolute top-14 w-full px-5 flex text-center z-10 justify-center">
             <div className="flex flex-col gap-y-2 w-full">
-              <h2 className="font-bold text-primary-color text-xl uppercase">
+              <h2 className="font-bold text-primary-color text-lg uppercase">
                 {slide.title}
               </h2>
-              <p className="font-normal text-primary-color text-base">
+              <p className="font-normal text-primary-color text-sm">
                 {slide.description}
               </p>
               <div className="w-full flex justify-center mt-2">
-                <motion.button
+                <button
                   onClick={() => router.push(slide.action)}
                   className={clsx(`
                     rounded-md
-                    py-2 px-5 
-                    text-base
+                    py-2 px-4
+                    text-sm
                     font-light 
                     bg-primary-color 
                     hover:bg-primary-color/80
                     duration-300
                     text-white`,
                   )}
-                  whileHover={{ scale: [null, 1.5, 1.1] }}
-                  transition={{ duration: 0.3 }}
-                // whileTap={{ scale: 0.95 }}
                 >
                   {slide.label}
-                </motion.button>
+                </button>
               </div>
             </div>
           </div>
@@ -93,14 +90,14 @@ export default function SlidesMobile({
         </motion.div>
       ))}
       {/* Left Arrow */}
-      <div className="absolute z-10 left-1 top-[50%] translate-y-[-100%]">
+      <div className="absolute z-10 left-3 top-[50%] translate-y-[-100%]">
         <IconButton
           icon={<ChevronLeft size={30} className="text-primary-color stroke-[1.5]" />}
           onClick={prevSlide}
         />
       </div>
       {/* Right Arrow */}
-      <div className="absolute z-10 right-1 top-[50%] translate-y-[-100%]">
+      <div className="absolute z-10 right-3 top-[50%] translate-y-[-100%]">
         <IconButton
           icon={<ChevronRight size={30} className="text-primary-color stroke-[1.5]" />}
           onClick={nextSlide}
