@@ -29,7 +29,7 @@ export default async function HomePage() {
       </div>
       <ServiceFeatures />
       <Container>
-        <NewArrivals />
+        {/* <NewArrivals /> */}
         <GenreBillboards />
         <ProductListFeatured
           products={featuredProducts}
