@@ -54,14 +54,46 @@ export default function SlidesMobile({
           transition={{ duration: 1 }}
         >
           <div className="absolute top-14 w-full px-5 flex text-center z-10 justify-center">
+            {/* Content */}
             <div className="flex flex-col gap-y-2 w-full">
-              <h2 className="font-bold text-primary-color text-lg uppercase">
+              <motion.h2 className={clsx(`
+              font-bold text-lg uppercase`,
+                slide.color === "black" && "text-primary-color",
+                slide.color === "white" && "text-white",
+                slide.color === "light" && "text-secondary-color"
+              )}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{
+                  opacity: index === currentIndex ? 1 : 0,
+                  y: index === currentIndex ? 0 : 50
+                }}
+                transition={{ duration: 0.5, delay: 1 }}
+              >
                 {slide.title}
-              </h2>
-              <p className="font-normal text-primary-color text-sm">
+              </motion.h2>
+              <motion.p className={clsx(`
+                font-normal text-sm`,
+                slide.color === "black" && "text-primary-color",
+                slide.color === "white" && "text-white",
+                slide.color === "light" && "text-secondary-color"
+              )}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{
+                  opacity: index === currentIndex ? 1 : 0,
+                  y: index === currentIndex ? 0 : 50
+                }}
+                transition={{ duration: 0.5, delay: 1.4 }}
+              >
                 {slide.description}
-              </p>
-              <div className="w-full flex justify-center mt-2">
+              </motion.p>
+              <motion.div className="w-full flex justify-center mt-2"
+                initial={{ opacity: 0, y: 50 }}
+                animate={{
+                  opacity: index === currentIndex ? 1 : 0,
+                  y: index === currentIndex ? 0 : 50
+                }}
+                transition={{ duration: 0.5, delay: 1.6 }}
+              >
                 <button
                   onClick={() => router.push(slide.action)}
                   className={clsx(`
@@ -69,15 +101,15 @@ export default function SlidesMobile({
                     py-2 px-4
                     text-sm
                     font-light 
-                    bg-primary-color 
-                    hover:bg-primary-color/80
-                    duration-300
-                    text-white`,
+                    duration-300`,
+                    slide.color === "black" && "bg-primary-color hover:bg-primary-color/80 text-white",
+                    slide.color === "white" && "bg-white hover:bg-white/80 text-primary-color",
+                    slide.color === "light" && "bg-light-color hover:bg-light-color/80 text-secondary-color",
                   )}
                 >
                   {slide.label}
                 </button>
-              </div>
+              </motion.div>
             </div>
           </div>
           <Image

@@ -82,5 +82,6 @@ export type Slide = {
   label: string;
   action: string;
   position: string;
+  color: string;
 }
 

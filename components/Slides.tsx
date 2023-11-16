@@ -63,7 +63,12 @@ export default function Slides({
             )}>
             {/* Content */}
             <div className="flex flex-col gap-y-4 max-w-lg w-full mx-[150px]">
-              <motion.h2 className="font-bold text-primary-color text-3xl uppercase"
+              <motion.h2 className={clsx(`
+                font-bold text-3xl uppercase`,
+                slide.color === "black" && "text-primary-color",
+                slide.color === "white" && "text-white",
+                slide.color === "light" && "text-secondary-color"
+              )}
                 initial={{ opacity: 0, y: 100 }}
                 animate={{
                   opacity: index === currentIndex ? 1 : 0,
@@ -73,7 +78,12 @@ export default function Slides({
               >
                 {slide.title}
               </motion.h2>
-              <motion.p className="font-normal text-primary-color text-xl"
+              <motion.p className={clsx(`
+                font-normal text-xl`,
+                slide.color === "black" && "text-primary-color",
+                slide.color === "white" && "text-white",
+                slide.color === "light" && "text-secondary-color"
+              )}
                 initial={{ opacity: 0, y: 100 }}
                 animate={{
                   opacity: index === currentIndex ? 1 : 0,
@@ -91,21 +101,21 @@ export default function Slides({
                 }}
                 transition={{ duration: 1, delay: 1.6 }}
               >
-                <motion.button
+                <button
                   onClick={() => router.push(slide.action)}
                   className={clsx(`
                     rounded-md
                     py-2 px-7 
                     text-lg 
                     font-light 
-                    bg-primary-color 
-                    hover:bg-primary-color/80
-                    duration-300
-                    text-white`,
+                    duration-300`,
+                    slide.color === "black" && "bg-primary-color hover:bg-primary-color/80 text-white",
+                    slide.color === "white" && "bg-white hover:bg-white/80 text-primary-color",
+                    slide.color === "light" && "bg-light-color hover:bg-light-color/80 text-secondary-color",
                   )}
                 >
                   {slide.label}
-                </motion.button>
+                </button>
               </motion.div>
             </div>
           </div>
