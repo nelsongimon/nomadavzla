@@ -53,7 +53,7 @@ export default function SlidesMobile({
           }}
           transition={{ duration: 1 }}
         >
-          <div className="absolute top-14 w-full px-5 flex text-center z-10 justify-center">
+          <div className="absolute top-12 w-full px-5 flex text-center z-10 justify-center">
             {/* Content */}
             <div className="flex flex-col gap-y-2 w-full">
               <motion.h2 className={clsx(`
