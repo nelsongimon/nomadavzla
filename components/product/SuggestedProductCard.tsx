@@ -44,7 +44,7 @@ export default function SuggestedProductCard({
           <Link
             href={`/productos/${product?.slug}`}
             onClick={handleClickSearchProduct}
-            className="text-primary-color hover:text-secondary-color underline-offset-4 hover:underline duration-300 text-sm"
+            className="text-primary-color hover:text-secondary-color underline-offset-4 hover:underline duration-300 text-xs lg:text-base"
           >
             {product.name}
           </Link>

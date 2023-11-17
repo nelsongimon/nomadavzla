@@ -180,7 +180,7 @@ export const menuMobileItems = [
 
 export const genreBillboard = {
   ladies: {
-    image: `${path}images/lady.png`,
+    image: `${path}images/ladyGenre.png`,
     titleGray: "Lentes",
     titleBlack: "Damas",
     label: "Ver Modelos",
