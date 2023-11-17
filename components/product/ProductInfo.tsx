@@ -18,20 +18,20 @@ export default function ProductInfo({
   previewModal = false,
 }: ProductInfoProps) {
 
-  const [currentQuantity, setcurrentQuantity] = useState(1);
+  const [currentQuantity, setCurrentQuantity] = useState(1);
 
   const onPlusQuantity = () => {
-    if (currentQuantity === product.quantity) {
+    if (currentQuantity === Number(product.quantity)) {
       return;
     }
-    setcurrentQuantity((current) => current + 1);
+    setCurrentQuantity((current) => current + 1);
   }
 
   const onMinusQuantity = () => {
     if (currentQuantity === 1) {
       return;
     }
-    setcurrentQuantity((current) => current - 1);
+    setCurrentQuantity((current) => current - 1);
   }
   return (
     <div className="flex flex-col gap-y-5">

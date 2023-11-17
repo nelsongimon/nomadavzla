@@ -17,7 +17,8 @@ export default function GenreBillboards() {
       <div className="flex flex-col-reverse gap-y-3 h-[420px] lg:h-full lg:grid lg:grid-cols-2 bg-gray-color rounded-xl px-3 overflow-hidden group">
         <div className="relative aspect-squar w-full h-[300px]">
           <Image
-            fill
+            width={718}
+            height={800}
             src={genreBillboard.gentlemen.image}
             alt="Image genre"
             className="
@@ -57,7 +58,8 @@ export default function GenreBillboards() {
       <div className="flex flex-col-reverse gap-y-3 h-[420px] lg:h-full lg:grid lg:grid-cols-2 bg-gray-color rounded-xl px-3 overflow-hidden group">
         <div className="relative aspect-squar w-full h-[300px]">
           <Image
-            fill
+            width={718}
+            height={800}
             src={genreBillboard.ladies.image}
             alt="Image genre"
             className="

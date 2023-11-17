@@ -19,7 +19,7 @@ export default function FiveInOneGlassesSection() {
           width={800}
           height={500}
           src={glassesFiveInOneData.image}
-          alt="Image"
+          alt="Glasses"
           className="w-full"
         />
       </div>

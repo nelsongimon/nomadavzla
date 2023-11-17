@@ -113,7 +113,8 @@ export default function SlidesMobile({
             </div>
           </div>
           <Image
-            fill
+            width={920}
+            height={1080}
             src={addAbsolutePathImage(slide.mobileImage)}
             alt={slide.title}
             className="object-cover object-center"

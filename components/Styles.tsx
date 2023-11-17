@@ -71,7 +71,8 @@ export default function Styles({
           <SwiperSlide key={index}>
             <div className="relative h-[320px]">
               <Image
-                fill
+                width={775}
+                height={330}
                 src={addAbsolutePathImage(item.image)}
                 alt="styles"
                 className="

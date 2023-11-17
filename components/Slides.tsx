@@ -120,7 +120,8 @@ export default function Slides({
             </div>
           </div>
           <Image
-            fill
+            width={2888}
+            height={1080}
             src={addAbsolutePathImage(slide.desktopImage)}
             alt={slide.title}
             className="object-cover object-center"

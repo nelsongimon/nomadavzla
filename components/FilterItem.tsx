@@ -98,7 +98,8 @@ export default function FilterItem({
             {value.image && (
               <div className="relative aspect-video w-8">
                 <Image
-                  fill
+                  width={150}
+                  height={68}
                   src={addAbsolutePathImage(value.image)}
                   alt="Attr image"
                   className="object-contain"

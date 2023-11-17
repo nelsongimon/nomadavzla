@@ -29,7 +29,8 @@ export default function SuggestedProductCard({
       ">
         <Link href={`/productos/${product?.slug}`} onClick={handleClickSearchProduct}>
           <Image
-            fill
+            width={1000}
+            height={740}
             src={addAbsolutePathImage(product.images[0].image)}
             alt="Product Image"
             className="
