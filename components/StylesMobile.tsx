@@ -65,8 +65,7 @@ export default function StylesMobile({
           <SwiperSlide key={index}>
             <div className="relative h-[320px]">
               <Image
-                width={775}
-                height={330}
+                fill
                 src={addAbsolutePathImage(item.image)}
                 alt="styles"
                 className="

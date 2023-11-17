@@ -21,7 +21,7 @@ export default function SuggestedProductCard({
     <div className="space-y-2">
       {/* Image and actions */}
       <div className="
-        aspect-square
+        aspect-video
         bg-gray-color
         relative
         group
@@ -29,8 +29,7 @@ export default function SuggestedProductCard({
       ">
         <Link href={`/productos/${product?.slug}`} onClick={handleClickSearchProduct}>
           <Image
-            width={1000}
-            height={740}
+            fill
             src={addAbsolutePathImage(product.images[0].image)}
             alt="Product Image"
             className="

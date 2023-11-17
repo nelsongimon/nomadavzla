@@ -37,8 +37,7 @@ export default function ProductCard({
       ">
         <Link href={`/productos/${product?.slug}`}>
           <Image
-            width={1000}
-            height={740}
+            fill
             src={addAbsolutePathImage(product.images[0].image)}
             alt="Product Image"
             className="
