@@ -57,7 +57,7 @@ export default function SlidesMobile({
             {/* Content */}
             <div className="flex flex-col gap-y-2 w-full">
               <motion.h2 className={clsx(`
-              font-bold text-xl uppercase`,
+              font-bold text-xl uppercase leading-snug`,
                 slide.color === "black" && "text-primary-color",
                 slide.color === "white" && "text-white",
                 slide.color === "light" && "text-secondary-color"
@@ -72,7 +72,7 @@ export default function SlidesMobile({
                 {slide.title}
               </motion.h2>
               <motion.p className={clsx(`
-                font-normal text-base`,
+                font-normal text-base leading-snug`,
                 slide.color === "black" && "text-primary-color",
                 slide.color === "white" && "text-white",
                 slide.color === "light" && "text-secondary-color"
