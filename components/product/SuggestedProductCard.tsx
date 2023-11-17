@@ -27,7 +27,7 @@ export default function SuggestedProductCard({
         group
         cursor-pointer
       ">
-        <Link href={`/productos/${product?.slug}`} onClick={handleClickSearchProduct}>
+        <Link href={`/productos/${product.slug}`} onClick={handleClickSearchProduct}>
           <Image
             fill
             src={addAbsolutePathImage(product.images[0].image)}

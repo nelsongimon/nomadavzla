@@ -120,7 +120,6 @@ export default function SearchResults({
                             if (mobile && index > 5) {
                               return null;
                             }
-
                             return (
                               <SuggestedProductCard
                                 key={product.id}

@@ -75,6 +75,9 @@ export default function Search({
   }
 
   const handleHidden = (hasQuery: boolean) => {
+    if (mobile) {
+      return;
+    }
     if (hasQuery) {
       setShowResults(false);
       return;
