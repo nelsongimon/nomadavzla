@@ -6,7 +6,7 @@ import "swiper/swiper-bundle.css";
 import "swiper/css/navigation";
 import ProductCard from "../ui/ProductCard";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Navigation } from "swiper/modules";
+import { Navigation, Autoplay } from "swiper/modules";
 
 interface RelatedProductsMobileProps {
   products: Product[];
@@ -16,7 +16,7 @@ export default function RelatedProductsMobile({
   products
 }: RelatedProductsMobileProps) {
   return (
-    <div className="relative px-14">
+    <div className="relative">
       <div className="mb-5 lg:mb-10">
         <h3 className="text-2xl text-primary-color font-semibold text-center">
           Productos Relacionados
@@ -24,14 +24,21 @@ export default function RelatedProductsMobile({
       </div>
       <Swiper
         spaceBetween={30}
-        slidesPerView={1}
+        slidesPerView={2}
+        loop={true}
+        autoplay={{
+          delay: 1500,
+          disableOnInteraction: false,
+          reverseDirection: false,
+
+        }}
         grabCursor={true}
         navigation={{
           enabled: true,
           nextEl: '.next',
           prevEl: '.prev',
         }}
-        modules={[Navigation]}
+        modules={[Navigation, Autoplay]}
         className="h-[400px]"
 
       >
@@ -42,7 +49,7 @@ export default function RelatedProductsMobile({
 
         ))}
       </Swiper>
-      <div className="absolute flex gap-x-3 z-10 left-0 top-[50%] translate-y-[-50%]">
+      <div className="absolute flex gap-x-3 z-10 left-[35%] bottom-0 translate-y-[-120%]">
         <span className="  
             prev      
             rounded-full
@@ -58,7 +65,7 @@ export default function RelatedProductsMobile({
           <ChevronLeft size={30} className="text-white stroke-[1.5]" />
         </span>
       </div>
-      <div className="absolute flex gap-x-3 z-10 right-0 top-[50%] translate-y-[-50%]">
+      <div className="absolute flex gap-x-3 z-10 right-[35%] bottom-0 translate-y-[-120%]">
         <span className=" 
             next       
             rounded-full

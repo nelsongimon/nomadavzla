@@ -36,19 +36,19 @@ export default function StylesMobile({
         effect={"coverflow"}
         grabCursor={true}
         centeredSlides={true}
+        spaceBetween={0}
         loop={true}
         autoplay={{
           delay: 1500,
           disableOnInteraction: false,
-          reverseDirection: true,
-
+          reverseDirection: false,
         }}
         slidesPerView={3}
         coverflowEffect={{
           rotate: 0,
           stretch: -30,
           depth: 150,
-          modifier: 1.5,
+          modifier: 1.2,
           slideShadows: false,
 
         }}
@@ -59,7 +59,7 @@ export default function StylesMobile({
 
         }}
         modules={[EffectCoverflow, Navigation, Autoplay]}
-        className="relative max-w-5xl h-[800px]"
+        className="relative mt-5 w-full h-[800px]"
       >
         {styles.map((item, index) => (
           <SwiperSlide key={index}>
