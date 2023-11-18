@@ -10,6 +10,16 @@ import NotFound from "@/components/ui/NotFound";
 
 export const revalidate = 0;
 
+export async function generateMetadata(
+  { params }: { params: IParams }
+) {
+  const { product } = await getProduct(params.slug);
+  return {
+    title: product.name + " | Nomada ®",
+    description: product?.description,
+  }
+}
+
 interface IParams {
   slug: string;
 }
