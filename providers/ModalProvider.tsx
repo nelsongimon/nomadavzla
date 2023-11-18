@@ -2,6 +2,7 @@
 
 import MobileSidebarFilter from "@/components/MobileSidebarFilter";
 import MobileSidebarMenu from "@/components/MobileSidebarFilter";
+import ImageModal from "@/components/ui/ImageModal";
 import PreviewModal from "@/components/ui/PreviewModal";
 import { useState, useEffect } from "react";
 
@@ -20,6 +21,7 @@ export default function ModalProvider() {
     <>
       <PreviewModal />
       <MobileSidebarFilter />
+      <ImageModal />
     </>
   );
 }

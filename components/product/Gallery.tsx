@@ -6,6 +6,7 @@ import { Image as ImageType } from "@/types";
 import { Tab } from "@headlessui/react";
 import GalleryTab from "./GalleryTab";
 import { addAbsolutePathImage } from "@/lib/utils";
+import useExpandImage from "@/hooks/useExpandImage";
 
 interface GalleryProps {
   images: ImageType[];
@@ -16,6 +17,11 @@ export default function Gallery({
   images,
   previewModal = false,
 }: GalleryProps) {
+  const onOpen = useExpandImage(state => state.onOpen);
+
+  const handleExpandImage = (image: string) => {
+    onOpen(image);
+  }
   return (
     <Tab.Group as="div" className="flex flex-col-reverse">
       <div className="
@@ -34,14 +40,18 @@ export default function Gallery({
       <Tab.Panels>
         {images.map((image) => (
           <Tab.Panel key={image.id}>
-            <div className="
-              aspect-video
-              relative 
-              h-full 
-              w-full 
-              sm:rounded-lg 
-              overflow-hidden
-            ">
+            <div
+              onClick={() => handleExpandImage(addAbsolutePathImage(image.image))}
+              className="
+                aspect-video
+                relative 
+                h-full 
+                w-full 
+                sm:rounded-lg 
+                overflow-hidden
+                cursor-pointer
+              "
+            >
               <Image
                 fill
                 alt={image.image}
