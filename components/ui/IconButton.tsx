@@ -23,7 +23,7 @@ export default function IconButton({
         bg-white
         shadow-md
         p-2
-        hover:scale-110
+        lg:hover:scale-110
         transition
       `,)}
     >
