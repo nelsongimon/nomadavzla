@@ -1,5 +1,6 @@
 "use client";
 
+import FavoriteSidebar from "@/components/FavoriteSidebar";
 import MobileSidebarFilter from "@/components/MobileSidebarFilter";
 import MobileSidebarMenu from "@/components/MobileSidebarFilter";
 import ImageModal from "@/components/ui/ImageModal";
@@ -21,6 +22,7 @@ export default function ModalProvider() {
     <>
       <PreviewModal />
       <MobileSidebarFilter />
+      <FavoriteSidebar />
       <ImageModal />
     </>
   );
