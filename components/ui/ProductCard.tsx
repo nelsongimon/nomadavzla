@@ -1,14 +1,17 @@
 "use client";
 
 import { Expand, ShoppingCart, Heart } from "lucide-react";
+import { IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
 import { MouseEventHandler } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 import usePreviewModal from "@/hooks/usePreviewModal";
 import IconButton from "./IconButton";
 import { Product } from "@/types";
 import Link from "next/link";
 import { addAbsolutePathImage, formatPrice } from "@/lib/utils";
+import useFavorite from "@/hooks/useFavorite";
 
 interface ProductCardProps {
   product: Product;
@@ -18,10 +21,21 @@ export default function ProductCard({
   product
 }: ProductCardProps) {
   const previewModal = usePreviewModal();
+  const addItem = useFavorite((state) => state.addItem);
+  const removeItem = useFavorite((state) => state.removeItem);
+  const products = useFavorite((state) => state.items);
+  const isFavorite = products.some((item) => item.id === product.id);
 
   const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
     event.stopPropagation();
     previewModal.onOpen(product);
+  }
+
+  const addToFavorite = (product: Product) => {
+    addItem(product);
+  }
+  const removeToFavorite = (id: string) => {
+    removeItem(id);
   }
 
   return (
@@ -105,9 +119,29 @@ export default function ProductCard({
         </div>
         <div className="flex flex-col justify-between items-end">
           <div>
-            <button>
-              <Heart size={25} className="text-primary-color stroke-[1.5]" />
-            </button>
+            {isFavorite ? (
+              <motion.button onClick={() => removeToFavorite(product.id)}
+                whileHover={{
+                  scale: 1.1
+                }}
+                whileTap={{
+                  scale: 0.85
+                }}
+              >
+                <IoMdHeart className="text-secondary-color stroke-[1] text-[27px] duration-300 hover:scale-105" />
+              </motion.button>
+            ) : (
+              <motion.button onClick={() => addToFavorite(product)}
+                whileHover={{
+                  scale: 1.1
+                }}
+                whileTap={{
+                  scale: 0.85
+                }}
+              >
+                <IoMdHeartEmpty className="text-primary-color stroke-[1] text-[27px] duration-300" />
+              </motion.button>
+            )}
           </div>
           <div className="flex gap-x-1 items-start">
             <span className="font-medium text-xl lg:text-2xl">${formatPrice(product.salePrice)[0]}</span>
