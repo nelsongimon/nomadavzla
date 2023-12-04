@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { Product } from "@/types";
 import { persist, createJSONStorage } from "zustand/middleware";
 import { toast } from "react-hot-toast";
+import { toastStyle } from "@/lib/utils";
 
 interface FavoriteStore {
   items: Product[];
@@ -18,15 +19,15 @@ const useFavorite = create(
       const existingItem = currentItems.find((item) => item.id === data.id);
 
       if (existingItem) {
-        return toast("Ya en Favoritos");
+        return toast.error("Ya en Favoritos", toastStyle);
       }
 
       set({ items: [...get().items, data]});
-      toast.success("Agregado a Favoritos");
+      toast.success("Agregado a Favoritos", toastStyle);
     },
     removeItem: (id: string) => {
       set({ items: [...get().items.filter((item) => item.id !== id)]});
-    toast.success("Eliminado de Favoritos");
+    toast.success("Eliminado de Favoritos", toastStyle);
     }, 
     removeAll: () => set({ items: [] })
   }), {

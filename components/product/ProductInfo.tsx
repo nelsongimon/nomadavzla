@@ -7,6 +7,7 @@ import Quatity from "@/components/ui/Quatity";
 import Button from "@/components/ui/Button";
 import { Product } from "@/types";
 import { formatPrice } from "@/lib/utils";
+import useShoppingCart from "@/hooks/useShoppingCart";
 
 interface ProductInfoProps {
   product: Product;
@@ -19,6 +20,17 @@ export default function ProductInfo({
 }: ProductInfoProps) {
 
   const [currentQuantity, setCurrentQuantity] = useState(1);
+  const addItemToCart = useShoppingCart(state => state.addItem);
+
+  const addToCart = () => {
+    const totalAmount = parseFloat(product.salePrice as string) * currentQuantity;
+    addItemToCart({
+      id: product.id,
+      quantity: currentQuantity,
+      price: Number(product.salePrice),
+      total: totalAmount.toFixed(2)
+    });
+  }
 
   const onPlusQuantity = () => {
     if (currentQuantity === Number(product.quantity)) {
@@ -84,7 +96,7 @@ export default function ProductInfo({
               onPlusQuantity={onPlusQuantity}
             />
             <Button
-              onClick={() => { }}
+              onClick={addToCart}
               variant="default"
               size={previewModal ? "default" : "large"}
             >

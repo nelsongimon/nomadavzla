@@ -12,6 +12,7 @@ import { Product } from "@/types";
 import Link from "next/link";
 import { addAbsolutePathImage, formatPrice } from "@/lib/utils";
 import useFavorite from "@/hooks/useFavorite";
+import useShoppingCart from "@/hooks/useShoppingCart";
 
 interface ProductCardProps {
   product: Product;
@@ -21,21 +22,29 @@ export default function ProductCard({
   product
 }: ProductCardProps) {
   const previewModal = usePreviewModal();
-  const addItem = useFavorite((state) => state.addItem);
-  const removeItem = useFavorite((state) => state.removeItem);
-  const products = useFavorite((state) => state.items);
-  const isFavorite = products.some((item) => item.id === product.id);
+  const addItemToCart = useShoppingCart(state => state.addItem);
+  const addItemToFavorite = useFavorite(state => state.addItem);
+  const removeItemToFavorite = useFavorite(state => state.removeItem);
+  const products = useFavorite(state => state.items);
+  const isFavorite = products.some(item => item.id === product.id);
 
   const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
     event.stopPropagation();
     previewModal.onOpen(product);
   }
-
-  const addToFavorite = (product: Product) => {
-    addItem(product);
+  const addToCart = () => {
+    addItemToCart({
+      id: product.id,
+      quantity: 1,
+      price: Number(product.salePrice),
+      total: parseFloat(product.salePrice).toFixed(2)
+    });
   }
-  const removeToFavorite = (id: string) => {
-    removeItem(id);
+  const addToFavorite = () => {
+    addItemToFavorite(product);
+  }
+  const removeToFavorite = () => {
+    removeItemToFavorite(product.id);
   }
 
   return (
@@ -93,7 +102,7 @@ export default function ProductCard({
             />
             <IconButton
               icon={<ShoppingCart size={25} className="text-primary-color stroke-[1.5]" />}
-              onClick={() => { }}
+              onClick={addToCart}
             />
           </div>
         </div>
@@ -120,7 +129,7 @@ export default function ProductCard({
         <div className="flex flex-col justify-between items-end">
           <div>
             {isFavorite ? (
-              <motion.button onClick={() => removeToFavorite(product.id)}
+              <motion.button onClick={removeToFavorite}
                 whileHover={{
                   scale: 1.1
                 }}
@@ -131,7 +140,7 @@ export default function ProductCard({
                 <IoMdHeart className="text-secondary-color stroke-[1] text-[27px] duration-300 hover:scale-105" />
               </motion.button>
             ) : (
-              <motion.button onClick={() => addToFavorite(product)}
+              <motion.button onClick={addToFavorite}
                 whileHover={{
                   scale: 1.1
                 }}
