@@ -85,3 +85,10 @@ export type Slide = {
   color: string;
 }
 
+export type CartProduct = {
+  id: string;
+  quantity: number;
+  price: number;
+  total: string;
+}
+

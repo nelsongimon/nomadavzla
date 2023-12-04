@@ -14,12 +14,11 @@ const config: Config = {
       },
         colors: {
           "primary-color": "#000000",
-          // "secondary-color": "#d39d4e",
+          "secondary-color": "#C99400",
           "gray-color": "#F6F6F6",
           "gray-strong-color": "#797979",
           "light-color": "#FEF6D8",
           "strong-color": "#C99400",
-          "secondary-color": "#C99400"
         },
         keyframes: {
           "accordion-down": {

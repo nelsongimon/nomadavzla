@@ -22,10 +22,20 @@ export function slugify(str: string): string {
 export function formatPrice(string: string): string[] {
   if (string.includes(".")) {
     const array = string.split(".");
-    // Remove trailing zeros from the decimal
-    // array[1] = array[1].replace(/0+$/, ""); 
     return array;
   } else {
     return [string];
+  }
+}
+
+export const toastStyle = { 
+  style: {
+    border: "1px solid #C99400",
+    padding: "10px 16px",
+    color: "#C99400",
+  },
+  iconTheme: {
+    primary: "#C99400",
+    secondary: "#FEF6D8",
   }
 }
