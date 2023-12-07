@@ -11,6 +11,7 @@ import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function ShoppingCartProducts() {
+  const router = useRouter();
   const [isMounted, setIsMounted] = useState(false);
   const products = useShoppingCart(state => state.items);
   const updatePage = useCurrentPage(state => state.updatePage);
@@ -59,7 +60,7 @@ export default function ShoppingCartProducts() {
               <Button
                 variant="outline"
                 size="default"
-                onClick={() => { }}
+                onClick={handleClickLink}
                 className="flex gap-x-1 items-center"
               >
                 <ChevronLeft size={20} className="stroke-[1.5]" />
@@ -70,7 +71,7 @@ export default function ShoppingCartProducts() {
           <div className="flex flex-col gap-y-7 lg:flex-row gap-x-5 items-center">
             <div className="flex justify-between gap-x-2">
               <h4 className="text-2xl font-semibold">
-                Monto Total:
+                Monto a Pagar:
               </h4>
               <h4 className="text-2xl font-semibold text-secondary-color w-28 text-right">
                 ${totalToPay}
@@ -79,10 +80,10 @@ export default function ShoppingCartProducts() {
             <Button
               variant="secondary"
               size="default"
-              onClick={() => { }}
+              onClick={() => router.push("/finalizar-compra")}
               className="flex gap-x-1 items-center"
             >
-              Proceder a Pagar <ChevronRight size={20} className="stroke-[1.5]" />
+              Finalizar Compra <ChevronRight size={20} className="stroke-[1.5]" />
             </Button>
           </div>
         </div>
