@@ -33,6 +33,7 @@ export default function ShippingCompanyForm({
 }: ShippingCompanyFormProps) {
   const states = useZoomShipping();
   console.log(states);
+  console.log("version 1");
   return (
     <div className="flex flex-col gap-y-7 mt-8 mb-3">
       <h3 className="text-center font-semibold text-xl text-primary-color">

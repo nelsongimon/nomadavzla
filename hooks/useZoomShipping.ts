@@ -12,11 +12,12 @@ export default function useZoomShipping() {
     const getZoomShipping = async () => {
       try {
         setIsLoading(true);
-        const res = await axios.get(`${baseUrl}/getEstados`, {
-          httpsAgent: new https.Agent({  
-            rejectUnauthorized: false
-          })
-        });
+        const res = await axios.get(`${baseUrl}/getEstados`);
+        // const res = await axios.get(`${baseUrl}/getEstados`, {
+        //   httpsAgent: new https.Agent({  
+        //     rejectUnauthorized: false
+        //   })
+        // });
         setData(res.data.entidadRespuesta);
         
       } catch (error) {
