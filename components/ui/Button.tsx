@@ -7,7 +7,7 @@ interface ButtonProps {
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   size?: "default" | "small" | "large" | "icon" | "none";
   variant?: "default" | "outline" | "secondary" | "ghost" | "link" | "gray" | "white";
-  type?: string;
+  type?: "button" | "submit" | "reset";
   fullWidth?: boolean;
   disabled?: boolean;
   className?: string;
@@ -20,13 +20,15 @@ export default function Button({
   size = "default",
   variant = "default",
   disabled = false,
-  className
+  className,
+  type = "button",
 }: ButtonProps) {
 
   return (
     <button
       onClick={onClick}
       disabled={disabled}
+      type={type}
       className={clsx(
         "rounded-md flex gap-x-1 items-center duration-300",
         size === "default" ? "py-2 px-4" : "",

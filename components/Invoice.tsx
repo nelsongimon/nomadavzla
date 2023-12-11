@@ -26,14 +26,14 @@ export default function Invoice() {
   return (
     <div className="bg-gray-color px-3 py-7 rounded-lg">
       <div className="flex items-center justify-between mb-10 px-5 border-b border-gray-200 pb-5">
-        <h3 className="text-primary-color font-semibold text-xl lg:text-2xl text-center">
+        <h3 className="text-primary-color font-semibold text-xl lg:text-xl text-center">
           Orden de Compra
         </h3>
         <Button
           variant="outline"
           size="default"
           onClick={() => router.push("/carrito")}
-          className="flex gap-x-1 items-center"
+          className="flex gap-x-1 items-center text-base"
         >
           <ChevronLeft size={20} className="stroke-[1.5]" />
           Volver al carrito
@@ -46,7 +46,7 @@ export default function Invoice() {
       </div>
       <div className="flex justify-between items-end px-5 mt-12 border-t border-gray-200 pt-5">
         <div>
-          <h3 className="font-semibold text-primary-color text-2xl">
+          <h3 className="font-semibold text-primary-color text-xl">
             Total a Pagar:
           </h3>
         </div>

@@ -1,7 +1,8 @@
 import CheckoutProcess from "@/components/CheckoutProcess";
 import Invoice from "@/components/Invoice";
-import ShoppingCartProducts from "@/components/product/ShoppingCartProducts";
 import Container from "@/components/ui/Container";
+
+export const revalidate = 0;
 
 export default function CheckoutPage() {
   return (
@@ -15,11 +16,11 @@ export default function CheckoutPage() {
             Text here
           </p>
         </div>
-        <div className="grid grid-cols-12 gap-x-10">
+        <div className="grid grid-cols-12 gap-x-12">
           <div className="col-span-7">
             <CheckoutProcess />
           </div>
-          <div className="col-span-5">
+          <div className="col-span-5 ml-4">
             <Invoice />
           </div>
         </div>
