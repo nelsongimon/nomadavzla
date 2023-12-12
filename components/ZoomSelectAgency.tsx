@@ -25,14 +25,14 @@ export default function ZoomSelectAgency() {
   }
 
   useEffect(() => {
-    axios.get(process.env.NEXT_PUBLIC_API_SERVER! + "/api/zoom/states")
+    axios.get("/api/zoom/states")
       .then(res => {
         setState(res.data.states);
       });
   }, []);
 
   useEffect(() => {
-    axios.get(process.env.NEXT_PUBLIC_API_SERVER! + `/api/zoom/states/${selectedState}/agencies`)
+    axios.get(`/api/zoom/states/${selectedState}/agencies`)
       .then(res => {
         setAgencies(res.data.agencies);
       });
