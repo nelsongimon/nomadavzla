@@ -24,7 +24,7 @@ const formSchema = z.object({
   lastName: z.string().min(2, {
     message: "Tu apellido debe contener al menos 2 caracteres.",
   }),
-})
+});
 export default function PersonalInformationForm() {
   const router = useRouter();
   const setCurrentStep = useCheckoutSteps(step => step.setCurrentStep);

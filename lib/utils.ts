@@ -9,6 +9,10 @@ export function convertToCapitalize(text: string) {
   return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
+export function convertToCapitalizeFirstWord(text: string) {
+  return text.toLowerCase().replace(/(^|\s)\S/g, (letter) => letter.toUpperCase());
+}
+
 export function addAbsolutePathImage(image: string) {
   return process.env.NEXT_PUBLIC_IMAGE_PATH + image;
 }

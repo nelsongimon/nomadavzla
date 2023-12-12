@@ -24,7 +24,7 @@ export default function Invoice() {
     return null;
   }
   return (
-    <div className="bg-gray-color px-3 py-7 rounded-lg">
+    <div className="bg-gray-color px-3 py-7 rounded-lg sticky top-[100px]">
       <div className="flex items-center justify-between mb-10 px-5 border-b border-gray-200 pb-5">
         <h3 className="text-primary-color font-semibold text-xl lg:text-xl text-center">
           Orden de Compra

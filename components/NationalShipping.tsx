@@ -1,7 +1,7 @@
 "use client";
 
+import ZoomSelectAgency from "./ZoomSelectAgency";
 import Image from "next/image";
-import ShippingCompanyForm from "./ShippingCompanyForm";
 
 export default function NationalShipping() {
   return (
@@ -21,7 +21,7 @@ export default function NationalShipping() {
           </div>
         </div>
         <div>
-          <ShippingCompanyForm company="zoom" />
+          <ZoomSelectAgency />
         </div>
       </div>
     </div>
