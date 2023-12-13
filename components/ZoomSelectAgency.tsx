@@ -41,7 +41,7 @@ export default function ZoomSelectAgency() {
   return (
     <div className="flex flex-col gap-y-7 mt-8 mb-10">
       <h3 className="text-center font-semibold text-xl text-primary-color">
-        Ecuentra tu oficina Zoom más cercana
+        Encuentra tu oficina Zoom más cercana
       </h3>
       <div className="flex flex-col gap-y-5">
         <Select onValueChange={(value) => handleSelectStare(value)}>

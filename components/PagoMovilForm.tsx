@@ -2,7 +2,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import Button from "./ui/Button";
-import { FileEdit } from "lucide-react";
+import { Copy, FileEdit, FileImage } from "lucide-react";
 import * as z from "zod";
 import {
   Form,
@@ -13,8 +13,10 @@ import {
   FormMessage,
 } from "@/components/ui/Form";
 import { Input } from "@/components/ui/Input";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import Image from "next/image";
+import toast from "react-hot-toast";
+import { toastStyle } from "@/lib/utils";
 
 const formSchema = z.object({
   referenceNumber: z.string({ required_error: "El número de referencia es requerido." }).regex(/^[0-9]+$/, {
@@ -23,13 +25,7 @@ const formSchema = z.object({
   date: z.string({ required_error: "La fecha es requerida." }),
 });
 
-interface PagoMovilFormProps {
-  onClose: (value: boolean) => void;
-}
-
-export default function PagoMovilForm({
-  onClose
-}: PagoMovilFormProps) {
+export default function PagoMovilForm() {
   const [imagePreview, setImagePreview] = useState("");
   const [image, setImage] = useState<File>();
   const [invalidImage, setInvalidImage] = useState("");
@@ -42,7 +38,6 @@ export default function PagoMovilForm({
   });
 
   const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
-    console.log("image");
     if (event.target.files) {
       const file = event.target.files[0];
       if (!file.type.startsWith('image/')) {
@@ -85,8 +80,76 @@ export default function PagoMovilForm({
 
   }
 
+  useEffect(() => {
+    const component = document.getElementById("pagoMovil");
+    const posicion = component?.offsetTop! + 210;
+    window.scrollTo({
+      top: posicion,
+      behavior: "smooth"
+    });
+  }, []);
+
+  const handleCopy = (copy: string, message: string) => {
+    navigator.clipboard.writeText(copy);
+    toast.success(message, toastStyle);
+  }
+
   return (
-    <div className="flex flex-col items-center gap-y-5 w-full px-10 py-3">
+    <div id="pagoMovil" className="flex flex-col items-center gap-y-5 w-full px-10 py-3">
+      {/* Image */}
+      <div className="relative h-[30px] w-full mb-2">
+        <Image fill alt="" src={`${process.env.NEXT_PUBLIC_IMAGE_PATH}images/pagoMovil.png`}
+          className="object-contain"
+        />
+      </div>
+      {/* Payment information */}
+      <div className="mb-4 bg-gray-color w-full rounded-md py-3 px-10">
+        <h3 className="text-xl text-center font-semibold text-primary-color mb-4">
+          Datos para el pago
+        </h3>
+        <div className="flex flex-col gap-y-4 pb-2">
+          <div className="flex gap-x-3">
+            <h4 className="text-base font-semibold">
+              Banco:
+            </h4>
+            <div className="flex gap-x-3">
+              <p className="text-base font-normal">
+                Banco Mercantil
+              </p>
+            </div>
+          </div>
+          <div className="flex gap-x-3">
+            <h4 className="text-base font-semibold">
+              Número de teléfono:
+            </h4>
+            <div className="flex gap-x-3 items-center">
+              <p className="text-base font-normal">
+                0426-196-5740
+              </p>
+              <button
+                onClick={() => handleCopy("04261965740", "¡Número de teléfono copiado!")}
+              >
+                <Copy size={15} className="text-primary-color stroke-[1.5]" />
+              </button>
+            </div>
+          </div>
+          <div className="flex gap-x-3">
+            <h4 className="text-base font-semibold">
+              Cédula de identidad:
+            </h4>
+            <div className="flex gap-x-3 items-center">
+              <p className="text-base font-normal">
+                V21348205
+              </p>
+              <button
+                onClick={() => handleCopy("21348205", "¡Cédula de identidad copiada!")}
+              >
+                <Copy size={15} className="text-primary-color stroke-[1.5]" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
       <h3 className="text-xl text-center font-semibold text-primary-color">
         Registra tu pago móvil aquí
       </h3>
@@ -112,7 +175,7 @@ export default function PagoMovilForm({
                 name="date"
                 render={({ field }) => (
                   <FormItem className="w-full">
-                    <FormLabel className="text-base">Fecha</FormLabel>
+                    <FormLabel className="text-base">Fecha del pago</FormLabel>
                     <FormControl>
                       <Input className="text-base" type="date" {...field} autoComplete="off" />
                     </FormControl>
@@ -120,6 +183,7 @@ export default function PagoMovilForm({
                   </FormItem>
                 )}
               />
+              {/* Upload Image */}
               <div className="flex flex-col gap-y-2 mt-4">
                 <label htmlFor="image" className="
                     cursor-pointer
@@ -162,7 +226,15 @@ export default function PagoMovilForm({
                       </div>
                     </div>
                   ) : (
-                    <span>Subir captura</span>
+                    <div className="flex flex-col gap-y-2 items-center">
+                      <FileImage size={35} className="stroke-[1] text-gray-300" />
+                      <h2 className="text-lg font-semibold">
+                        Comprobante de pago
+                      </h2>
+                      <p className="text-sm font-light text-gray-strong-color">
+                        Puedes adjuntar una captura de pantalla del pago realizado en formato JPG, JPEG, PNG
+                      </p>
+                    </div>
                   )
                   }
                 </label>
@@ -174,15 +246,7 @@ export default function PagoMovilForm({
                 )}
               </div>
             </div>
-            <div className="flex justify-between items-center">
-              <Button
-                variant="outline"
-                size="default"
-                onClick={() => onClose(false)}
-                type="button"
-              >
-                Cerrar formulario
-              </Button>
+            <div className="flex justify-end items-center">
               <Button
                 variant="default"
                 size="default"

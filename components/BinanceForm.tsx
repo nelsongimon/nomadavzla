@@ -2,7 +2,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import Button from "./ui/Button";
-import { FileEdit } from "lucide-react";
+import { Copy, FileEdit, FileImage } from "lucide-react";
 import * as z from "zod";
 import {
   Form,
@@ -13,8 +13,10 @@ import {
   FormMessage,
 } from "@/components/ui/Form";
 import { Input } from "@/components/ui/Input";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import Image from "next/image";
+import toast from "react-hot-toast";
+import { toastStyle } from "@/lib/utils";
 
 const formSchema = z.object({
   referenceNumber: z.string({ required_error: "El ID de la orden es requerido." }).regex(/^[0-9]+$/, {
@@ -26,13 +28,7 @@ const formSchema = z.object({
   date: z.string({ required_error: "La fecha es requerida." }),
 });
 
-interface BinanceFormProps {
-  onClose: (value: boolean) => void;
-}
-
-export default function BinanceForm({
-  onClose
-}: BinanceFormProps) {
+export default function BinanceForm() {
   const [imagePreview, setImagePreview] = useState("");
   const [image, setImage] = useState<File>();
   const [invalidImage, setInvalidImage] = useState("");
@@ -86,11 +82,68 @@ export default function BinanceForm({
       return;
     }
     console.log("Form submitted:", values);
-
   }
 
+  const handleCopy = (copy: string, message: string) => {
+    navigator.clipboard.writeText(copy);
+    toast.success(message, toastStyle);
+  }
+
+  useEffect(() => {
+    const component = document.getElementById("binance");
+    const posicion = component?.offsetTop! + 210;
+    window.scrollTo({
+      top: posicion,
+      behavior: "smooth"
+    });
+  }, []);
+
   return (
-    <div className="flex flex-col items-center gap-y-5 w-full px-10 py-3">
+    <div id="binance" className="flex flex-col items-center gap-y-5 w-full px-10 py-3">
+      {/* Image */}
+      <div className="relative h-[30px] w-full mb-2">
+        <Image fill alt="" src={`${process.env.NEXT_PUBLIC_IMAGE_PATH}images/binance.png`}
+          className="object-contain"
+        />
+      </div>
+      {/* Payment information */}
+      <div className="mb-4 bg-gray-color w-full rounded-md py-3 px-10">
+        <h3 className="text-xl text-center font-semibold text-primary-color mb-4">
+          Datos para el pago
+        </h3>
+        <div className="flex flex-col gap-y-4 pb-2">
+          <div className="flex gap-x-3">
+            <h4 className="text-base font-semibold">
+              Correo electrónico:
+            </h4>
+            <div className="flex gap-x-3 items-center">
+              <p className="text-base font-normal">
+                reynaldomayz@gmail.com
+              </p>
+              <button
+                onClick={() => handleCopy("reynaldomayz@gmail.com", "¡Correo electrónico copiado!")}
+              >
+                <Copy size={15} className="text-primary-color stroke-[1.5]" />
+              </button>
+            </div>
+          </div>
+          <div className="flex gap-x-3 items-center">
+            <h4 className="text-base font-semibold">
+              Pay ID:
+            </h4>
+            <div className="flex gap-x-3 items-center">
+              <p className="text-base font-normal">
+                219790117
+              </p>
+              <button
+                onClick={() => handleCopy("219790117", "¡Pay ID copiado!")}
+              >
+                <Copy size={15} className="text-primary-color stroke-[1.5]" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
       <h3 className="text-xl text-center font-semibold text-primary-color">
         Registra tu pago en Binance aquí
       </h3>
@@ -137,6 +190,7 @@ export default function BinanceForm({
                   </FormItem>
                 )}
               />
+              {/* Upload Image */}
               <div className="flex flex-col gap-y-2 mt-4">
                 <label htmlFor="image" className="
                     cursor-pointer
@@ -179,7 +233,15 @@ export default function BinanceForm({
                       </div>
                     </div>
                   ) : (
-                    <span>Subir captura</span>
+                    <div className="flex flex-col gap-y-2 items-center">
+                      <FileImage size={35} className="stroke-[1] text-gray-300" />
+                      <h2 className="text-lg font-semibold">
+                        Comprobante de pago
+                      </h2>
+                      <p className="text-sm font-light text-gray-strong-color">
+                        Puedes adjuntar una captura de pantalla del pago realizado en formato JPG, JPEG, PNG
+                      </p>
+                    </div>
                   )
                   }
                 </label>
@@ -191,15 +253,7 @@ export default function BinanceForm({
                 )}
               </div>
             </div>
-            <div className="flex justify-between items-center">
-              <Button
-                variant="outline"
-                size="default"
-                onClick={() => onClose(false)}
-                type="button"
-              >
-                Cerrar formulario
-              </Button>
+            <div className="flex justify-end items-center">
               <Button
                 variant="default"
                 size="default"

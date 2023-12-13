@@ -3,8 +3,9 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import useCheckoutSteps from "@/hooks/useCheckoutSteps";
 import NationalShipping from "./NationalShipping";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "./ui/Button";
+import { motion } from "framer-motion";
 
 export default function ShippingInformationForm() {
   const setCurrentStep = useCheckoutSteps(step => step.setCurrentStep);
@@ -12,11 +13,25 @@ export default function ShippingInformationForm() {
   const onPrevious = () => {
     setCurrentStep(1);
   }
+
   const onNext = () => {
     setCurrentStep(3);
   }
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }, []);
+
   return (
-    <div className="flex flex-col gap-y-10 mt-3">
+    <motion.div
+      className="flex flex-col gap-y-10 mt-3"
+      initial={{ x: "100%", opacity: 0 }}
+      animate={{ x: "0px", opacity: 1 }}
+      transition={{ duration: 0.5, type: "spring" }}
+    >
       <div className="flex flex-col items-center gap-y-5">
         <div className="w-full border-gray-200 border-2 rounded-md overflow-hidden">
           <div className="cursor-pointer flex flex-col items-center gap-y-1 duration-300 hover:bg-gray-50 py-3">
@@ -68,6 +83,6 @@ export default function ShippingInformationForm() {
           <ChevronRight size={20} className="stroke-[1.5]" />
         </Button>
       </div>
-    </div>
+    </motion.div>
   );
 }

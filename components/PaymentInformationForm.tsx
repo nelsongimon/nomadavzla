@@ -1,46 +1,53 @@
 "use client";
 
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 import Button from "./ui/Button";
 import useCheckoutSteps from "@/hooks/useCheckoutSteps";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PagoMovilForm from "./PagoMovilForm";
 import BinanceForm from "./BinanceForm";
 import ZinliForm from "./ZinliForm";
 import BanescoForm from "./BanescoForm";
 import PaypalForm from "./PaypalForm";
+import { motion } from "framer-motion";
 
 export default function PaymentInformationForm() {
   const setCurrentStep = useCheckoutSteps(step => step.setCurrentStep);
-  const [pagoMovilOpen, setPagoMovilOpen] = useState(false);
-  const [binanceOpen, setBinanceOpen] = useState(false);
-  const [zinliOpen, setZinliOpen] = useState(false);
-  const [banescoOpen, setBanescoOpen] = useState(false);
-  const [paypalOpen, setPaypalOpen] = useState(false);
+  const [paymentSelected, setPaymentSelected] = useState("");
 
   const onPrevious = () => {
     setCurrentStep(2);
   }
-  const onNext = () => {
-    setCurrentStep(3);
-  }
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }, []);
+
   return (
-    <div className="flex flex-col gap-y-10 mt-3">
+    <motion.div
+      className="flex flex-col gap-y-10 mt-3"
+      initial={{ x: "100%", opacity: 0 }}
+      animate={{ x: "0px", opacity: 1 }}
+      transition={{ duration: 0.5, type: "spring" }}
+    >
       <div className="flex flex-col items-center gap-y-4">
         {/* Item */}
         <div className="w-full flex items-center justify-center border-gray-200 border-2 rounded-md overflow-hidden">
-          {pagoMovilOpen ? (
+          {paymentSelected === "pagoMovil" ? (
             <div className="mt-4 mb-4 w-full">
-              <PagoMovilForm onClose={() => setPagoMovilOpen(false)} />
+              <PagoMovilForm />
             </div>
           ) : (
             <button
-              onClick={() => setPagoMovilOpen(true)}
+              onClick={() => setPaymentSelected("pagoMovil")}
               className="w-full py-3 cursor-pointer duration-300 hover:bg-gray-100"
             >
               <div className="relative h-[30px] w-full">
-                <Image fill alt="" src="https://nomadavzla.store/images/pagoMovil.png"
+                <Image fill alt="" src={`${process.env.NEXT_PUBLIC_IMAGE_PATH}images/pagoMovil.png`}
                   className="object-contain"
                 />
               </div>
@@ -50,17 +57,17 @@ export default function PaymentInformationForm() {
         </div>
         {/* Item */}
         <div className="w-full flex items-center justify-center border-gray-200 border-2 rounded-md overflow-hidden">
-          {binanceOpen ? (
+          {paymentSelected === "binance" ? (
             <div className="mt-4 mb-4 w-full">
-              <BinanceForm onClose={() => setBinanceOpen(false)} />
+              <BinanceForm />
             </div>
           ) : (
             <button
-              onClick={() => setBinanceOpen(true)}
+              onClick={() => setPaymentSelected("binance")}
               className="w-full py-3 cursor-pointer duration-300 hover:bg-gray-100"
             >
               <div className="relative h-[30px] w-full">
-                <Image fill alt="" src="https://nomadavzla.store/images/binance.png"
+                <Image fill alt="" src={`${process.env.NEXT_PUBLIC_IMAGE_PATH}images/binance.png`}
                   className="object-contain"
                 />
               </div>
@@ -70,17 +77,17 @@ export default function PaymentInformationForm() {
         </div>
         {/* Item */}
         <div className="w-full flex items-center justify-center border-gray-200 border-2 rounded-md overflow-hidden">
-          {zinliOpen ? (
+          {paymentSelected === "zinli" ? (
             <div className="mt-4 mb-4 w-full">
-              <ZinliForm onClose={() => setZinliOpen(false)} />
+              <ZinliForm />
             </div>
           ) : (
             <button
-              onClick={() => setZinliOpen(true)}
+              onClick={() => setPaymentSelected("zinli")}
               className="w-full py-3 cursor-pointer duration-300 hover:bg-gray-100"
             >
               <div className="relative h-[30px] w-full">
-                <Image fill alt="" src="https://nomadavzla.store/images/zinli.png"
+                <Image fill alt="" src={`${process.env.NEXT_PUBLIC_IMAGE_PATH}images/zinli.png`}
                   className="object-contain"
                 />
               </div>
@@ -90,17 +97,17 @@ export default function PaymentInformationForm() {
         </div>
         {/* Item */}
         <div className="w-full flex items-center justify-center border-gray-200 border-2 rounded-md overflow-hidden">
-          {banescoOpen ? (
+          {paymentSelected === "banesco" ? (
             <div className="mt-4 mb-4 w-full">
-              <BanescoForm onClose={() => setBanescoOpen(false)} />
+              <BanescoForm />
             </div>
           ) : (
             <button
-              onClick={() => setBanescoOpen(true)}
+              onClick={() => setPaymentSelected("banesco")}
               className="w-full py-3 cursor-pointer duration-300 hover:bg-gray-100"
             >
               <div className="relative h-[30px] w-full">
-                <Image fill alt="" src="https://nomadavzla.store/images/banescoPanama.png"
+                <Image fill alt="" src={`${process.env.NEXT_PUBLIC_IMAGE_PATH}images/banescoPanama.png`}
                   className="object-contain"
                 />
               </div>
@@ -110,13 +117,13 @@ export default function PaymentInformationForm() {
         </div>
         {/* Item */}
         <div className="w-full flex items-center justify-center border-gray-200 border-2 rounded-md overflow-hidden">
-          {paypalOpen ? (
+          {paymentSelected === "paypal" ? (
             <div className="mt-4 mb-4 w-full">
-              <PaypalForm onClose={() => setPaypalOpen(false)} />
+              <PaypalForm />
             </div>
           ) : (
             <button
-              onClick={() => setPaypalOpen(true)}
+              onClick={() => setPaymentSelected("paypal")}
               className="w-full py-3 cursor-pointer duration-300 hover:bg-gray-100"
             >
               <div className="relative h-[30px] w-full">
@@ -141,6 +148,6 @@ export default function PaymentInformationForm() {
           Volver
         </Button>
       </div>
-    </div>
+    </motion.div>
   );
 }
