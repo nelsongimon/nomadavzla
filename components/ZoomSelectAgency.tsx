@@ -49,9 +49,9 @@ export default function ZoomSelectAgency() {
         </Select>
         {agencies.length > 0 && (
           <div className={clsx(`flex flex-col gap-y-5 mt-3 overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-200 px-4`,
-            agencies.length === 1 && "h-[150px]",
-            agencies.length === 2 && "h-[300px]",
-            agencies.length === 3 && "h-[450px]",
+            agencies.length === 1 && "h-[140px]",
+            agencies.length === 2 && "h-[270px]",
+            agencies.length === 3 && "h-[400px]",
             agencies.length > 4 && "h-[600px]",
 
           )}>
