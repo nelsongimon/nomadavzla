@@ -92,3 +92,11 @@ export type CartProduct = {
   total: string;
 }
 
+export type Agency = {
+  id: number;
+  company: string;
+  city: string;
+  name: string;
+  address: string;
+};
+

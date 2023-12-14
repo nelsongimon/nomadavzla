@@ -23,6 +23,10 @@ export default function ShoppingCartProducts() {
 
   useEffect(() => {
     setIsMounted(true);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
   }, []);
 
   if (!isMounted) {

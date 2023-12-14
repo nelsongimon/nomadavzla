@@ -1,18 +1,29 @@
 "use client";
 
+import { useEffect } from "react";
 import ZoomSelectAgency from "./ZoomSelectAgency";
 import Image from "next/image";
 
 export default function NationalShipping() {
+
+  useEffect(() => {
+    const component = document.getElementById("nationalShipping");
+    const posicion = component?.offsetTop! + 230;
+    window.scrollTo({
+      top: posicion,
+      behavior: "smooth"
+    });
+  }, []);
+
   return (
-    <div className="flex flex-col gap-y-4 py-4 px-4">
+    <div id="nationalShipping" className="flex flex-col gap-y-4 py-4 px-4">
       <h3 className="text-lg font-semibold text-primary-color text-center">
         Envío Nacional
       </h3>
       <div className="flex flex-col gap-y-2">
         <div className="flex justify-between gap-x-4">
           {/* Zoom */}
-          <button className="relative w-full h-[60px] border-green-600 border-2 border-dashed cursor-pointer rounded-md" disabled={true}>
+          <button className="relative w-full h-[60px] border-primary-color border-2 cursor-pointer rounded-md" disabled={true}>
             <Image fill src="https://nomadavzla.store/images/zoom.png" alt="zoom image" className="object-contain" />
           </button>
           {/* MRW */}

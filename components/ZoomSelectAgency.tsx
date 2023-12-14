@@ -8,34 +8,21 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from "@/components/ui/select";
 import { useEffect, useState } from "react";
-import axios from "axios";
-import { convertToCapitalizeFirstWord } from "@/lib/utils";
 import AgencyCard from "./AgencyCard";
+import { states } from "@/zoom";
+import clsx from "clsx";
+import { Agency } from "@/types";
 
 export default function ZoomSelectAgency() {
 
-  const [state, setState] = useState([]);
-  const [agencies, setAgencies] = useState([]);
-  const [selectedState, setSelectedState] = useState(0);
-
-  const handleSelectStare = (value: any) => {
-    setSelectedState(value);
-  }
+  const [selectedState, setSelectedState] = useState(-1);
+  const [agencies, setAgencies] = useState<Record<string, any>>([]);
 
   useEffect(() => {
-    axios.get("/api/zoom/states")
-      .then(res => {
-        setState(res.data.states);
-      });
-  }, []);
-
-  useEffect(() => {
-    axios.get(`/api/zoom/states/${selectedState}/agencies`)
-      .then(res => {
-        setAgencies(res.data.agencies);
-      });
+    if (selectedState < 0) return;
+    setAgencies(states[selectedState].agencies);
   }, [selectedState]);
 
   return (
@@ -44,25 +31,32 @@ export default function ZoomSelectAgency() {
         Encuentra tu oficina Zoom más cercana
       </h3>
       <div className="flex flex-col gap-y-5">
-        <Select onValueChange={(value) => handleSelectStare(value)}>
+        {/* States */}
+        <Select onValueChange={(value) => setSelectedState(Number(value))}>
           <SelectTrigger className="w-full text-base">
             <SelectValue placeholder="Seleccione un estado..." />
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
               <SelectLabel className="text-base">Estados:</SelectLabel>
-              {state.map((state: Record<string, any>) => (
-                <SelectItem key={state.codestado} className="text-base" value={state.codestado}>
-                  {convertToCapitalizeFirstWord(state.nombre)}
+              {states.map((state: Record<string, any>, index: number) => (
+                <SelectItem key={index} className="text-base" value={String(index)}>
+                  {state.name}
                 </SelectItem>
               ))}
             </SelectGroup>
           </SelectContent>
         </Select>
         {agencies.length > 0 && (
-          <div className="flex flex-col gap-y-5 mt-3 h-[500px] overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-200 px-4">
-            {agencies.map((agency: Record<string, any>) => (
-              <AgencyCard key={agency.codoficina} agency={agency} />
+          <div className={clsx(`flex flex-col gap-y-5 mt-3 overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-200 px-4`,
+            agencies.length === 1 && "h-[130px]",
+            agencies.length === 2 && "h-[260px]",
+            agencies.length === 3 && "h-[390px]",
+            agencies.length > 4 && "h-[520px]",
+
+          )}>
+            {agencies.map((agency: Agency, index: number) => (
+              <AgencyCard key={agency.id} agency={{ ...agency, company: "grupo zoom" }} />
             ))}
           </div>
         )}
