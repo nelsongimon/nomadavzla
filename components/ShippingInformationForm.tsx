@@ -72,7 +72,7 @@ export default function ShippingInformationForm() {
           )}
         </div>
       </div>
-      {(selectedAgency && shippingOptionSelected !== "nationalShipping") && (
+      {(selectedAgency && shippingOptionSelected === "") && (
         <AgencyCard agency={selectedAgency} />
       )}
       <div className="flex justify-between items-center">

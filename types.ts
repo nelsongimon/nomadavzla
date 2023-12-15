@@ -98,5 +98,14 @@ export type Agency = {
   city: string;
   name: string;
   address: string;
-};
+}
+
+export type PersonalInformation = {
+  firstName: string;
+  lastName: string;
+  dni: string;
+  email: string;
+  phoneNumber: string;
+  isSubscribe: boolean;
+}
 

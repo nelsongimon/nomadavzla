@@ -112,29 +112,34 @@ export default function BanescoForm() {
         <div className="flex flex-col gap-y-4 pb-2">
           <div className="flex gap-x-3">
             <h4 className="text-base font-semibold">
-              Correo electrónico:
+              Nombre:
             </h4>
             <div className="flex gap-x-3 items-center">
               <p className="text-base font-normal">
-                reynaldomayz@gmail.com
+                Mauro Mayz
               </p>
-              <button
-                onClick={() => handleCopy("reynaldomayz@gmail.com", "¡Correo electrónico copiado!")}
-              >
-                <Copy size={15} className="text-primary-color stroke-[1.5]" />
-              </button>
+            </div>
+          </div>
+          <div className="flex gap-x-3">
+            <h4 className="text-base font-semibold">
+              Tipo de cuenta:
+            </h4>
+            <div className="flex gap-x-3 items-center">
+              <p className="text-base font-normal">
+                Cuenta de ahorro
+              </p>
             </div>
           </div>
           <div className="flex gap-x-3 items-center">
             <h4 className="text-base font-semibold">
-              Pay ID:
+              Número de cuenta:
             </h4>
             <div className="flex gap-x-3 items-center">
               <p className="text-base font-normal">
-                219790117
+                2018 0105 7073
               </p>
               <button
-                onClick={() => handleCopy("219790117", "¡Pay ID copiado!")}
+                onClick={() => handleCopy("201801057073", "¡Número de cuenta copiado!")}
               >
                 <Copy size={15} className="text-primary-color stroke-[1.5]" />
               </button>

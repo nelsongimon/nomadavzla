@@ -9,25 +9,25 @@ interface SelectedAgencyStore {
   setSelectedAgency: (agency: Agency) => void;
 }
 
-const useSelectedAgency = create<SelectedAgencyStore>((set) => ({
-  selectedAgency: null,
-  setSelectedAgency: (agency: Agency) => {
-    set({ selectedAgency: agency });
-    toast.success("¡Esta sucursal fue seleccionada!", toastStyle);
-  }
-}));
+// const useSelectedAgency = create<SelectedAgencyStore>((set) => ({
+//   selectedAgency: null,
+//   setSelectedAgency: (agency: Agency) => {
+//     set({ selectedAgency: agency });
+//     toast.success("¡Esta sucursal fue seleccionada!", toastStyle);
+//   }
+// }));
 
-// const useSelectedAgency = create(
-//   persist<SelectedAgencyStore>((set) => ({
-//     selectedAgency: null,
-//     setSelectedAgency: (agency: Agency) => {
-//       set({ selectedAgency: agency });
-//       toast.success("¡Esta sucursal fue seleccionada!", toastStyle);
-//     }
-//   }), {
-//     name: "selected-agency-storage",
-//     storage: createJSONStorage(() => localStorage)
-//   })
-// );
+const useSelectedAgency = create(
+  persist<SelectedAgencyStore>((set) => ({
+    selectedAgency: null,
+    setSelectedAgency: (agency: Agency) => {
+      set({ selectedAgency: agency });
+      toast.success("¡Esta sucursal fue seleccionada!", toastStyle);
+    }
+  }), {
+    name: "selected-agency-storage",
+    storage: createJSONStorage(() => localStorage)
+  })
+);
 
 export default useSelectedAgency;

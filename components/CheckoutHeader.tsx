@@ -42,7 +42,7 @@ export default function CheckoutHeader() {
           text-center text-base font-light`,
           currentStep === 2 ? "text-secondary-color" : "text-primary-color"
         )}>
-          Información del envio
+          Información del Envio
         </h3>
       </div>
       <div className="flex gap-x-2 items-center">
@@ -61,7 +61,7 @@ export default function CheckoutHeader() {
           text-center text-base font-light`,
           currentStep === 3 ? "text-secondary-color" : "text-primary-color"
         )}>
-          Información del pago
+          Información del Pago
         </h3>
       </div>
     </div>
