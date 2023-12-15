@@ -48,14 +48,6 @@ export default function Invoice() {
                 CI: {personalInformation.dni}
               </h3>
             </div>
-            <div className="flex items-center justify-between">
-              <h3 className="text-gray-strong-color font-normal text-base">
-                {personalInformation.email}
-              </h3>
-              <h3 className="text-gray-strong-color font-normal text-base">
-                Telf: {personalInformation.phoneNumber}
-              </h3>
-            </div>
           </div>
         </div>
       )}
@@ -73,10 +65,7 @@ export default function Invoice() {
                 {selectedAgency.company}
               </h3>
             </div>
-            <h3 className="text-gray-strong-color font-normal text-base">
-              {selectedAgency.name}
-            </h3>
-            <h3 className="text-gray-strong-color font-normal text-base">
+            <h3 className="text-gray-strong-color font-normal text-sm">
               {selectedAgency.address}
             </h3>
           </div>
