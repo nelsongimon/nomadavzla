@@ -17,6 +17,7 @@ import { ChangeEvent, useEffect, useState } from "react";
 import Image from "next/image";
 import toast from "react-hot-toast";
 import { toastStyle } from "@/lib/utils";
+import useCheckoutSteps from "@/hooks/useCheckoutSteps";
 
 const formSchema = z.object({
   referenceNumber: z.string({ required_error: "El número de referencia es requerido." }).regex(/^[0-9]+$/, {
@@ -32,6 +33,8 @@ export default function ZinliForm() {
   const [imagePreview, setImagePreview] = useState("");
   const [image, setImage] = useState<File>();
   const [invalidImage, setInvalidImage] = useState("");
+  const setCurrentStep = useCheckoutSteps(step => step.setCurrentStep);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -42,7 +45,6 @@ export default function ZinliForm() {
   });
 
   const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
-    console.log("image");
     if (event.target.files) {
       const file = event.target.files[0];
       if (!file.type.startsWith('image/')) {
@@ -82,7 +84,7 @@ export default function ZinliForm() {
       return;
     }
     console.log("Form submitted:", values);
-
+    setCurrentStep(4);
   }
 
   const handleCopy = (copy: string, message: string) => {
@@ -92,7 +94,7 @@ export default function ZinliForm() {
 
   useEffect(() => {
     const component = document.getElementById("zinli");
-    const posicion = component?.offsetTop! + 210;
+    const posicion = screen.width < 768 ? component?.offsetTop! + 220 : component?.offsetTop! + 210;
     window.scrollTo({
       top: posicion,
       behavior: "smooth"
@@ -100,7 +102,7 @@ export default function ZinliForm() {
   }, []);
 
   return (
-    <div id="zinli" className="flex flex-col items-center gap-y-5 w-full px-10 py-3">
+    <div id="zinli" className="flex flex-col items-center gap-y-5 w-full px-2 lg:px-10 py-0 lg:py-3">
       {/* Image */}
       <div className="relative h-[30px] w-full mb-2">
         <Image fill alt="" src={`${process.env.NEXT_PUBLIC_IMAGE_PATH}images/zinli.png`}
@@ -108,7 +110,7 @@ export default function ZinliForm() {
         />
       </div>
       {/* Payment information */}
-      <div className="mb-4 bg-gray-color w-full rounded-md py-3 px-10">
+      <div className="mb-4 bg-gray-color w-full rounded-md py-3 px-2 lg:px-10">
         <h3 className="text-xl text-center font-semibold text-primary-color mb-4">
           Datos para el pago
         </h3>

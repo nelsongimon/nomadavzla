@@ -10,12 +10,13 @@ interface ShoppingCartStore {
   addItem: (product: CartProduct) => void;
   removeItem: (id: string) => void;
   updateItem: (product: CartProduct) => void,
+  reset: () => void,
 }
 
 const useShoppingCart = create(
   persist<ShoppingCartStore>((set, get) => ({
     items: [],
-    addItem: (product: CartProduct) => {  
+    addItem: (product: CartProduct) => {
       const currentItems = get().items;
       const existingItem = currentItems.find((item) => item.id === product.id);
 
@@ -23,11 +24,11 @@ const useShoppingCart = create(
         return toast.error("Ya en el Carrito", toastStyle);
       }
 
-      set({ items: [...get().items, product]});
+      set({ items: [...get().items, product] });
       toast.success("Agregado al Carrito", toastStyle);
     },
     removeItem: (id: string) => {
-      set({ items: [...get().items.filter((item) => item.id !== id)]});
+      set({ items: [...get().items.filter((item) => item.id !== id)] });
       toast.success("Eliminado del Carrito", toastStyle);
     },
     updateItem: (product: CartProduct) => {
@@ -37,8 +38,9 @@ const useShoppingCart = create(
         }
         return item;
       });
-      set({ items: [...updateItems]});
-    }
+      set({ items: [...updateItems] });
+    },
+    reset: () => set({ items: [] }),
   }), {
     name: "shopping-cart-storage",
     storage: createJSONStorage(() => localStorage)

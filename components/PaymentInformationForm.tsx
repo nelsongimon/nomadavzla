@@ -11,8 +11,10 @@ import ZinliForm from "./ZinliForm";
 import BanescoForm from "./BanescoForm";
 import PaypalForm from "./PaypalForm";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 export default function PaymentInformationForm() {
+  const router = useRouter();
   const setCurrentStep = useCheckoutSteps(step => step.setCurrentStep);
   const [paymentSelected, setPaymentSelected] = useState("");
 
@@ -146,6 +148,15 @@ export default function PaymentInformationForm() {
         >
           <ChevronLeft size={20} className="stroke-[1.5]" />
           Volver
+        </Button>
+        <Button
+          variant="outline"
+          size="default"
+          onClick={() => router.push("/compra-completada")}
+          className="flex gap-x-1 items-center"
+          type="button"
+        >
+          Siguiente (borrar)
         </Button>
       </div>
     </motion.div>

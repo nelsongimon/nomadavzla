@@ -6,7 +6,7 @@ import { toastStyle } from "@/lib/utils";
 
 interface SelectedAgencyStore {
   selectedAgency: Agency | null;
-  setSelectedAgency: (agency: Agency) => void;
+  setSelectedAgency: (agency: Agency | null) => void;
 }
 
 // const useSelectedAgency = create<SelectedAgencyStore>((set) => ({
@@ -20,9 +20,11 @@ interface SelectedAgencyStore {
 const useSelectedAgency = create(
   persist<SelectedAgencyStore>((set) => ({
     selectedAgency: null,
-    setSelectedAgency: (agency: Agency) => {
+    setSelectedAgency: (agency: Agency | null) => {
       set({ selectedAgency: agency });
-      toast.success("¡Esta sucursal fue seleccionada!", toastStyle);
+      if (agency) {
+        toast.success("¡Esta sucursal fue seleccionada!", toastStyle);
+      }
     }
   }), {
     name: "selected-agency-storage",

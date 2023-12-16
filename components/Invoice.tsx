@@ -30,13 +30,13 @@ export default function Invoice() {
   return (
     <div className="bg-gray-color px-3 py-7 rounded-lg sticky top-[100px]">
       <div className="px-5 border-b border-gray-200 pb-5">
-        <h3 className="text-primary-color font-semibold text-xl text-center uppercase">
+        <h3 className="text-primary-color font-semibold text-lg lg:text-xl text-center uppercase">
           Orden de Compra
         </h3>
       </div>
       {personalInformation && (
-        <div className="flex flex-col gap-y-2 px-5 border-b border-gray-200 py-6">
-          <h2 className="text-lg font-semibold text-left">
+        <div className="flex flex-col gap-y-2 px-5 border-b border-gray-200 py-4 lg:py-6">
+          <h2 className="text-base font-semibold text-left uppercase">
             Datos del Comprador
           </h2>
           <div className="flex flex-col gap-y-2">
@@ -52,8 +52,8 @@ export default function Invoice() {
         </div>
       )}
       {selectedAgency && (
-        <div className="flex flex-col gap-y-2 px-5 border-b border-gray-200 py-6">
-          <h2 className="text-lg font-semibold text-left">
+        <div className="flex flex-col gap-y-2 px-5 border-b border-gray-200 py-4 lg:py-6">
+          <h2 className="text-base font-semibold text-left uppercase">
             Datos del Envío
           </h2>
           <div className="flex flex-col gap-y-2">
@@ -76,17 +76,17 @@ export default function Invoice() {
           <InvoiceProduct key={product.id} productId={product.id} />
         ))}
       </div>
-      <div className="flex justify-between items-end px-5 border-t border-gray-200 pt-6">
+      <div className="flex justify-between items-end px-5 border-t border-gray-200 pt-4">
         <div>
-          <h3 className="font-semibold text-primary-color text-xl">
+          <h3 className="font-semibold text-primary-color text-base lg:text-xl uppercase">
             Total a Pagar:
           </h3>
         </div>
         <div className="flex flex-col gap-y-1">
-          <h4 className="text-2xl font-semibold text-primary-color text-right">
+          <h4 className="text-xl lg:text-2xl font-semibold text-primary-color text-right">
             Bs {totalBs.toFixed(2)}
           </h4>
-          <h3 className="text-2xl font-semibold text-primary-color text-right">
+          <h3 className="text-xl lg:text-2xl font-semibold text-primary-color text-right">
             ${totalToPay}
           </h3>
         </div>

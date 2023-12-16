@@ -1,9 +1,10 @@
 import ShoppingCartProducts from "@/components/product/ShoppingCartProducts";
 import Container from "@/components/ui/Container";
+import Newsletter from "@/components/ui/Newsletter";
 
 export default function CartPage() {
   return (
-    <div className="mt-14 mb-32">
+    <div className="mt-14">
       <Container>
         <div className="w-full flex flex-col gap-y-1 mb-10">
           <h3 className="text-strong-color font-bold text-3xl lg:text-4xl text-center">
@@ -15,6 +16,9 @@ export default function CartPage() {
         </div>
         <ShoppingCartProducts />
       </Container>
+      <div className="mt-32">
+        <Newsletter />
+      </div>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import { persist, createJSONStorage } from "zustand/middleware";
 import { create } from "zustand";
 
-type CheckoutSteps = 1 | 2 | 3;
+type CheckoutSteps = 1 | 2 | 3 | 4;
 interface CheckoutStepsStore {
   currentStep: CheckoutSteps;
   setCurrentStep: (step: CheckoutSteps) => void;

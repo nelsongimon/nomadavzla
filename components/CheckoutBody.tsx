@@ -4,6 +4,7 @@ import useCheckoutSteps from "@/hooks/useCheckoutSteps";
 import PersonalInformationForm from "./PersonalInformationForm";
 import ShippingInformationForm from "./ShippingInformationForm";
 import PaymentInformationForm from "./PaymentInformationForm";
+import PurchaseCompleted from "./PurchaseCompleted";
 
 export default function CheckoutBody() {
   const currentStep = useCheckoutSteps(state => state.currentStep);
@@ -20,7 +21,12 @@ export default function CheckoutBody() {
     );
   }
 
+  if (currentStep === 3) {
+    return (
+      <PaymentInformationForm />
+    );
+  }
   return (
-    <PaymentInformationForm />
+    null
   );
 }

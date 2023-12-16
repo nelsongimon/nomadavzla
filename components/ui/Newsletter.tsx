@@ -79,10 +79,8 @@ export default function Newsletter() {
               </div>
 
             </form>
-
           </div>
         </div>
-
       </Container>
     </div>
   );

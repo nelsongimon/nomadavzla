@@ -81,14 +81,16 @@ export default function ShoppingCartProducts() {
                 ${totalToPay}
               </h4>
             </div>
-            <Button
-              variant="secondary"
-              size="default"
-              onClick={() => router.push("/finalizar-compra")}
-              className="flex gap-x-1 items-center"
-            >
-              Finalizar Compra <ChevronRight size={20} className="stroke-[1.5]" />
-            </Button>
+            {products.reduce((acc, item) => acc + Number(item.total), 0) !== 0 && (
+              <Button
+                variant="secondary"
+                size="default"
+                onClick={() => router.push("/finalizar-compra")}
+                className="flex gap-x-1 items-center"
+              >
+                Finalizar Compra <ChevronRight size={20} className="stroke-[1.5]" />
+              </Button>
+            )}
           </div>
         </div>
       )}

@@ -89,8 +89,8 @@ export default function PersonalInformationForm() {
     >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-10">
-          <div className="flex flex-col gap-y-7">
-            <div className="flex gap-x-5">
+          <div className="flex flex-col lg:gap-y-7 px-2 lg:px-0">
+            <div className="flex flex-col gap-y-4 lg:flex-row lg:gap-x-5">
               <FormField
                 control={form.control}
                 name="firstName"
@@ -118,7 +118,7 @@ export default function PersonalInformationForm() {
                 )}
               />
             </div>
-            <div className="flex gap-x-5">
+            <div className="flex flex-col gap-y-4 lg:flex-row lg:gap-x-5 mt-4 lg:mt-0">
               <FormField
                 control={form.control}
                 name="dni"
@@ -146,7 +146,7 @@ export default function PersonalInformationForm() {
                 )}
               />
             </div>
-            <div className="flex gap-x-5 items-end">
+            <div className="flex flex-col gap-y-4 lg:flex-row lg:gap-x-5 items-end mt-4 lg:mt-0">
               <FormField
                 control={form.control}
                 name="phoneNumber"

@@ -16,7 +16,7 @@ export default function CheckoutProcess() {
   }
 
   return (
-    <div className="flex flex-col gap-y-7">
+    <div className="flex flex-col gap-y-4 lg:gap-y-7">
       <CheckoutHeader />
       <CheckoutBody />
     </div>

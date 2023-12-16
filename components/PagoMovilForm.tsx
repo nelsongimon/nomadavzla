@@ -17,6 +17,7 @@ import { ChangeEvent, useEffect, useState } from "react";
 import Image from "next/image";
 import toast from "react-hot-toast";
 import { toastStyle } from "@/lib/utils";
+import useCheckoutSteps from "@/hooks/useCheckoutSteps";
 
 const formSchema = z.object({
   referenceNumber: z.string({ required_error: "El número de referencia es requerido." }).regex(/^[0-9]+$/, {
@@ -29,6 +30,8 @@ export default function PagoMovilForm() {
   const [imagePreview, setImagePreview] = useState("");
   const [image, setImage] = useState<File>();
   const [invalidImage, setInvalidImage] = useState("");
+  const setCurrentStep = useCheckoutSteps(step => step.setCurrentStep);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -76,13 +79,14 @@ export default function PagoMovilForm() {
       setInvalidImage('La imagen excede el tamaño máximo permitido: 1MB');
       return;
     }
-    console.log("Form submitted:", values);
 
+    console.log("Form submitted:", values);
+    setCurrentStep(4);
   }
 
   useEffect(() => {
     const component = document.getElementById("pagoMovil");
-    const posicion = component?.offsetTop! + 210;
+    const posicion = screen.width < 768 ? component?.offsetTop! + 220 : component?.offsetTop! + 210;
     window.scrollTo({
       top: posicion,
       behavior: "smooth"
@@ -95,7 +99,7 @@ export default function PagoMovilForm() {
   }
 
   return (
-    <div id="pagoMovil" className="flex flex-col items-center gap-y-5 w-full px-10 py-3">
+    <div id="pagoMovil" className="flex flex-col items-center gap-y-5 w-full px-2 lg:px-10 py-0 lg:py-3">
       {/* Image */}
       <div className="relative h-[30px] w-full mb-2">
         <Image fill alt="" src={`${process.env.NEXT_PUBLIC_IMAGE_PATH}images/pagoMovil.png`}
@@ -103,7 +107,7 @@ export default function PagoMovilForm() {
         />
       </div>
       {/* Payment information */}
-      <div className="mb-4 bg-gray-color w-full rounded-md py-3 px-10">
+      <div className="mb-4 bg-gray-color w-full rounded-md py-3 px-2 lg:px-10">
         <h3 className="text-xl text-center font-semibold text-primary-color mb-4">
           Datos para el pago
         </h3>
