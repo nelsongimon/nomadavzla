@@ -25,7 +25,7 @@ export default function NavbarMobile() {
               />
             </nav>
           ) : (
-            <nav className="flex items-center justify-between gap-7 h-[65px]">
+            <nav className="flex items-center justify-between h-[65px]">
               <div className="flex h-full">
                 <MenuIcon />
                 <SearchMobileIcon setIsSearchOpen={(value: boolean) => setIsSearchMobileOpen(value)} />

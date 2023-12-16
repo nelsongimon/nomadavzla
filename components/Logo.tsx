@@ -5,12 +5,12 @@ import Link from "next/link";
 export default function Logo() {
   return (
     <Link href="/">
-      <div className="relative">
+      <div className="relative h-[90px] w-full aspect-video">
         <Image
           src={logo}
-          width={155}
-          height={30}
+          fill
           alt="Logo"
+          className="object-contain"
         />
       </div>
     </Link>

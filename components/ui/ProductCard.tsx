@@ -13,6 +13,7 @@ import Link from "next/link";
 import { addAbsolutePathImage, formatPrice } from "@/lib/utils";
 import useFavorite from "@/hooks/useFavorite";
 import useShoppingCart from "@/hooks/useShoppingCart";
+import ProductFlag from "../product/ProductFlag";
 
 interface ProductCardProps {
   product: Product;
@@ -70,16 +71,7 @@ export default function ProductCard({
             "
           />
         </Link>
-        {Boolean(Number(product.isNew)) && (
-          <span className="absolute top-2 left-2 lg:top-3 lg:left-3 rounded-full bg-secondary-color text-light-color px-1 lg:px-2 py-0.5 text-xs lg:text-base font-light">
-            Nuevo
-          </span>
-        )}
-        {Number(product.quantity) === 0 && (
-          <span className="absolute top-2 right-2 lg:top-3 lg:right-3 rounded-full bg-primary-color text-light-color px-1 lg:px-2 py-0.5 text-xs lg:text-base font-light">
-            Agotado
-          </span>
-        )}
+        <ProductFlag product={product} />
         <div className="
           hidden
           md:block
