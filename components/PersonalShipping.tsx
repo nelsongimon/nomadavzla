@@ -25,12 +25,12 @@ export default function PersonalShipping() {
       return product.name;
     });
 
-    window.open(`https://wa.me/584126049272?text=Hola, soy ${personalInformation?.firstName} ${personalInformation?.lastName} y me gustaria coordinar una entrega personal en Maturín. ${names.length === 1 ? "Me interesa el siguiente producto:" : "Me interesan los siguientes productos:"} ${names.join(", ")}.`, "_blank");
+    window.open(`https://wa.me/584126049272?text=Hola, soy ${personalInformation?.firstName} ${personalInformation?.lastName} y me gustaria coordinar una entrega personal en Maturín. ${names.length === 1 ? "Me interesa el siguiente producto:" : "Me interesan los siguientes productos:"} ${names.join(", ")}.`);
   }
 
   useEffect(() => {
     const component = document.getElementById("personalShipping");
-    const posicion = component?.offsetTop! + 230;
+    const posicion = component?.offsetTop! + 265;
     window.scrollTo({
       top: posicion,
       behavior: "smooth"

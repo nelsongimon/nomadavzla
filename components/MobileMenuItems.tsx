@@ -2,7 +2,7 @@
 
 import { Transition } from "@headlessui/react";
 import { menuMobileItems } from "@/data";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import clsx from "clsx";
 import { ChevronDown } from "lucide-react";
@@ -24,6 +24,7 @@ export default function MobileMenuItems({
   isOpen,
   setIsOpen
 }: MobileMenuItemsProps) {
+  const [isAtTop, setIsAtTop] = useState(true);
   const updatePage = useCurrentPage(state => state.updatePage);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const pathname = usePathname();
@@ -41,6 +42,22 @@ export default function MobileMenuItems({
     setActiveIndex(activeIndex === index ? null : index);
   };
 
+  useEffect(() => {
+    function handleScroll() {
+      if (window.scrollY < 36) {
+        setIsAtTop(true);
+      } else {
+        setIsAtTop(false);
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <Transition
       show={isOpen}
@@ -51,7 +68,10 @@ export default function MobileMenuItems({
       leaveFrom="opacity-100"
       leaveTo="opacity-0"
     >
-      <div className="fixed top-[67px] bottom-0 left-0 right-0 z-10 bg-black bg-opacity-50">
+      <div className={clsx(`
+        fixed bottom-0 left-0 right-0 z-10 bg-black bg-opacity-50`,
+        isAtTop ? "top-[102px]" : "top-[67px]"
+      )}>
         <div className="bg-white flex w-full h-full">
           <div className="flex flex-col gap-y-3 py-4 px-4 w-full">
             <h3 className="text-lg font-semibold">

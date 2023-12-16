@@ -3,11 +3,12 @@
 import useShowResults from "@/hooks/useShowResults";
 import { Transition } from "@headlessui/react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "./ui/Button";
 import Image from "next/image";
 import Link from "next/link";
 import useCurrentPage from "@/hooks/useCurrentPage";
+import clsx from "clsx";
 
 interface ItemMenuProps {
   item: any;
@@ -16,7 +17,7 @@ interface ItemMenuProps {
 export default function ItemMenu({
   item
 }: ItemMenuProps) {
-
+  const [isAtTop, setIsAtTop] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
   const { showResults } = useShowResults();
   const router = useRouter();
@@ -36,16 +37,24 @@ export default function ItemMenu({
     updatePage(1);
   }
 
+  useEffect(() => {
+    function handleScroll() {
+      if (window.scrollY < 36) {
+        setIsAtTop(true);
+      } else {
+        setIsAtTop(false);
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <li className="
-    font-normal
-    text-base
-    text-gray-strong-color
-    hover:text-primary-color
-    relative
-    h-full
-    group 
-  ">
+    <li className="font-normal text-base text-gray-strong-color hover:text-primary-color relative h-full group">
       <div onMouseLeave={() => handleHover(false)} onMouseEnter={() => handleHover(true)} className="h-full cursor-pointer flex items-center px-4">
         {!showResults && (
           <span className="group-hover:bg-primary-color absolute inset-x-0 -bottom-[2px] h-1 transition duration-300 z-50"></span>
@@ -70,7 +79,10 @@ export default function ItemMenu({
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed top-[72px] bottom-0 left-0 right-0 z-40 bg-black bg-opacity-50">
+          <div className={clsx(`
+            fixed bottom-0 left-0 right-0 z-40 bg-black bg-opacity-50`,
+            isAtTop ? "top-[107px]" : "top-[72px]"
+          )}>
             <div className="flex justify-center">
               <div onMouseLeave={() => handleHover(false)} onMouseEnter={() => handleHover(true)} className="max-w-[1100px] w-full bg-white px-8 py-8">
                 <div className="grid grid-cols-12">

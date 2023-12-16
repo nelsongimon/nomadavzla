@@ -94,7 +94,7 @@ export default function BinanceForm() {
 
   useEffect(() => {
     const component = document.getElementById("binance");
-    const posicion = screen.width < 768 ? component?.offsetTop! + 220 : component?.offsetTop! + 210;
+    const posicion = screen.width < 768 ? component?.offsetTop! + 255 : component?.offsetTop! + 245;
     window.scrollTo({
       top: posicion,
       behavior: "smooth"

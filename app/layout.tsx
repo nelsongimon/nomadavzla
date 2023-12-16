@@ -6,6 +6,7 @@ import ModalProvider from "@/providers/ModalProvider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import "./globals.css";
+import TopBar from "@/components/TopBar";
 
 const font = Outfit({ subsets: ["latin"] });
 
@@ -25,6 +26,7 @@ export default async function RootLayout({
       <body className={font.className}>
         <ToastProvider />
         <ModalProvider />
+        <TopBar />
         <Navbar />
         {children}
         <Footer />

@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function Logo() {
   return (
     <Link href="/">
-      <div className="relative h-[90px] w-full aspect-video">
+      <div className="relative h-[85px] lg:h-[80px] w-full aspect-video">
         <Image
           src={logo}
           fill

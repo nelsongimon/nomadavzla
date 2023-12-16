@@ -86,7 +86,7 @@ export default function PagoMovilForm() {
 
   useEffect(() => {
     const component = document.getElementById("pagoMovil");
-    const posicion = screen.width < 768 ? component?.offsetTop! + 220 : component?.offsetTop! + 210;
+    const posicion = screen.width < 768 ? component?.offsetTop! + 255 : component?.offsetTop! + 245;
     window.scrollTo({
       top: posicion,
       behavior: "smooth"

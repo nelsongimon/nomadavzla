@@ -7,6 +7,7 @@ import { Product, Style } from "@/types";
 import { PuffLoader } from "react-spinners";
 import useGetStyles from "@/hooks/useGetStyles";
 import clsx from "clsx";
+import { useEffect, useState } from "react";
 
 interface SearchResults {
   mobile: boolean;
@@ -33,9 +34,25 @@ export default function SearchResults({
   handleClickSearchProduct,
   handleClickSeeAllResults
 }: SearchResults) {
-
+  const [isAtTop, setIsAtTop] = useState(true);
   const { data: styles } = useGetStyles();
   const { data: suggestedProducts } = useSuggestedProducts();
+
+  useEffect(() => {
+    function handleScroll() {
+      if (window.scrollY < 36) {
+        setIsAtTop(true);
+      } else {
+        setIsAtTop(false);
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <Transition
@@ -49,7 +66,7 @@ export default function SearchResults({
     >
       <div onClick={checkOnClickOutside} className={clsx(`
         fixed bottom-0 left-0 right-0 z-10 bg-black bg-opacity-50`,
-        mobile ? "top-[67px]" : "top-[72px]"
+        mobile ? isAtTop ? "top-[102px]" : "top-[67px]" : isAtTop ? "top-[107px]" : "top-[72px]"
       )}>
         <div className="flex justify-center">
           <div onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)} className={clsx(`

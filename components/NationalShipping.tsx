@@ -8,7 +8,7 @@ export default function NationalShipping() {
 
   useEffect(() => {
     const component = document.getElementById("nationalShipping");
-    const posicion = component?.offsetTop! + 230;
+    const posicion = component?.offsetTop! + 265;
     window.scrollTo({
       top: posicion,
       behavior: "smooth"
