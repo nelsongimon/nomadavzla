@@ -25,7 +25,7 @@ export default function PersonalShipping() {
       return product.name;
     });
 
-    window.open(`https://wa.me/584126049272?text=Hola, soy ${personalInformation?.firstName} ${personalInformation?.lastName} y me gustaria coordinar una entrega personal en Maturín. ${names.length === 1 ? "Me interesa el siguiente producto:" : "Me interesa los siguientes productos:"} ${names.join(", ")}`, "_blank");
+    window.open(`https://wa.me/584126049272?text=Hola, soy ${personalInformation?.firstName} ${personalInformation?.lastName} y me gustaria coordinar una entrega personal en Maturín. ${names.length === 1 ? "Me interesa el siguiente producto:" : "Me interesan los siguientes productos:"} ${names.join(", ")}.`, "_blank");
   }
 
   useEffect(() => {
