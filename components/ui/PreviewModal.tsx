@@ -6,6 +6,7 @@ import Gallery from "@/components/product/Gallery";
 import Modal from "./Modal";
 import Button from "./Button";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function PreviewModal() {
   const previewModal = usePreviewModal();
@@ -17,7 +18,7 @@ export default function PreviewModal() {
   }
 
   const onCloseModal = () => {
-    router.push(`/productos/${product.slug}`);
+    // router.push(`/productos/${product.slug}`);
     previewModal.onClose();
   }
 
@@ -33,13 +34,17 @@ export default function PreviewModal() {
         <div className="sm:col-span-8 lg:col-span-5">
           <ProductInfo previewModal product={product} />
           <div className="mt-7 flex">
-            <Button
-              size="none"
-              variant="link"
-              onClick={onCloseModal}
+            <Link
+              href={`/productos/${product.slug}`}
             >
-              Ver más detalles
-            </Button>
+              <Button
+                size="none"
+                variant="link"
+                onClick={onCloseModal}
+              >
+                Ver más detalles
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
