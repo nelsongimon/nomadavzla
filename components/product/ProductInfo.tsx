@@ -106,7 +106,7 @@ export default function ProductInfo({
         ) : (
           <div className="flex gap-x-5 items-center mt-0 lg:mt-0">
             <p className="text-base font-light text-primary-color">
-              Mantente informado sobre la llegada de este modelo siguiéndonos en nuestras redes sociales y suscribiéndote a nuestro boletín informativo. ¡Gracias por tu paciencia y apoyo!
+              Mantente informado sobre la llegada de este modelo siguiéndonos en nuestras redes sociales y suscribiéndote a nuestra Newsletter. ¡Gracias por tu paciencia y apoyo!
             </p>
           </div>
         )}

@@ -20,6 +20,7 @@ export default function Gallery({
   const onOpen = useExpandImage(state => state.onOpen);
 
   const handleExpandImage = (image: string) => {
+    if (previewModal) return;
     onOpen(image);
   }
   return (

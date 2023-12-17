@@ -5,13 +5,13 @@ import usePreviewModal from "@/hooks/usePreviewModal";
 import Gallery from "@/components/product/Gallery";
 import Modal from "./Modal";
 import Button from "./Button";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
+
+
 
 export default function PreviewModal() {
   const previewModal = usePreviewModal();
   const product = usePreviewModal((state) => state.data);
-  const router = useRouter();
 
   if (!product) {
     return null;
