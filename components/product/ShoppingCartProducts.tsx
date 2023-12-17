@@ -41,9 +41,9 @@ export default function ShoppingCartProducts() {
           ))}
         </div>
       ) : (
-        <div className="h-[300px] flex flex-col items-center justify-center gap-y-3">
+        <div className="h-[200px] lg:h-[300px] flex flex-col items-center justify-center gap-y-3">
           <MdRemoveShoppingCart className="text-7xl text-gray-300" />
-          <h3 className="text-3xl font-semibold text-gray-300 mb-6">
+          <h3 className="text-2xl lg:text-3xl font-semibold text-gray-300 mb-6 text-center">
             No tienes productos en el carrito
           </h3>
           <Link href="/productos">

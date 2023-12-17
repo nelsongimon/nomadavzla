@@ -3,7 +3,7 @@
 import useCheckoutSteps from "@/hooks/useCheckoutSteps";
 import { motion } from "framer-motion";
 import { BadgeCheck } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Button from "./ui/Button";
 import useSelectedAgency from "@/hooks/useSelectedAgency";
 import useShoppingCart from "@/hooks/useShoppingCart";
@@ -12,15 +12,28 @@ import { useRouter } from "next/navigation";
 export default function PurchaseCompleted() {
   const router = useRouter();
   const setCurrentStep = useCheckoutSteps(step => step.setCurrentStep);
+  const currentStep = useCheckoutSteps(step => step.currentStep);
   const resetShoppingCart = useShoppingCart(state => state.reset);
   const setSelectedAgency = useSelectedAgency(state => state.setSelectedAgency);
+  const step = useRef(currentStep);
 
 
   useEffect(() => {
-    setCurrentStep(1);
-    resetShoppingCart();
-    setSelectedAgency(null);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+    if (step.current === 4) {
+      setCurrentStep(1);
+      resetShoppingCart();
+      setSelectedAgency(null);
+    }
   }, []);
+
+  if (step.current !== 4) {
+    router.push("/carrito");
+    return null;
+  }
 
   return (
     <motion.div
@@ -41,7 +54,7 @@ export default function PurchaseCompleted() {
           ¡Compra Completada!
         </h2>
         <p className="font-light text-lg text-primary-color text-center">
-          Felicidades tu compra ha sido completata, te enviaremos en mensaje y correo electronico de confirmacion.
+          Felicidades por tu compra ha sido completada, te enviaremos en mensaje y correo electrónico de confirmación.
         </p>
       </div>
       <Button

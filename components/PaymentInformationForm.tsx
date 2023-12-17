@@ -12,6 +12,7 @@ import BanescoForm from "./BanescoForm";
 import PaypalForm from "./PaypalForm";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import PurchaseCompleted from "./PurchaseCompleted";
 
 export default function PaymentInformationForm() {
   const router = useRouter();
@@ -20,6 +21,11 @@ export default function PaymentInformationForm() {
 
   const onPrevious = () => {
     setCurrentStep(2);
+  }
+
+  const handlePurchaseComplete = () => {
+    setCurrentStep(4);
+    router.push("/compra-completada");
   }
 
   useEffect(() => {
@@ -152,7 +158,7 @@ export default function PaymentInformationForm() {
         <Button
           variant="outline"
           size="default"
-          onClick={() => router.push("/compra-completada")}
+          onClick={handlePurchaseComplete}
           className="flex gap-x-1 items-center"
           type="button"
         >

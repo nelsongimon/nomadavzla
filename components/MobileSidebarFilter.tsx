@@ -61,13 +61,14 @@ export default function MobileSidebarFilter() {
             as="div"
             className="bg-white h-full z-60 w-[75%] relative"
           >
-            <div className="absolute right-4 top-2 z-50">
-              <IconButton onClick={() => onClose()} icon={<X size={15} />} />
-            </div>
-            <div className="pl-4 pt-7 flex flex-col gap-y-1">
+            <div className="w-full flex justify-between items-center px-3 py-4">
               <h3 className="text-xl font-semibold">
                 Filtros
               </h3>
+              <IconButton onClick={() => onClose()} icon={<X size={15} />} />
+            </div>
+            <div className="border-gray-100 border-b-[2px]" />
+            <div className="pl-4 mt-2 flex flex-col gap-y-1">
               <Filter
                 attributes={attributes}
                 mobile

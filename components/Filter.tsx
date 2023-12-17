@@ -17,7 +17,7 @@ export default function Filter({
 
   return (
     <div className={clsx(`pr-6 mr-3 sticky top-[90px] h-[80vh] overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-color`, mobile && "h-[90vh]")}>
-      <ul className={clsx(`flex flex-col gap-y-4 mt-5 mb-20`, mobile && "mb-7")}>
+      <ul className={clsx(`flex flex-col gap-y-4 mt-5 mb-20`, mobile && "mb-7 mt-0")}>
         {attributes.map((attribute) => {
           if (attribute.attribute_values.length === 0) {
             return null;
