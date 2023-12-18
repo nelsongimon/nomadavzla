@@ -4,6 +4,7 @@ import { Mail } from "lucide-react";
 import Container from "./Container";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import Button from "./Button";
 
 export default function Newsletter() {
   const [input, setinput] = useState("");
@@ -57,8 +58,7 @@ export default function Newsletter() {
                   "
                   />
                 </div>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
+                <button
                   type="button"
                   className="
                   bg-primary-color
@@ -75,7 +75,7 @@ export default function Newsletter() {
                 "
                 >
                   Suscribirme
-                </motion.button>
+                </button>
               </div>
 
             </form>

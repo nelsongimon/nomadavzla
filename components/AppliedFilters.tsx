@@ -1,7 +1,6 @@
 "use client";
 
 import { X } from "lucide-react";
-import { motion } from "framer-motion";
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { convertToCapitalize } from "@/lib/utils";
@@ -55,23 +54,22 @@ export default function AppliedFilters() {
           const values = attribute[1]?.toString().split(",");
           return (
             values?.map((value, index) => (
-              <motion.button
+              <button
                 key={index}
-                whileHover={{ scale: 1.05 }}
                 onClick={() => onRemoveItemFilter(attribute, value)}
                 className="
-              flex 
-              items-center
-              px-2
-              py-1
-              rounded-full
-              font-light
-              text-gray-strong-color
-              text-sm
-              bg-gray-100
-              duration-300
-              hover:opacity-70
-            "
+                  flex 
+                  items-center
+                  px-2
+                  py-1
+                  rounded-full
+                  font-light
+                  text-gray-strong-color
+                  text-sm
+                  bg-gray-100
+                  duration-300
+                  hover:opacity-70
+                "
               >
                 <span className="text-xs">
                   <X size={15} className="stroke-[1]" />
@@ -79,7 +77,7 @@ export default function AppliedFilters() {
                 <span>
                   {convertToCapitalize(value)}
                 </span>
-              </motion.button>
+              </button>
             ))
           )
         })}
