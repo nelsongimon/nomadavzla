@@ -21,28 +21,28 @@ export const menuItems = [
       },
       sectionImages: [
         {
-          image: "https://placehold.co/400x400.png",
+          image: `${path}images/menu/Glasses-Styles-1.jpg`,
           button: {
             label: "Ver Modelos",
             action: "/productos"
           }
         },
         {
-          image: "https://placehold.co/400x400.png",
+          image: `${path}images/menu/Glasses-Styles-2.jpg`,
           button: {
             label: "Ver Modelos",
             action: "/productos"
           }
         },
         {
-          image: "https://placehold.co/400x400.png",
+          image: `${path}images/menu/Glasses-Styles-3.jpg`,
           button: {
             label: "Ver Modelos",
             action: "/productos"
           }
         },
         {
-          image: "https://placehold.co/400x400.png",
+          image: `${path}images/menu/Glasses-Styles-4.jpg`,
           button: {
             label: "Ver Modelos",
             action: "/productos"
@@ -87,28 +87,28 @@ export const menuItems = [
       },
       sectionImages: [
         {
-          image: "https://placehold.co/400x400.png",
+          image: `${path}images/menu/Glasses-Styles-1.jpg`,
           button: {
             label: "Ver Modelos",
             action: "/productos"
           }
         },
         {
-          image: "https://placehold.co/400x400.png",
+          image: `${path}images/menu/Glasses-Styles-2.jpg`,
           button: {
             label: "Ver Modelos",
             action: "/productos"
           }
         },
         {
-          image: "https://placehold.co/400x400.png",
+          image: `${path}images/menu/Glasses-Styles-3.jpg`,
           button: {
             label: "Ver Modelos",
             action: "/productos"
           }
         },
         {
-          image: "https://placehold.co/400x400.png",
+          image: `${path}images/menu/Glasses-Styles-4.jpg`,
           button: {
             label: "Ver Modelos",
             action: "/productos"
@@ -150,7 +150,7 @@ export const menuMobileItems = [
         href: "/estilo/aviador"
       },
       {
-        
+
         label: "Estilo Clásico",
         href: "/estilo/clasico"
       },
@@ -185,7 +185,7 @@ export const genreBillboard = {
     titleBlack: "Damas",
     label: "Ver Modelos",
     action: "/productos?genero=damas",
-  }, 
+  },
   gentlemen: {
     image: `${path}images/gentleman.png`,
     titleGray: "Lentes",

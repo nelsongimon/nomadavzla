@@ -107,32 +107,36 @@ export default function ItemMenu({
                     </div>
                   </div>
                   {/* Images */}
-                  <div className="col-span-9">
-                    <div className="flex gap-x-3">
+                  <div className="col-span-9 h-full">
+                    <div className="flex gap-x-3 h-full">
                       {item.MegaMenu.sectionImages.map((item: Record<string, any>, index: number) => (
-                        <div key={index} className="relative w-full h-full aspect-square overflow-hidden cursor-pointer group">
+                        <div key={index} className="relative w-full h-full overflow-hidden cursor-pointer group">
                           <Image
                             fill
                             src={item.image}
                             alt="Image"
                             className="
-                                object-cover
-                                object-center
-                                scale-100
-                                hover:scale-110
-                                duration-300
-                                peer
-                              "
+                              opacity-40
+                              grayscale
+                              saturate-150
+                              brightness-125
+                              object-cover
+                              hover:scale-110
+                              duration-300
+                            "
                           />
                           <div
-                            className="absolute w-full bottom-7 flex justify-center items-center duration-300 opacity-40 peer-hover:opacity-100"
+                            className="absolute w-full bottom-7 flex justify-center items-center duration-300"
                           >
                             <Button
                               onClick={() => router.push(item.button.action)}
                               size="small"
-                              variant="gray"
+                              variant="default"
+                              className="px-3 hover:opacity-70"
                             >
-                              {item.button.label}
+                              <span className="text-sm">
+                                {item.button.label}
+                              </span>
                             </Button>
                           </div>
                         </div>
@@ -145,7 +149,6 @@ export default function ItemMenu({
           </div>
         </Transition>
       )}
-
     </li>
 
   );
