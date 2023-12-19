@@ -89,7 +89,7 @@ export default function ItemMenu({
                   {/* Column */}
                   <div className="col-span-3">
                     <div className="flex flex-col gap-y-4">
-                      <h3 className="text-gray-strong-color text-lg">
+                      <h3 className="text-secondary-color text-lg">
                         {item.MegaMenu.sectionLinks.title}
                       </h3>
                       <div className="flex flex-col gap-y-4">
