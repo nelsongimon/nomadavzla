@@ -9,7 +9,7 @@ export default function TopBar() {
         <Truck size={18} className="text-secondary-color stroke-[2] hidden lg:block" />
         <Truck size={17} className="text-secondary-color stroke-[2] block lg:hidden" />
         <h2 className="text-[11px] lg:text-xs text-secondary-color font-semibold uppercase">
-          Envío gratis a todo el país en compras mayores a 20$
+          Envío gratis a todo el país en compras mayores a $20
         </h2>
       </div>
     </div>
