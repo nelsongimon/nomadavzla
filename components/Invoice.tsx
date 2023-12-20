@@ -9,6 +9,7 @@ import { ChevronLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
 import usePersonalInformation from "@/hooks/usePersonalInformation";
 import useSelectedAgency from "@/hooks/useSelectedAgency";
+import { BsFormat } from "@/lib/utils";
 
 export default function Invoice() {
   const router = useRouter();
@@ -84,7 +85,7 @@ export default function Invoice() {
         </div>
         <div className="flex flex-col gap-y-1">
           <h4 className="text-xl lg:text-2xl font-semibold text-primary-color text-right">
-            Bs {totalBs.toFixed(2)}
+            Bs {BsFormat(totalBs.toFixed(2))}
           </h4>
           <h3 className="text-xl lg:text-2xl font-semibold text-primary-color text-right">
             ${totalToPay}

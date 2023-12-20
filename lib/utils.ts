@@ -1,6 +1,6 @@
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
- 
+
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
@@ -32,7 +32,15 @@ export function formatPrice(string: string): string[] {
   }
 }
 
-export const toastStyle = { 
+export function BsFormat(value: string) {
+  const formatNumber = parseFloat(value).toLocaleString('es-ES', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  });
+  return formatNumber;
+}
+
+export const toastStyle = {
   style: {
     border: "1px solid #C99400",
     padding: "10px 16px",
