@@ -54,7 +54,7 @@ export default function PurchaseCompleted() {
           ¡Compra Completada!
         </h2>
         <p className="font-light text-lg text-primary-color text-center">
-          Felicidades por tu compra ha sido completada, te enviaremos en mensaje y correo electrónico de confirmación.
+          Felicidades por tu compra ha sido completada, te enviaremos un mensaje y correo electrónico de confirmación.
         </p>
       </div>
       <Button

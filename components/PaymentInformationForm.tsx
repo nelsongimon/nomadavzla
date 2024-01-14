@@ -12,7 +12,6 @@ import BanescoForm from "./BanescoForm";
 import PaypalForm from "./PaypalForm";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import PurchaseCompleted from "./PurchaseCompleted";
 
 export default function PaymentInformationForm() {
   const router = useRouter();

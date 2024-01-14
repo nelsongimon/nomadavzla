@@ -1,4 +1,3 @@
-import CheckPurchaseCompleted from "@/components/CheckPurchaseCompleted";
 import PurchaseCompleted from "@/components/PurchaseCompleted";
 
 export default function PurchaseCompletedPage() {

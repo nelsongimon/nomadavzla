@@ -4,15 +4,14 @@ import { useEffect, useState } from "react";
 import InvoiceProduct from "./product/InvoiceProduct";
 import useShoppingCart from "@/hooks/useShoppingCart";
 import useGetDollarValue from "@/hooks/useGetDollarValue";
-import Button from "./ui/Button";
-import { ChevronLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
 import usePersonalInformation from "@/hooks/usePersonalInformation";
 import useSelectedAgency from "@/hooks/useSelectedAgency";
 import { BsFormat } from "@/lib/utils";
+import useCheckoutSteps from "@/hooks/useCheckoutSteps";
 
 export default function Invoice() {
-  const router = useRouter();
+  ;
   const [isMounted, setIsMounted] = useState(false);
   const products = useShoppingCart(state => state.items);
   const totalToPay = products.reduce((acc, item) => acc + Number(item.total), 0).toFixed(2);
@@ -20,6 +19,7 @@ export default function Invoice() {
   const totalBs = Number(dollarValue) * Number(totalToPay);
   const personalInformation = usePersonalInformation(state => state.personalInformation);
   const selectedAgency = useSelectedAgency(state => state.selectedAgency);
+  const currentStep = useCheckoutSteps(state => state.currentStep);
 
   useEffect(() => {
     setIsMounted(true);
@@ -28,6 +28,11 @@ export default function Invoice() {
   if (!isMounted) {
     return null;
   }
+
+  if (currentStep === 4) {
+    return null;
+  }
+
   return (
     <div className="bg-gray-color px-3 py-7 rounded-lg sticky top-[100px]">
       <div className="px-5 border-b border-gray-200 pb-5">
