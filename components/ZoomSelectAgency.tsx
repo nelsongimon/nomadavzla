@@ -53,7 +53,7 @@ export default function ZoomSelectAgency() {
             agencies.length > 4 && "h-[600px]",
           )}>
             {agencies.map((agency: Agency, index: number) => (
-              <AgencyCard key={agency.id} agency={{ ...agency, company: "grupo zoom" }} />
+              <AgencyCard key={agency.id} agency={{ ...agency, company: "Grupo Zoom" }} />
             ))}
           </div>
         )}
