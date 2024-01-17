@@ -29,6 +29,7 @@ export default function CartProductItem({
     const totalAmount = parseFloat(product?.salePrice as string) * Number(item.quantity + 1);
     updateCartItem({
       id: product?.id!,
+      name: product?.name!,
       quantity: item.quantity + 1,
       price: parseFloat(product?.salePrice as string),
       total: totalAmount.toFixed(2)
@@ -41,6 +42,7 @@ export default function CartProductItem({
     const totalAmount = parseFloat(product?.salePrice as string) * Number(item.quantity - 1);
     updateCartItem({
       id: product?.id!,
+      name: product?.name!,
       quantity: item.quantity - 1,
       price: parseFloat(product?.salePrice as string),
       total: totalAmount.toFixed(2)
@@ -52,6 +54,7 @@ export default function CartProductItem({
       const totalAmount = parseFloat(product?.salePrice as string) * Number(product?.quantity!);
       updateCartItem({
         id: product?.id!,
+        name: product?.name!,
         quantity: Number(product?.quantity!),
         price: parseFloat(product?.salePrice as string),
         total: totalAmount.toFixed(2)

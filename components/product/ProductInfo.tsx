@@ -26,6 +26,7 @@ export default function ProductInfo({
     const totalAmount = parseFloat(product.salePrice as string) * currentQuantity;
     addItemToCart({
       id: product.id,
+      name: product.name,
       quantity: currentQuantity,
       price: Number(product.salePrice),
       total: totalAmount.toFixed(2)

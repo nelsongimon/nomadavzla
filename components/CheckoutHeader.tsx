@@ -4,7 +4,13 @@ import useCheckoutSteps from "@/hooks/useCheckoutSteps";
 import clsx from "clsx";
 
 export default function CheckoutHeader() {
+
   const currentStep = useCheckoutSteps(state => state.currentStep);
+
+  if (currentStep === 4) {
+    return null;
+  }
+
   return (
     <div className="flex justify-between items-center">
       <div className="flex flex-col gap-y-2 lg:flex-row lg:gap-x-2 items-center">

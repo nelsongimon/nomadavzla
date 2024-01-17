@@ -36,6 +36,7 @@ export default function ProductCard({
   const addToCart = () => {
     addItemToCart({
       id: product.id,
+      name: product.name,
       quantity: 1,
       price: Number(product.salePrice),
       total: parseFloat(product.salePrice).toFixed(2)
