@@ -19,17 +19,12 @@ export default function Invoice() {
   const totalBs = Number(dollarValue) * Number(totalToPay);
   const personalInformation = usePersonalInformation(state => state.personalInformation);
   const selectedAgency = useSelectedAgency(state => state.selectedAgency);
-  const currentStep = useCheckoutSteps(state => state.currentStep);
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
   if (!isMounted) {
-    return null;
-  }
-
-  if (currentStep === 4) {
     return null;
   }
 

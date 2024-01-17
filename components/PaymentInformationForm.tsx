@@ -22,11 +22,6 @@ export default function PaymentInformationForm() {
     setCurrentStep(2);
   }
 
-  const handlePurchaseComplete = () => {
-    setCurrentStep(4);
-    router.push("/compra-completada");
-  }
-
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -153,15 +148,6 @@ export default function PaymentInformationForm() {
         >
           <ChevronLeft size={20} className="stroke-[1.5]" />
           Volver
-        </Button>
-        <Button
-          variant="outline"
-          size="default"
-          onClick={handlePurchaseComplete}
-          className="flex gap-x-1 items-center"
-          type="button"
-        >
-          Siguiente (borrar)
         </Button>
       </div>
     </motion.div>

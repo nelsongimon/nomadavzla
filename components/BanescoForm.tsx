@@ -18,6 +18,12 @@ import Image from "next/image";
 import toast from "react-hot-toast";
 import { toastStyle } from "@/lib/utils";
 import useCheckoutSteps from "@/hooks/useCheckoutSteps";
+import { useRouter } from "next/navigation";
+import { api } from "@/lib/api";
+import usePersonalInformation from "@/hooks/usePersonalInformation";
+import useSelectedAgency from "@/hooks/useSelectedAgency";
+import useShoppingCart from "@/hooks/useShoppingCart";
+import { PuffLoader } from "react-spinners";
 
 const formSchema = z.object({
   referenceNumber: z.string({ required_error: "El número de referencia es requerido." }).regex(/^[0-9]+$/, {
@@ -28,10 +34,19 @@ const formSchema = z.object({
 
 
 export default function BanescoForm() {
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
   const [imagePreview, setImagePreview] = useState("");
   const [image, setImage] = useState<File>();
   const [invalidImage, setInvalidImage] = useState("");
   const setCurrentStep = useCheckoutSteps(step => step.setCurrentStep);
+
+  const personalInformation = usePersonalInformation(state => state.personalInformation);
+  const selectedAgency = useSelectedAgency(state => state.selectedAgency);
+  const products = useShoppingCart(state => state.items);
+  const totalUsd = products.reduce((acc, item) => acc + Number(item.total), 0).toFixed(2);
+  const dollarValue = "35.59";
+  const totalBs = (Number(dollarValue) * Number(totalUsd)).toFixed(2);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -80,8 +95,49 @@ export default function BanescoForm() {
       setInvalidImage('La imagen excede el tamaño máximo permitido: 1MB');
       return;
     }
-    console.log("Form submitted:", values);
-    setCurrentStep(4);
+
+    const formData = {
+      //Personal information
+      customerName: personalInformation?.firstName + " " + personalInformation?.lastName,
+      dni: personalInformation?.dni,
+      customerEmail: personalInformation?.email,
+      customerPhoneNumber: personalInformation?.phoneNumber,
+      isSubscribe: personalInformation?.isSubscribe,
+      //Shipping information
+      shippingCompany: selectedAgency?.company,
+      shippingCity: selectedAgency?.city,
+      shippingAgency: selectedAgency?.name,
+      shippingAgencyAddress: selectedAgency?.address,
+      //Payment information
+      paymentMethod: "Banesco Panamá",
+      paymentDate: values.date,
+      paymentProof: image,
+      paymentReferenceNumber: values.referenceNumber,
+      //Order information
+      products: JSON.stringify(products),
+      totalAmountVen: totalBs,
+      totalAmountUsd: totalUsd
+    }
+
+    sroollToTop();
+    setIsLoading(true);
+    api.post("/order/create", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data"
+      }
+    })
+      .then(res => {
+        if (res.data.status === "success") {
+          setCurrentStep(4);
+          router.push("/compra-completada");
+        }
+      })
+      .catch(error => {
+        toast.error("No se pudo registrar tu pago", toastStyle)
+      })
+      .finally(() => {
+        setIsLoading(false);
+      })
 
   }
 
@@ -90,17 +146,30 @@ export default function BanescoForm() {
     toast.success(message, toastStyle);
   }
 
-  useEffect(() => {
+  const sroollToTop = () => {
     const component = document.getElementById("banesco");
     const posicion = screen.width < 768 ? component?.offsetTop! + 255 : component?.offsetTop! + 245;
     window.scrollTo({
       top: posicion,
       behavior: "smooth"
     });
+  }
+
+  useEffect(() => {
+    scrollTo();
   }, []);
 
   return (
-    <div id="banesco" className="flex flex-col items-center gap-y-5 w-full px-2 lg:px-10 py-0 lg:py-3">
+    <div id="banesco" className="flex flex-col items-center gap-y-5 w-full px-2 lg:px-10 py-0 lg:py-3 relative">
+      {/* Loading */}
+      {isLoading && (
+        <div className="absolute inset-0 flex items-center justify-center bg-white/70 z-40">
+          <PuffLoader
+            size={150}
+            color="#797979"
+          />
+        </div>
+      )}
       {/* Image */}
       <div className="relative h-[30px] w-full mb-2">
         <Image fill alt="" src={`${process.env.NEXT_PUBLIC_IMAGE_PATH}images/banescoPanama.png`}

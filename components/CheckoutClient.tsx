@@ -8,9 +8,11 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { toastStyle } from "@/lib/utils";
 import Container from "./ui/Container";
+import useCheckoutSteps from "@/hooks/useCheckoutSteps";
 
 export default function CheckoutClient() {
   const router = useRouter();
+  const currentStep = useCheckoutSteps(state => state.currentStep);
   const shoppingCartItems = useShoppingCart(state => state.items);
   const [isMounted, setIsMounted] = useState(false);
 
@@ -31,6 +33,10 @@ export default function CheckoutClient() {
   if (shoppingCartItems.reduce((acc, item) => acc + Number(item.total), 0) === 0) {
     toast.error("Tu total a pagar es $0.00", toastStyle);
     router.push("/carrito");
+    return null;
+  }
+
+  if (currentStep === 4) {
     return null;
   }
 
