@@ -107,6 +107,7 @@ export type PersonalInformation = {
   dni: string;
   email: string;
   phoneNumber: string;
+  phoneCode: string;
   isSubscribe: boolean;
 }
 

@@ -22,15 +22,16 @@ import { useEffect } from "react";
 import { Checkbox } from "./ui/checkbox";
 import usePersonalInformation from "@/hooks/usePersonalInformation";
 import { PersonalInformation } from "@/types";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 
 const formSchema = z.object({
-  firstName: z.string({ required_error: "El campo nombre es requerido." }).regex(/^[a-zA-Z]+$/, {
+  firstName: z.string({ required_error: "El campo nombre es requerido." }).regex(/^[a-zA-Z ]+$/, {
     message: "El campo nombre solo puede contener letras.",
   }).min(2, {
     message: "El campo nombre debe contener al menos 2 caracteres."
   }),
 
-  lastName: z.string({ required_error: "El campo apellido es requerido." }).regex(/^[a-zA-Z]+$/, {
+  lastName: z.string({ required_error: "El campo apellido es requerido." }).regex(/^[a-zA-Z ]+$/, {
     message: "El campo apellido solo puede contener letras.",
   }).min(2, {
     message: "El campo apellido debe contener al menos 2 caracteres."
@@ -46,8 +47,12 @@ const formSchema = z.object({
 
   phoneNumber: z.string({ required_error: "El campo número de teléfono es requerido." }).regex(/^[0-9]+$/, {
     message: "El campo número de teléfono solo puede contener números.",
+  }).length(7, {
+    message: "El campo número de teléfono debe tener 7 caracteres."
   }),
-
+  phoneCode: z.string({ required_error: "El campo número de teléfono es requerido." }).regex(/^[0-9]+$/, {
+    message: "El campo número de teléfono solo puede contener números.",
+  }),
   isSubscribe: z.boolean().default(false).optional(),
 });
 export default function PersonalInformationForm() {
@@ -64,6 +69,7 @@ export default function PersonalInformationForm() {
       dni: personalInformation ? personalInformation.dni : undefined,
       email: personalInformation ? personalInformation.email : undefined,
       phoneNumber: personalInformation ? personalInformation.phoneNumber : undefined,
+      phoneCode: personalInformation ? personalInformation.phoneCode : undefined,
       isSubscribe: personalInformation ? personalInformation.isSubscribe : false,
     },
   });
@@ -147,19 +153,44 @@ export default function PersonalInformationForm() {
               />
             </div>
             <div className="flex flex-col gap-y-4 lg:flex-row lg:gap-x-5 items-end mt-4 lg:mt-0">
-              <FormField
-                control={form.control}
-                name="phoneNumber"
-                render={({ field }) => (
-                  <FormItem className="w-full">
-                    <FormLabel className="text-base">Número de teléfono</FormLabel>
-                    <FormControl>
-                      <Input className="text-base" placeholder="Escribe tu número de teléfono" {...field} autoComplete="off" />
-                    </FormControl>
-                    <FormMessage className="font-light" />
-                  </FormItem>
-                )}
-              />
+              <div className="flex gap-x-2 w-full">
+                <FormField
+                  control={form.control}
+                  name="phoneCode"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-base">Código</FormLabel>
+                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                        <FormControl>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Código" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          <SelectItem value="0412">0412</SelectItem>
+                          <SelectItem value="0416">0416</SelectItem>
+                          <SelectItem value="0426">0426</SelectItem>
+                          <SelectItem value="0414">0414</SelectItem>
+                          <SelectItem value="0424">0424</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="phoneNumber"
+                  render={({ field }) => (
+                    <FormItem className="w-full">
+                      <FormLabel className="text-base">Número de teléfono</FormLabel>
+                      <FormControl>
+                        <Input className="text-base" placeholder="Escribe tu número de teléfono" {...field} autoComplete="off" />
+                      </FormControl>
+                      <FormMessage className="font-light" />
+                    </FormItem>
+                  )}
+                />
+              </div>
               <FormField
                 control={form.control}
                 name="isSubscribe"

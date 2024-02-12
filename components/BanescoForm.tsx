@@ -101,7 +101,7 @@ export default function BanescoForm() {
       customerName: personalInformation?.firstName + " " + personalInformation?.lastName,
       dni: personalInformation?.dni,
       customerEmail: personalInformation?.email,
-      customerPhoneNumber: personalInformation?.phoneNumber,
+      customerPhoneNumber: personalInformation?.phoneCode! + personalInformation?.phoneNumber!,
       isSubscribe: personalInformation?.isSubscribe,
       //Shipping information
       shippingCompany: selectedAgency?.company,

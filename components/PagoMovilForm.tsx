@@ -101,7 +101,7 @@ export default function PagoMovilForm() {
       customerName: personalInformation?.firstName + " " + personalInformation?.lastName,
       dni: personalInformation?.dni,
       customerEmail: personalInformation?.email,
-      customerPhoneNumber: personalInformation?.phoneNumber,
+      customerPhoneNumber: personalInformation?.phoneCode! + personalInformation?.phoneNumber!,
       isSubscribe: personalInformation?.isSubscribe,
       //Shipping information
       shippingCompany: selectedAgency?.company,
@@ -130,6 +130,10 @@ export default function PagoMovilForm() {
         if (res.data.status === "success") {
           setCurrentStep(4);
           router.push("/compra-completada");
+        }
+
+        if (res.data.status === "error") {
+          toast.error(res.data.message, toastStyle);
         }
       })
       .catch(error => {
