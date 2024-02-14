@@ -118,7 +118,7 @@ export default function ZinliForm() {
       paymentCustomerEmail: values.email,
       paymentReferenceNumber: values.referenceNumber,
       //Order information
-      products: JSON.stringify(products),
+      products: JSON.stringify(products.filter((product) => product.quantity > 0)),
       totalAmountVen: totalBs,
       totalAmountUsd: totalUsd
     }

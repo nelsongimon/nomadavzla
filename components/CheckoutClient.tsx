@@ -47,7 +47,9 @@ export default function CheckoutClient() {
           Finalizar Compra
         </h3>
         <p className="text-gray-strong-color text-base lg:text-lg text-center font-light">
-          Text here
+          {currentStep === 1 && "Completa los campos con tus datos personales y pulsa \"siguiente\""}
+          {currentStep === 2 && "Selecciona el método de envío de tu preferencia"}
+          {currentStep === 3 && "Elige el método de pago y completa el formulario"}
         </p>
       </div>
       <div className="flex flex-col gap-y-16 lg:grid lg:grid-cols-12 lg:gap-x-12">

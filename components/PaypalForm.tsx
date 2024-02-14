@@ -114,7 +114,7 @@ export default function PaypalForm() {
       paymentCustomerEmail: values.email,
       paymentProof: image,
       //Order information
-      products: JSON.stringify(products),
+      products: JSON.stringify(products.filter((product) => product.quantity > 0)),
       totalAmountVen: totalBs,
       totalAmountUsd: totalUsd
     }
