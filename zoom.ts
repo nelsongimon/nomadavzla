@@ -15,6 +15,81 @@ export const states = [
     name: "Anzoátegui",
     agencies: [
       {
+        id: "56KEVGp7j4",
+        city: "Anaco",
+        name: "ALIADO ZOOM FV COMUNICACIONES, C.A.",
+        address: "Sector Viento Fresco, Av. Jose Antonio Anzoatagui, C.c. Super Estacion , Nivel Pb, Local Nro. 09.",
+        code: "2251",
+      },
+      {
+        id: "56KEVGp7j5",
+        city: "Anaco",
+        name: "ZOOM ANACO",
+        address: "Calle 5 De Julio, Edf. San Elias Nro 3-23b Pb. P.ref. Una Cuadra De Banesco.",
+        code: "3",
+      },
+      // 
+      {
+        id: "Mm1xPb0xmS",
+        city: "Barcelona",
+        name: "ALIADO ZOOM MBE CUMANA (BARCELONA)",
+        address: "Av.cristobal Colon Perimetal, Sec. El Diqui, C.c. Marina Plaza, Edif. D-3, Local P.b.-4.",
+        code: "3857",
+      },
+      {
+        id: "56KEVGp7j1",
+        city: "Barcelona",
+        name: "ALIADO ZOOM SUMINISTROS E INSUMOS INSUMEDIC C.A",
+        address: "Boulevar 5 De Julio, Centro Comercial Isfra, Local 7n Barcelona.",
+        code: "4026",
+      },
+      {
+        id: "56KEVGp7j2",
+        city: "Barcelona",
+        name: "ZOOM BARCELONA",
+        address: "Av. Intercomunal Jorge Rodriguez, C.c. Brisas Del Neveri, Local 04. P.ref. Frente A La Escuela De Ingenieria Ugma.",
+        code: "106",
+      },
+      {
+        id: "56KEVGp7j3",
+        city: "Barcelona",
+        name: "ZOOM CAMINO REAL",
+        address: "Av Costanera Con Av Fuerzas Armadas C.c Camino Real Nivel Plaza Pb Local C11, Sector Nueva Barcelona.",
+        code: "4058",
+      },
+      // 
+      {
+        id: "CNYLd0eZYn",
+        city: "Cantaura",
+        name: "ALIADO ZOOM IS INFOSISTEMAS, C.A.",
+        address: "Av. Bolivar Cruce Con Calle Arismendi, Sector Centro Cantaura.",
+        code: "2262",
+      },
+      // 
+      {
+        id: "56KEVGp7j7",
+        city: "El Tigre",
+        name: "ALIADO ZOOM PRINT SOLUTIONS EL TIGRE",
+        address: "Calle 20 Sur, Cruce Con 5ta Carrera Bis.",
+        code: "2345",
+      },
+      {
+        id: "56KEVGp7j8",
+        city: "El Tigre",
+        name: "ZOOM EL TIGRE",
+        address: "Av. Fco. De Miranda, Centro Comercial Flamingo, Pb. Locales A-07 Y A-08. P.ref. Al Lado De La Alcaldia.",
+        code: "62",
+      },
+      // 
+      {
+        id: "56KEVGp7j6",
+        city: "Lechería",
+        name: "ALIADO ZOOM PREVIEW, C.A.",
+        address: "Sector Casco Central Lecherias Carrera 5 Entre Calle 2 Y 3 Centro Empresarial 17-11 Local Pb-1.",
+        code: "2051",
+      },
+      // 
+      {
         id: "tEysGLqx5S",
         city: "Puerto La Cruz",
         name: "ALIADO ZOOM CENTRO INTEGRAL DE COMUNICACIONES LOS UDISTAS, C.A",
@@ -48,27 +123,6 @@ export const states = [
         name: "ZOOM AMANA",
         address: "Calle Bolivar Cruce Con Calle Maneiro. Centro Comercial Amana Local Pb A-6.",
         code: "919",
-      },
-      {
-        id: "CNYLd0eZYn",
-        city: "Cantaura",
-        name: "ALIADO ZOOM IS INFOSISTEMAS, C.A.",
-        address: "Av. Bolivar Cruce Con Calle Arismendi, Sector Centro Cantaura.",
-        code: "2262",
-      },
-      {
-        id: "Mm1xPb0xmS",
-        city: "Barcelona",
-        name: "ALIADO ZOOM MBE CUMANA (BARCELONA)",
-        address: "Av.cristobal Colon Perimetal, Sec. El Diqui, C.c. Marina Plaza, Edif. D-3, Local P.b.-4.",
-        code: "3857",
-      },
-      {
-        id: "56KEVGp7jJ",
-        city: "Barcelona",
-        name: "ALIADO ZOOM SEACAR ORIENTE 1702, C.A",
-        address: "Calle Zulia De Barrio Sucre, Local 5 - C Barcelona Edo- Anzoategui.",
-        code: "3050",
       },
     ]
   },
