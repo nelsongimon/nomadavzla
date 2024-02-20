@@ -16,12 +16,6 @@ export default function AgencyCard({
   if (selectedAgency?.id === agency.id) {
     return (
       <div className="flex flex-col gap-y-2 py-3 px-4 border-2 border-secondary-color bg-light-color rounded-md">
-        <div className="flex items-center justify-center gap-x-2">
-          <CheckSquare size={18} className="text-secondary-color stroke-[2.5]" />
-          <h2 className="text-base font-semibold text-secondary-color">
-            Sucursal seleccionada
-          </h2>
-        </div>
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-x-1">
             <MapPin size={18} className="text-secondary-color stroke-[1.5]" />
@@ -33,11 +27,14 @@ export default function AgencyCard({
             {agency.company}
           </h3>
         </div>
-        <p className="text-sm text-secondary-color">
+        <p className="text-sm text-secondary-color font-semibold">
           {agency.name}
         </p>
         <p className="text-sm text-secondary-color">
-          {agency.address}
+          <span className="font-semibold">Dirección:</span> {agency.address}
+        </p>
+        <p className="text-sm text-secondary-color">
+          <span className="font-semibold">Código:</span> {agency.code}
         </p>
       </div>
     );
@@ -58,11 +55,14 @@ export default function AgencyCard({
           {agency.company}
         </h3>
       </div>
-      <p className="text-sm text-gray-500">
+      <p className="text-sm text-gray-500 font-semibold">
         {agency.name}
       </p>
       <p className="text-sm text-gray-500">
-        {agency.address}
+        <span className="font-semibold">Dirección:</span> {agency.address}
+      </p>
+      <p className="text-sm text-gray-500">
+        <span className="font-semibold">Código:</span> {agency.code}
       </p>
     </div>
   );

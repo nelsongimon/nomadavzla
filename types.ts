@@ -99,6 +99,7 @@ export type Agency = {
   city: string;
   name: string;
   address: string;
+  code: string;
 }
 
 export type PersonalInformation = {

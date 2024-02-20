@@ -1,21 +1,19 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import { api } from "@/lib/api";
 
 export default function useGetDollarValue() {
-  const [data, setData] = useState(0);
+  const [data, setData] = useState("0.00");
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const getDollarValue = async () => {
       try {
         setIsLoading(true);
-        const res = await axios.get("https://exchange.vcoud.com/coins/latest");
-        const dollarValue = res.data.find((item: any) => item._id === "5d5e08bb639f395c7fd11da9").price;
-        setData(dollarValue);
-        
+        const res = await api.get("/value/dollar");
+        setData(res.data.value);
+
       } catch (error) {
-        console.log(error);
-        setData(0);
+        setData("0.00");
       } finally {
         setIsLoading(false);
       }

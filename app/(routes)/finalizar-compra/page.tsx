@@ -1,5 +1,4 @@
 import CheckoutClient from "@/components/CheckoutClient";
-import Container from "@/components/ui/Container";
 
 export const revalidate = 0;
 

@@ -4,18 +4,16 @@ import { useEffect, useState } from "react";
 import InvoiceProduct from "./product/InvoiceProduct";
 import useShoppingCart from "@/hooks/useShoppingCart";
 import useGetDollarValue from "@/hooks/useGetDollarValue";
-import { useRouter } from "next/navigation";
 import usePersonalInformation from "@/hooks/usePersonalInformation";
 import useSelectedAgency from "@/hooks/useSelectedAgency";
 import { BsFormat } from "@/lib/utils";
-import useCheckoutSteps from "@/hooks/useCheckoutSteps";
 
 export default function Invoice() {
   ;
   const [isMounted, setIsMounted] = useState(false);
   const products = useShoppingCart(state => state.items);
   const totalToPay = products.reduce((acc, item) => acc + Number(item.total), 0).toFixed(2);
-  const dollarValue = "35.59";
+  const { data: dollarValue } = useGetDollarValue();
   const totalBs = Number(dollarValue) * Number(totalToPay);
   const personalInformation = usePersonalInformation(state => state.personalInformation);
   const selectedAgency = useSelectedAgency(state => state.selectedAgency);
