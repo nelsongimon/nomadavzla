@@ -1,5 +1,78 @@
 export const states = [
   {
+    name: "Amazonas",
+    agencies: [
+      {
+        id: "SvvtavRW4x",
+        city: "Puerto Ayacucho",
+        name: "ZOOM PUERTO AYACUCHO",
+        address: "Av. Rio Negro, Centro Comercial Juncosa, Local 2-a.",
+        code: "100",
+      },
+    ]
+  },
+  {
+    name: "Anzoátegui",
+    agencies: [
+      {
+        id: "tEysGLqx5S",
+        city: "Puerto La Cruz",
+        name: "ALIADO ZOOM CENTRO INTEGRAL DE COMUNICACIONES LOS UDISTAS, C.A",
+        address: "Av. Paseo Colon Edif. Hotel Rasil Piso, 1 Local Nro 02 Sector, Puerto La Cruz.",
+        code: "3107",
+      },
+      {
+        id: "F4d1bcPqwU",
+        city: "Puerto La Cruz",
+        name: "ALIADO ZOOM INVERSIONES Y ASOCIADOS ELBA C.A",
+        address: "Calle Democracia Cruce Con Calle Juncal Local Terminal De Pasajeros Nro S/n,sector Casco Central.",
+        code: "4064",
+      },
+      {
+        id: "HtUBGjxTKD",
+        city: "Puerto La Cruz",
+        name: "ALIADO ZOOM MBE PUERTO LA CRUZ",
+        address: "Calle Las Flores Con Calle Guaraguao, Centro Comercial Carabel, Planta Baja, Local 2.",
+        code: "694",
+      },
+      {
+        id: "zQrchXPDmz",
+        city: "Puerto La Cruz",
+        name: "ALIADO ZOOM MEGA PC SYSTEMS, C.A",
+        address: "Av Municipal Cc Central Madeirense Nivel Pb Local 17,sector Pueblo Nuevo.",
+        code: "4023",
+      },
+      {
+        id: "HLgufvyqZF",
+        city: "Puerto La Cruz",
+        name: "ZOOM AMANA",
+        address: "Calle Bolivar Cruce Con Calle Maneiro. Centro Comercial Amana Local Pb A-6.",
+        code: "919",
+      },
+      {
+        id: "CNYLd0eZYn",
+        city: "Cantaura",
+        name: "ALIADO ZOOM IS INFOSISTEMAS, C.A.",
+        address: "Av. Bolivar Cruce Con Calle Arismendi, Sector Centro Cantaura.",
+        code: "2262",
+      },
+      {
+        id: "Mm1xPb0xmS",
+        city: "Barcelona",
+        name: "ALIADO ZOOM MBE CUMANA (BARCELONA)",
+        address: "Av.cristobal Colon Perimetal, Sec. El Diqui, C.c. Marina Plaza, Edif. D-3, Local P.b.-4.",
+        code: "3857",
+      },
+      {
+        id: "56KEVGp7jJ",
+        city: "Barcelona",
+        name: "ALIADO ZOOM SEACAR ORIENTE 1702, C.A",
+        address: "Calle Zulia De Barrio Sucre, Local 5 - C Barcelona Edo- Anzoategui.",
+        code: "3050",
+      },
+    ]
+  },
+  {
     name: "Monagas",
     agencies: [
       {
@@ -34,21 +107,21 @@ export const states = [
         id: "zABfdB9OCA",
         city: "Maturín",
         name: "ALIADO ZOOM NEXUS VENEZUELA, C.A",
-        address: "Av. Azcue Con Av Rojas Sector Centro, Local Nro. 114 A Dos Cuadras De La Av.bolivar",
+        address: "Av. Azcue Con Av Rojas Sector Centro, Local Nro. 114 A Dos Cuadras De La Av. Bolivar.",
         code: "2343",
       },
       {
         id: "89MMkF6PWy",
         city: "Maturín",
         name: "ALIADO ZOOM SMART SYSTEM 0291, C.A",
-        address: "Av Alirio Ugarte Pelayo Cc Monagas Plaza Nivel P.b Local 65 Sector Boqueron",
+        address: "Av Alirio Ugarte Pelayo Cc Monagas Plaza Nivel P.b Local 65 Sector Boqueron.",
         code: "3538",
       },
       {
         id: "oXM7i9n4eo",
         city: "Maturín",
         name: "ZOOM MATURIN",
-        address: "Av Libertador Cruce Con Avenida Ejercito Local Zoom Sector Fundemos",
+        address: "Av Libertador Cruce Con Avenida Ejercito Local Zoom Sector Fundemos.",
         code: "89",
       },
       {
