@@ -41,7 +41,15 @@ export default function ZoomSelectAgency() {
               <SelectLabel className="text-base">Estados:</SelectLabel>
               {states.map((state: Record<string, any>, index: number) => (
                 <SelectItem key={index} className="text-base" value={String(index)}>
-                  {state.name}
+                  {state.name} {state.agencies.length === 1 ? (
+                    <span className="text-[10px] text-gray-500 ml-1">
+                      ({state.agencies.length} Agencia disponible)
+                    </span>
+                  ) : (
+                    <span className="text-[10px] text-gray-500 ml-1">
+                      ({state.agencies.length} Agencias disponible)
+                    </span>
+                  )}
                 </SelectItem>
               ))}
             </SelectGroup>
@@ -49,10 +57,10 @@ export default function ZoomSelectAgency() {
         </Select>
         {agencies.length > 0 && (
           <div className={clsx(
-            `flex flex-col gap-y-5 mt-3 overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-200 px-4`,
+            `flex flex-col gap-y-5 mt-3 overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-color  scrollbar-track-transparent px-4`,
             agencies.length > 4 && "h-[600px]",
           )}>
-            {agencies.map((agency: Agency, index: number) => (
+            {agencies.map((agency: Agency) => (
               <AgencyCard key={agency.id} agency={{ ...agency, company: "Grupo Zoom" }} />
             ))}
           </div>
