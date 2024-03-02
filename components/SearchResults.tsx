@@ -116,7 +116,7 @@ export default function SearchResults({
                 <>
                   <div className="mt-2">
                     <h5 className="text-gray-strong-color text-base mb-4">
-                      {searhProducts.length > 0 ? (
+                      {searhProducts.length > 0 && inputSearch !== "" ? (
                         <span>
                           Se han encontrado {searhProducts.length} {searhProducts.length === 1 ? "coincidencia" : "coincidencias"}
                         </span>
