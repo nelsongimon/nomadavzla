@@ -109,6 +109,8 @@ export default function ZinliForm() {
       isSubscribe: personalInformation?.isSubscribe,
       //Shipping information
       shippingCompany: selectedAgency?.company,
+      shippingState: selectedAgency?.state,
+      shippingCode: selectedAgency?.code,
       shippingCity: selectedAgency?.city,
       shippingAgency: selectedAgency?.name,
       shippingAgencyAddress: selectedAgency?.address,

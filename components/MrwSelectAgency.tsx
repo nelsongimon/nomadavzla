@@ -61,7 +61,7 @@ export default function MrwSelectAgency() {
             agencies.length > 4 && "h-[600px]",
           )}>
             {agencies.map((agency: Agency) => (
-              <AgencyCard key={agency.id} agency={{ ...agency, company: "MRW" }} />
+              <AgencyCard key={agency.id} agency={{ ...agency, state: states[selectedState].name, company: "MRW" }} />
             ))}
           </div>
         )}

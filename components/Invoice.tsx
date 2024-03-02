@@ -47,6 +47,14 @@ export default function Invoice() {
                 CI: {personalInformation.dni}
               </h3>
             </div>
+            <div className="flex items-center justify-between">
+              <h3 className="text-gray-strong-color font-normal text-base">
+                {personalInformation.email}
+              </h3>
+              <h3 className="text-gray-strong-color font-normal text-base">
+                {personalInformation.phoneCode}-{personalInformation.phoneNumber}
+              </h3>
+            </div>
           </div>
         </div>
       )}
@@ -58,11 +66,21 @@ export default function Invoice() {
           <div className="flex flex-col gap-y-2">
             <div className="flex items-center justify-between">
               <h3 className="text-gray-strong-color font-normal text-base">
-                {selectedAgency.city} Edo. {selectedAgency.state}
+                {selectedAgency.city} - {selectedAgency.state}
               </h3>
               <h3 className="text-gray-strong-color font-normal text-base uppercase">
                 {selectedAgency.company}
               </h3>
+            </div>
+            <div className="flex items-center justify-between">
+              <h3 className="text-gray-strong-color font-normal text-base">
+                {selectedAgency.name}
+              </h3>
+              {selectedAgency.company === "MRW" && (
+                <h3 className="text-gray-strong-color font-normal text-base uppercase">
+                  {selectedAgency.code}
+                </h3>
+              )}
             </div>
             <h3 className="text-gray-strong-color font-normal text-sm">
               {selectedAgency.address}
