@@ -58,7 +58,7 @@ export default function Invoice() {
           <div className="flex flex-col gap-y-2">
             <div className="flex items-center justify-between">
               <h3 className="text-gray-strong-color font-normal text-base">
-                {selectedAgency.city}
+                {selectedAgency.city} Edo. {selectedAgency.state}
               </h3>
               <h3 className="text-gray-strong-color font-normal text-base uppercase">
                 {selectedAgency.company}

@@ -11,11 +11,11 @@ import {
 } from "@/components/ui/select";
 import { useEffect, useState } from "react";
 import AgencyCard from "./AgencyCard";
-import { states } from "@/zoom";
+import { states } from "@/mrw";
 import clsx from "clsx";
 import { Agency } from "@/types";
 
-export default function ZoomSelectAgency() {
+export default function MrwSelectAgency() {
 
   const [selectedState, setSelectedState] = useState(-1);
   const [agencies, setAgencies] = useState<Record<string, any>>([]);
@@ -28,7 +28,7 @@ export default function ZoomSelectAgency() {
   return (
     <div className="flex flex-col gap-y-7 mt-8 mb-10">
       <h3 className="text-center font-semibold text-xl text-primary-color">
-        Encuentra tu oficina Zoom más cercana
+        Encuentra tu oficina MRW más cercana
       </h3>
       <div className="flex flex-col gap-y-5">
         {/* States */}
@@ -61,7 +61,7 @@ export default function ZoomSelectAgency() {
             agencies.length > 4 && "h-[600px]",
           )}>
             {agencies.map((agency: Agency) => (
-              <AgencyCard key={agency.id} agency={{ ...agency, state: states[selectedState].name, company: "Grupo Zoom" }} />
+              <AgencyCard key={agency.id} agency={{ ...agency, company: "MRW" }} />
             ))}
           </div>
         )}

@@ -9,14 +9,6 @@ interface SelectedAgencyStore {
   setSelectedAgency: (agency: Agency | null) => void;
 }
 
-// const useSelectedAgency = create<SelectedAgencyStore>((set) => ({
-//   selectedAgency: null,
-//   setSelectedAgency: (agency: Agency) => {
-//     set({ selectedAgency: agency });
-//     toast.success("¡Esta sucursal fue seleccionada!", toastStyle);
-//   }
-// }));
-
 const useSelectedAgency = create(
   persist<SelectedAgencyStore>((set) => ({
     selectedAgency: null,

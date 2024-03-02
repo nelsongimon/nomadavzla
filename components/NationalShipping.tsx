@@ -1,10 +1,14 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import ZoomSelectAgency from "./ZoomSelectAgency";
 import Image from "next/image";
+import clsx from "clsx";
+import MrwSelectAgency from "./MrwSelectAgency";
+import { motion } from "framer-motion";
 
 export default function NationalShipping() {
+  const [selectedShippingAgency, setSelectedShippingAgency] = useState<"zoom" | "mrw">("zoom");
 
   useEffect(() => {
     const component = document.getElementById("nationalShipping");
@@ -23,16 +27,29 @@ export default function NationalShipping() {
       <div className="flex flex-col gap-y-2">
         <div className="flex justify-between gap-x-2 lg:gap-x-4">
           {/* Zoom */}
-          <button className="relative w-full h-[50px] lg:h-[60px] border-primary-color border-2 cursor-pointer rounded-md" disabled={true}>
-            <Image fill src="https://nomadavzla.store/images/zoom.png" alt="zoom image" className="object-contain" />
-          </button>
+          <motion.button className={clsx(`
+            relative w-full h-[50px] lg:h-[60px]  border-2 cursor-pointer rounded-md`,
+            selectedShippingAgency === "zoom" ? "border-primary-color" : "border-gray-200"
+          )}
+            onClick={() => setSelectedShippingAgency("zoom")}
+            whileTap={{ scale: 0.9 }}
+          >
+            <Image fill src={process.env.NEXT_PUBLIC_IMAGE_PATH + "images/zoom.png"} alt="zoom logo" className="object-contain" />
+          </motion.button>
           {/* MRW */}
-          <div className="relative w-full h-[50px] lg:h-[60px] border-gray-200 border-2 cursor-pointer rounded-md">
-            <Image fill src="https://nomadavzla.store/images/mrw.png" alt="zoom image" className="object-contain opacity-50" />
-          </div>
+          <motion.button className={clsx(`
+            relative w-full h-[50px] lg:h-[60px]  border-2 cursor-pointer rounded-md`,
+            selectedShippingAgency === "mrw" ? "border-primary-color" : "border-gray-200"
+          )}
+            onClick={() => setSelectedShippingAgency("mrw")}
+            whileTap={{ scale: 0.9 }}
+          >
+            <Image fill src={process.env.NEXT_PUBLIC_IMAGE_PATH + "images/mrw.png"} alt="mrw logo" className="object-contain" />
+          </motion.button>
         </div>
         <div>
-          <ZoomSelectAgency />
+          {selectedShippingAgency === "zoom" && <ZoomSelectAgency />}
+          {selectedShippingAgency === "mrw" && <MrwSelectAgency />}
         </div>
       </div>
     </div>

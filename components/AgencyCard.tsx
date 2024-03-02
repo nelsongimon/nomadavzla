@@ -2,7 +2,7 @@
 
 import useSelectedAgency from "@/hooks/useSelectedAgency";
 import { Agency } from "@/types";
-import { CheckSquare, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 
 interface AgencyCardProps {
   agency: Agency

@@ -24,6 +24,7 @@ import usePersonalInformation from "@/hooks/usePersonalInformation";
 import useSelectedAgency from "@/hooks/useSelectedAgency";
 import useShoppingCart from "@/hooks/useShoppingCart";
 import { PuffLoader } from "react-spinners";
+import useGetDollarValue from "@/hooks/useGetDollarValue";
 
 const formSchema = z.object({
   referenceNumber: z.string({ required_error: "El número de referencia es requerido." }).regex(/^[0-9]+$/, {
@@ -44,7 +45,7 @@ export default function PagoMovilForm() {
   const selectedAgency = useSelectedAgency(state => state.selectedAgency);
   const products = useShoppingCart(state => state.items);
   const totalUsd = products.reduce((acc, item) => acc + Number(item.total), 0).toFixed(2);
-  const dollarValue = "35.59";
+  const { data: dollarValue } = useGetDollarValue();
   const totalBs = (Number(dollarValue) * Number(totalUsd)).toFixed(2);
 
   const form = useForm<z.infer<typeof formSchema>>({
