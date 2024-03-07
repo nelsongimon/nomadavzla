@@ -107,7 +107,7 @@ export default function BanescoForm() {
       //Shipping information
       shippingCompany: selectedAgency?.company,
       shippingState: selectedAgency?.state,
-      shippingCode: selectedAgency?.code,
+      shippingAgencyCode: selectedAgency?.code,
       shippingCity: selectedAgency?.city,
       shippingAgency: selectedAgency?.name,
       shippingAgencyAddress: selectedAgency?.address,
@@ -303,7 +303,7 @@ export default function BanescoForm() {
                       <h2 className="text-lg font-semibold">
                         Comprobante de pago
                       </h2>
-                      <p className="text-sm font-light text-gray-strong-color">
+                      <p className="text-sm font-light text-gray-strong-color text-center">
                         Puedes adjuntar una captura de pantalla del pago realizado en formato JPG, JPEG, PNG
                       </p>
                     </div>
