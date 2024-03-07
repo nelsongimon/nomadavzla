@@ -40,7 +40,7 @@ export default function ProductCard({
       quantity: 1,
       price: Number(product.salePrice),
       total: parseFloat(product.salePrice).toFixed(2)
-    });
+    }, true);
   }
   const addToFavorite = () => {
     addItemToFavorite(product);

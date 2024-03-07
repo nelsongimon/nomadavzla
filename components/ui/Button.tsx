@@ -30,7 +30,7 @@ export default function Button({
       disabled={disabled}
       type={type}
       className={clsx(
-        "rounded-md flex gap-x-1 items-center duration-300",
+        "rounded-md flex gap-x-1 items-center justify-center duration-300",
         size === "default" ? "py-2 px-4" : "",
         size === "small" ? "py-1 px-2 text-xs font-light" : "",
         size === "large" ? "px-3 py-2 lg:py-2 lg:px-7 text-base lg:text-lg font-light" : "",

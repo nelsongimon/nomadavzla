@@ -7,7 +7,7 @@ import { toastStyle } from "@/lib/utils";
 
 interface ShoppingCartStore {
   items: CartProduct[];
-  addItem: (product: CartProduct) => void;
+  addItem: (product: CartProduct, showMessage: boolean) => void;
   removeItem: (id: string) => void;
   updateItem: (product: CartProduct) => void,
   reset: () => void,
@@ -16,7 +16,7 @@ interface ShoppingCartStore {
 const useShoppingCart = create(
   persist<ShoppingCartStore>((set, get) => ({
     items: [],
-    addItem: (product: CartProduct) => {
+    addItem: (product: CartProduct, showMessage) => {
       const currentItems = get().items;
       const existingItem = currentItems.find((item) => item.id === product.id);
 
@@ -25,7 +25,10 @@ const useShoppingCart = create(
       }
 
       set({ items: [...get().items, product] });
-      toast.success("Agregado al Carrito", toastStyle);
+
+      if (showMessage) {
+        toast.success("Agregado al Carrito", toastStyle);
+      }
     },
     removeItem: (id: string) => {
       set({ items: [...get().items.filter((item) => item.id !== id)] });

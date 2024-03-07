@@ -25,13 +25,13 @@ import { PersonalInformation } from "@/types";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 
 const formSchema = z.object({
-  firstName: z.string({ required_error: "El campo nombre es requerido." }).regex(/^[a-zA-Z ]+$/, {
+  firstName: z.string({ required_error: "El campo nombre es requerido." }).regex(/^[a-zA-Z áéíóúÁÉÍÓÚü]+$/, {
     message: "El campo nombre solo puede contener letras.",
   }).min(2, {
     message: "El campo nombre debe contener al menos 2 caracteres."
   }),
 
-  lastName: z.string({ required_error: "El campo apellido es requerido." }).regex(/^[a-zA-Z ]+$/, {
+  lastName: z.string({ required_error: "El campo apellido es requerido." }).regex(/^[a-zA-Z áéíóúÁÉÍÓÚü]+$/, {
     message: "El campo apellido solo puede contener letras.",
   }).min(2, {
     message: "El campo apellido debe contener al menos 2 caracteres."

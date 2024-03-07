@@ -1,6 +1,6 @@
 "use client";
 
-import { AlertCircle, Check, CheckCircle2, ShoppingCart } from "lucide-react";
+import { AlertCircle, CheckCircle2, ChevronRight, CreditCard, ShoppingCart } from "lucide-react";
 import { useState } from "react";
 
 import Quatity from "@/components/ui/Quatity";
@@ -8,6 +8,7 @@ import Button from "@/components/ui/Button";
 import { Product } from "@/types";
 import { formatPrice } from "@/lib/utils";
 import useShoppingCart from "@/hooks/useShoppingCart";
+import { useRouter } from "next/navigation";
 
 interface ProductInfoProps {
   product: Product;
@@ -21,6 +22,8 @@ export default function ProductInfo({
 
   const [currentQuantity, setCurrentQuantity] = useState(1);
   const addItemToCart = useShoppingCart(state => state.addItem);
+  const resetCart = useShoppingCart(state => state.reset);
+  const router = useRouter();
 
   const addToCart = () => {
     const totalAmount = parseFloat(product.salePrice as string) * currentQuantity;
@@ -30,7 +33,20 @@ export default function ProductInfo({
       quantity: currentQuantity,
       price: Number(product.salePrice),
       total: totalAmount.toFixed(2)
-    });
+    }, true);
+  }
+
+  const buyNow = () => {
+    resetCart();
+    const totalAmount = parseFloat(product.salePrice as string) * currentQuantity;
+    addItemToCart({
+      id: product.id,
+      name: product.name,
+      quantity: currentQuantity,
+      price: Number(product.salePrice),
+      total: totalAmount.toFixed(2)
+    }, false);
+    router.push("/finalizar-compra");
   }
 
   const onPlusQuantity = () => {
@@ -89,20 +105,33 @@ export default function ProductInfo({
           </div>
         )}
         {Number(product.quantity) > 0 ? (
-          <div className="flex gap-x-5 items-center mt-0 lg:mt-2">
-            <Quatity
-              currentQuantity={currentQuantity}
-              maxQuantity={product.quantity}
-              onMinusQuantity={onMinusQuantity}
-              onPlusQuantity={onPlusQuantity}
-            />
-            <Button
-              onClick={addToCart}
-              variant="default"
-              size={previewModal ? "default" : "large"}
-            >
-              Agregar al Carrito <ShoppingCart size={20} className="text-xs stroke-[1.5]" />
-            </Button>
+          <div className="max-w-[340px] flex flex-col gap-y-6">
+            <div className="flex gap-x-5 items-center mt-0 lg:mt-2">
+              <Quatity
+                currentQuantity={currentQuantity}
+                maxQuantity={product.quantity}
+                onMinusQuantity={onMinusQuantity}
+                onPlusQuantity={onPlusQuantity}
+              />
+              <Button
+                onClick={addToCart}
+                variant="default"
+                size={previewModal ? "default" : "large"}
+                className="w-full"
+              >
+                Agregar al Carrito <ShoppingCart size={20} className="text-xs stroke-[1.5]" />
+              </Button>
+            </div>
+            <div>
+              <Button
+                onClick={buyNow}
+                variant="secondary"
+                size={previewModal ? "default" : "large"}
+                className="w-full"
+              >
+                Comprar Ahora
+              </Button>
+            </div>
           </div>
         ) : (
           <div className="flex gap-x-5 items-center mt-0 lg:mt-0">
