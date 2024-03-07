@@ -105,7 +105,7 @@ export default function ProductInfo({
           </div>
         )}
         {Number(product.quantity) > 0 ? (
-          <div className="max-w-[340px] flex flex-col gap-y-6">
+          <div className="w-full lg:max-w-[360px] flex flex-col gap-y-6">
             <div className="flex gap-x-5 items-center mt-0 lg:mt-2">
               <Quatity
                 currentQuantity={currentQuantity}
